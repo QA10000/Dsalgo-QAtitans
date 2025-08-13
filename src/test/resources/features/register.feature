@@ -6,7 +6,7 @@ Feature: User Registration
 
   Background: 
     Given The user is on the DSAlgo portal
-    When The user clicks "GetStarted button on wellcome page
+    When The user clicks "GetStarted button on welcome page
     Then The user lands on the home page of DSAlgo portal
 
   Scenario: Verify that user is able to navigate to Register page
