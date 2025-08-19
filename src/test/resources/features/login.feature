@@ -25,27 +25,27 @@ Feature:Login Functionality
 
   Scenario Outline: Verify that user receives error message for all empty fields during Login
     Given The user is on the DS Algo Sign in Page
-    When The user clicks login button Without entering any text in  "Username" textbox
+    When The user clicks Login button Without entering any text in  "Username" textbox
     Then An error message "Please fill out this field." appears below Username textbox
 
   Scenario Outline: Verify that user receives error message for all empty fields during Login
     Given The user is on the DS Algo Sign in Page
-    When The user clicks login button Without entering any text in  "Password" textbox
+    When The user clicks Login button Without entering any text in  "Password" textbox
     Then An error message "Please fill out this field." appears below Password textbox
 
   Scenario Outline: Verify that user receives error message for invalid Username field during Login
     Given The user is on the DS Algo Sign in Page
-    When The user clicks login button after entering invalid username .
+    When The user clicks Login button after entering invalid username .
     Then The user should able to see an error message "Invalid username and password".
 
   Scenario Outline: Verify that user receives error message for invalid Password field during Login
     Given The user is on the DS Algo Sign in Page
-    When The user clicks login button after entering invalid Password .
+    When The user clicks Login button after entering invalid Password .
     Then The user should able to see an error message "Invalid username and password".
 
   Scenario Outline: Verify that user able to land on Home page with valid Username and Password inputs
     Given The user is on the DS Algo Sign in Page
-    When The user clicks login button after entering valid username and valid password
+    When The user clicks Login button after entering valid username and valid password
     Then The user should land in Data Structure Home Page with message "You are logged in"
 
   Scenario Outline: Verify that URL is not accessible  with http

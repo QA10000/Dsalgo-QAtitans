@@ -54,10 +54,13 @@ public class DriverScripts {
 		    } else {
 		        throw new RuntimeException("URL is missing from properties file.");
 		    }
+		    
+		    
 		}
-	  // public void getApplicationurls() {
-		  // String dsalgourl = prop.getProperty("url");
-		   // driver.get(dsalgourl); // ✅ This was missing
-
+		 public void closeCurrentWindow() {
+		        if (driver != null) {
+		            driver.close();  // only closes the current browser window
+		        }
+		 }
 		   
 	   }
