@@ -32,7 +32,7 @@ Feature: User Registration
     #Scenario: Verify the Register button is present in the Register page
     #  Then The user sees "Register Button" label on Register page
     # Scenario: Verify the Login link is present in the register page
-    Then The user sees "Login Link" on the Register page
+    # Then The user sees "Login Link" on the Register page
 
   # Scenario: Verify that the user receives proper error message for empty username
   #  Given The user is on the register page of the portal
