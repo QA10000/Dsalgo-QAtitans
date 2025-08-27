@@ -1,7 +1,6 @@
 package com.qa.dsalgo.pages;
 
 import java.time.Duration;
-import java.util.List;
 import java.util.Map;
 
 import org.openqa.selenium.WebDriver;
@@ -23,7 +22,8 @@ public class RegisterPage {
 	private WebElement confirmedPswdtextbox;
 	@FindBy(xpath = "//form//input[@type='submit' and @value='Register']")
 	private WebElement registerButton;
-	@FindBy(xpath = "//*[contains(text(), 'password_mismatch')]")
+	//@FindBy(xpath = "//*[contains(text(), 'password_mismatch')]")
+	@FindBy(xpath = "//div[contains(text(), 'password_mismatch')]")
 	private WebElement mismatchpassword;
 	@FindBy(css = ".alert.alert-primary")
 	private WebElement successMessage;
@@ -46,7 +46,7 @@ public class RegisterPage {
 		registerLink.click();
 	}
 
-	public void enterUsername(String username) {
+	/*public void enterUsername(String username) {
 		if (username != null) {
 	        usernametextbox.sendKeys(username);
 	    } else {
@@ -58,8 +58,19 @@ public class RegisterPage {
 		confirmedPswdtextbox.clear();
 		
 		
-	}
+	}*/
+	
+	public void enterUsername(String username) {
+	    if (username == null || username.isEmpty()) {
+	        throw new IllegalArgumentException("Username value is null or empty. Check your test data.");
+	    }
 
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	    wait.until(ExpectedConditions.visibilityOf(usernametextbox));
+	    
+	    usernametextbox.clear();
+	    usernametextbox.sendKeys(username);
+	}
 	public void enterPassword(String password) {
 		if (password == null) {
 	        throw new IllegalArgumentException("Password value is null. Check your test data.");
@@ -90,5 +101,7 @@ public class RegisterPage {
 	   public String getSuccessMessage() {// this will go to home page as it shows on home page
 	        return successMessage.getText().trim();
 	    }
+	   
+	   
 }
 	  

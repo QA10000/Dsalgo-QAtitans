@@ -8,12 +8,16 @@ import io.cucumber.java.After;
 
 public class Dsalgohooks extends DriverScripts {
 	@Before
+	
 	public void setup() {
 		System.out.println("This is good");
 	}
 	
 	@After
+	
 	public void tearDown(){
+		System.out.println("This is good");
+
 		closeCurrentWindow();		
 	}
 

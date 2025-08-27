@@ -13,6 +13,7 @@ Feature: User Registration
     Given The user is on the home page of the portal
     When The user clicks on the Register link on home page
     Then The user lands on Register page
+    
     # Scenario: Verify that "NumpyNinja" label is displayed on the top left corner of the Register page
     #  Then The user sees "NumpyNinja" label on the top left corner of the "Register" page
     #Scenario: Verify the data structures select box is present on the top left corner of the register page
@@ -77,6 +78,7 @@ Feature: User Registration
       | TestUser02 | Test@1234 | Test@12347      |
       | TestUser03 | Test@1234 | Test@12348      |
       | TestUser04 | Test@1234 | Test@12349      |
+      
     Then The user sees "password_mismatch:The two password fields didn’t match." error message
 
   #Scenario: Verify the user receives proper error message when entering already exists username

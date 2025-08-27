@@ -1,1 +1,6 @@
 target/
+# Ignore package-info.java
+src/main/java/com/qa/dsalgo/base/package-info.java
+# Ignore test-output folder
+test-output/
+# src/main/java/utilities/package-info.java
