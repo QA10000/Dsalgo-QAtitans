@@ -45,10 +45,6 @@ public static Map<String, String> readData(String filePath, String sheetName) {
 
 					String key = headerCell.getStringCellValue();
 					String value = (cell == null) ? "" : cell.toString();
-					System.out.println("key + "+ key);
-					System.out.println("value" + value);
-
-
 					rowData.put(key, value);
 				}
 			}

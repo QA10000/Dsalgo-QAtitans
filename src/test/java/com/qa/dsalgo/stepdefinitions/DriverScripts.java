@@ -1,4 +1,4 @@
-package com.qa.dsalgo.base;
+package com.qa.dsalgo.stepdefinitions;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,8 +13,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Wait;
-
-import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class DriverScripts {
 	public static WebDriver driver;
@@ -57,40 +55,9 @@ public class DriverScripts {
 		        throw new RuntimeException("URL is missing from properties file.");
 		    }
 		}
+	  // public void getApplicationurls() {
+		  // String dsalgourl = prop.getProperty("url");
+		   // driver.get(dsalgourl); // ✅ This was missing
 
-			/*public void initializeApplication() {
-			    String browsers = prop.getProperty("browser").trim();
-
-			    if (browsers.equalsIgnoreCase("chrome")) {
-			        WebDriverManager.chromedriver().setup();
-			        driver = new ChromeDriver();
-			    } else if (browsers.equalsIgnoreCase("firefox")) {
-			        WebDriverManager.firefoxdriver().setup();
-			        driver = new FirefoxDriver();
-			    } else if (browsers.equalsIgnoreCase("edge")) {
-			        WebDriverManager.edgedriver().setup();
-			        driver = new EdgeDriver();
-			    } else {
-			        throw new RuntimeException("Unsupported browser: " + browsers);
-			    }
-
-			    String dsalgourl = prop.getProperty("url");
-			    if (dsalgourl != null && !dsalgourl.isEmpty()) {
-			        driver.manage().window().maximize();
-			        driver.get(dsalgourl);
-			        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-			    } else {
-			        throw new RuntimeException("URL is missing from properties file.");
-			    }
-			}*/
-
-		    
-		    
-		
-		 public void closeCurrentWindow() {
-		        if (driver != null) {
-		            driver.close();  // only closes the current browser window
-		        }
-		 }
 		   
 	   }

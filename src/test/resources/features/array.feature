@@ -1,29 +1,41 @@
-Feature:Array Functionality
+Feature: Array Functionality
+  As a logged in user I should be able to access and use array module
 
-  Background : 
+  Background: 
     Given The user is on the DSAlgo portal
-    When The user clicks "GetStarted button on welcome page
+    When The user clicks "GetStarted button on welcome page"
     Then The user lands on the home page of DSAlgo portal
+    
+  Scenario: Verify that user is not able to navigate to "Array" Module
+    When The user clicks "Get Started" button for the Array
+    Then the user should not be directed to "Array" Module page but a message "You are not logged in" should be displayed at the top of the homepage.
 
-  Scenario Outline: Verify that "NumpyNinja" label is displayed on the top left corner of the Register page
-    Then The user see s"NumpyNinja" label on the top left corner of the "Register" page
+  Scenario: Verify that user is able to navigate to "Array" Module page from array panel
+   Given The user signed in to dsAlgo Portal
+    When user clicks "Getting Started" button in Array Panel
+    Then the user should be directed to "Array" Module page
 
-  Scenario Outline: Verify the data structures select box is present on the top left corner of the register page
-    Then The user sees the data structures select box on the top left corner of the "Register" page
+  Scenario: Verify that user is able to navigate to "Array" Module page using Data Structure dropdown
+    When user selects "Array" item from "Data Structures" drop down
+    Then the user should be directed to "Array" Module page
 
-  Scenario Outline: Verify that link with "Register" label is displayed on the Register page
-    Then The user sees "Register" link on  the top right corner of the  Register page
+  Scenario: Verify that user sees error message on entering invalid code in "try me" editor for "Arrays in Python" page
+   Given The user is on Array Data Structure
+  And The user clicks "Arrays in Python" link
+  And The user clicks "Try Here" button in Arrays in Python
+  And run invalid code by clicking run button after entering "abcd" in try editor
+  Then The user should see alert with  error message "NameError: name 'abcd' is not defined on line 1" on Array in Python page
+  
+  #Scenario Outline: Verify that user sees error message on entering invalid code in "try me" editor for "Arrays in Python" page
+    #Given The user is on Array Data Structure
+    #And The user clicks <OptionOnArray> link
+    #And The user clicks "Try Here" button in Arrays in Python
+    #And run invalid code by clicking run button after entering <code> in try editor
+    #Then The user should see alert with  error message <errorMessage> on Array in Python page 
 
-  Scenario Outline: Verify that link with "Signin" label is displayed on the Register page
-    Then The user sees "Signin" link on  the top right corner of the Register page
-
-  Scenario Outline: Verify the Array Page shows 'Register' link
-    Then The user can see Register link on the Array Page
-
-  Scenario Outline: Verify that user is able to land on Array Page
-    Then The User land on Array Page
-
-  Scenario Outline: Verify that user receives error message for all empty fields during Array
-    Given The user is on the DS Algo Sign in Page
-    When The user clicks Array button Without entering any text in  "Username" textbox
-    Then An error message "Please fill out this field." appears below Username textbox
+    #Examples: 
+     # | OptionOnArray             | code | errorMessage                                    |
+     # | Arrays in Python          | abcd | NameError: name 'abcd' is not defined on line 1 |
+      #| Arrays using List         | abcd | NameError: name 'abcd' is not defined on line 1 |
+      #| Basic Operations in Lists | abcd | NameError: name 'abcd' is not defined on line 1 |
+      #| Applications of Array     | abcd | NameError: name 'abcd' is not defined on line 1 |
