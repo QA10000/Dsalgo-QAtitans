@@ -12,11 +12,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.Wait;
+//import org.openqa.selenium.support.ui.Wait;
 
 public class DriverScripts {
 	public static WebDriver driver;
-		public static Wait wait;
+		//public static Wait wait;
 		public static Alert alert;
 		public Properties prop;
 		public DriverScripts(){
@@ -26,13 +26,14 @@ public class DriverScripts {
 				FileInputStream files = new FileInputStream(file);
 				prop = new Properties();
 				prop.load(files);
+				System.out.println(">> In DriverScripts constructor.");
 			}
 			catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		public void initializeApplication() {
+		public void  initializeApplication() {
 		    String browsers = prop.getProperty("browser").trim();
 
 		    if (browsers.equalsIgnoreCase("chrome")) {

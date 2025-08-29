@@ -58,6 +58,45 @@ public static Map<String, String> readData(String filePath, String sheetName) {
 		}
 		return rowData;
 	}
+
+public static List<Map<String, String>> readMultiRowData(String filePath, String sheetName) {
+	//Map<String, String> rowData = new HashMap<>();
+	List<Map<String, String>> data = new ArrayList<>();
+	try (FileInputStream fis = new FileInputStream(filePath); Workbook workbook = WorkbookFactory.create(fis)) {
+
+		Sheet sheet = workbook.getSheet(sheetName);
+		if (sheet == null) {
+			throw new IllegalArgumentException("Sheet '" + sheetName + "' not found in file: " + filePath);
+		}
+
+		// Assuming first row is header
+		Row headerRow = sheet.getRow(0);
+		int colCount = headerRow.getLastCellNum();
+		
+		for (int i = 1; i <= sheet.getLastRowNum(); i++) {
+			Row row = sheet.getRow(i);
+		    if (row == null || isRowEmpty(row)) continue;
+			if (row == null)
+				continue;
+			Map<String, String> rowData = new LinkedHashMap<>();
+			for (int j = 0; j < colCount; j++) {
+				Cell headerCell = headerRow.getCell(j);
+				Cell cell = row.getCell(j);
+
+				String key = headerCell.getStringCellValue();
+				String value = (cell == null) ? "" : cell.toString();
+				System.out.println("ExcelReader.readMultiRowData::key: "+ key + " , value: " + value );
+				//System.out.println("value" + value);
+				rowData.put(key, value);
+			}
+			data.add(rowData);
+		}
+
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	return data; //rowData;
+}
 	
 	private static boolean isRowEmpty(Row row) {
 	    if (row == null) return true;

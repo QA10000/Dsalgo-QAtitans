@@ -17,11 +17,15 @@
 		</dependency>
 		<!--
  https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
-		<dependency>
-			<groupId>io.github.bonigarcia</groupId>
-			<artifactId>webdrivermanager</artifactId>
-			<version>5.4.1</version>
-		</dependency>
+ <!-- pom.xml -->
+ 
+ <!--
+<dependency>
+    <groupId>io.github.bonigarcia</groupId>
+    <artifactId>webdrivermanager</artifactId>
+    <version>5.7.0</version>
+</dependency>
+		-->
 		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
 		<dependency>
 			<groupId>org.testng</groupId>
@@ -35,6 +39,12 @@
 			<artifactId>cucumber-java</artifactId>
 			<version>7.26.0</version>
 		</dependency>
+		<dependency>
+        <groupId>io.cucumber</groupId>
+       		<artifactId>cucumber-junit</artifactId>
+        	<version>7.15.0</version>
+       		<scope>test</scope>
+   		</dependency>
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-testng</artifactId>
@@ -59,11 +69,19 @@
 			<version>2.19.0</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-testng -->
+		<!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-testng -->
 		<dependency>
 			<groupId>io.qameta.allure</groupId>
 			<artifactId>allure-cucumber7-jvm</artifactId>
 			<version>2.29.1</version>
 		</dependency>
+		<!-- JUnit -->
+      <dependency>
+       	 <groupId>junit</groupId>
+       	 <artifactId>junit</artifactId>
+      	 <version>4.13.2</version>
+        <scope>test</scope>
+     </dependency>
 		<!--
 		https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
 		<dependency>
@@ -71,32 +89,38 @@
 			<artifactId>log4j-core</artifactId>
 			<version>2.25.1</version>
 		</dependency>
-		<!--
+				<!--
 		https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>
 			<version>2.25.1</version>
 		</dependency>
+			<!--https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
 		<dependency>
-    <groupId>com.fasterxml.jackson.core</groupId>
-    <artifactId>jackson-core</artifactId>
-    <version>2.15.2</version> <!-- or latest stable version -->
-</dependency>
+			<groupId>io.github.bonigarcia</groupId>
+			<artifactId>webdrivermanager</artifactId>
+			<version>6.1.1</version>
+		</dependency>
+		
 
-<dependency>
-    <groupId>com.fasterxml.jackson.core</groupId>
-    <artifactId>jackson-databind</artifactId>
-    <version>2.15.2</version>
-</dependency>
 	</dependencies>
 	<build>
 		<plugins>
-			
 			<plugin>
+	            <groupId>io.qameta.allure</groupId>
+	            <artifactId>allure-maven</artifactId>
+	            <version>2.11.2</version>
+	        </plugin>
+			<!--<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>3.0.0</version>
+				<version>3.5.1</version>
+			</plugin>-->
+   			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.5.1</version>
 				<configuration>
 					<suiteXmlFiles>
 						<suiteXMLFile>testng.xml</suiteXMLFile>
