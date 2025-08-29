@@ -6,3 +6,8 @@ test-output/
 # src/main/java/utilities/package-info.java
 /com.qa.dsalgo/allure-results
 /allure-results/
+
+/bin/
+/allure-results/
+/bin/
+/allure-results/
