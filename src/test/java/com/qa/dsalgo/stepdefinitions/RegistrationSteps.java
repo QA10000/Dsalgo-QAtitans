@@ -3,6 +3,8 @@ package com.qa.dsalgo.stepdefinitions;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
@@ -14,12 +16,15 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import utilities.ExcelReader;
+import utilities.ScenarioContext;
 
 import com.qa.dsalgo.pages.RegisterPage;
 
 public class RegistrationSteps extends DriverScripts {
 
 	Background background;
+    private static final Logger logger = LogManager.getLogger(RegistrationSteps.class);
+
 
 	@Given("The user is on the DSAlgo portal")
 	public void the_user_is_on_the_ds_algo_portal() {
@@ -32,10 +37,16 @@ public class RegistrationSteps extends DriverScripts {
 	background = new Background(driver); // driver must not be null
 	background.ClickGetStarted();
 }
+	@Then("user logs in")
+	public void user_logs_in() {
+   background = new Background(driver); // driver must not be null
+   background.userLoggedin();
+	}
 		    
 		
 	@Then("The user lands on the home page of DSAlgo portal")
 	public void the_user_lands_on_the_home_page_of_ds_algo_portal() {
+		logger.info("user lands on algo portal home page" );
 		RegisterPage registerpage = new RegisterPage(driver);
 		String expectedTitle = "NumpyNinja";
 		String actualTitle = registerpage.getTitle();
@@ -218,13 +229,6 @@ public class RegistrationSteps extends DriverScripts {
 		registerpage.submitForm();
 	}
 
-	@Then("The user lands on the DSAlgo Home portal with Success Message {string}")
-	public void the_user_lands_on_the_ds_algo_home_portal_with_success_message(String message) {
-		RegisterPage registerpage = new RegisterPage(driver);
-	    String expectedMessage = "New Account Created. You are logged in as qatitans16";
-		String actualMessage = registerpage.getSuccessMessage(); // you'll implement this method
-		Assert.assertEquals(actualMessage, expectedMessage, "Success message mismatch!");
-	}
 
 	@When("The user submits the registration form with mismatched passwords:")
 	public void the_user_submits_the_registration_form_with_mismatched_passwords(
@@ -247,13 +251,11 @@ public class RegistrationSteps extends DriverScripts {
 	}
 
 	@Then("The user sees {string} error message")
-	public void the_user_sees_error_message(String string) {
+	public void the_user_sees_error_message(String expectedMessage) {
 		RegisterPage registerpage = new RegisterPage(driver);
 
 		String actualMessage = registerpage.getMismatchMessage();
-		String expectedMessage = "password mismatch:The two password fields didn’t match.";
-		System.out.println("Actual error text: '" + actualMessage + "'");
-		System.out.println("Expected error text: '" + expectedMessage + "'");
+// expectedMessage = "password mismatch:The two password fields didn’t match.";
 		Assert.assertTrue(actualMessage.contains(expectedMessage));
 	}
 
@@ -264,22 +266,30 @@ public class RegistrationSteps extends DriverScripts {
 	
 	@When("The user clicks Register button after entering valid values from {string}")
 	public void the_user_clicks_register_button_after_entering_valid_values_from(String string) {
+	
 	    RegisterPage registerpage = new RegisterPage(driver);
 
 	    String filePath = System.getProperty("user.dir") + "/src/test/resources/testdata/testdata.xlsx";
 	    Map<String, String> testData = ExcelReader.readData(filePath, string);
-	    System.out.println("DEBUG: Number of data rows read from Excel: " + testData.size());
-	    System.out.println("password: " + testData.get("password"));
-	    System.out.println("confirmpassword: " + testData.get("confirmpassword"));
-        System.out.println("username: " + testData.get("username"));        
-	    String username =testData.get("username");
+	    String username =testData.get("username");// getting input from datasheet
 	    String password =testData.get("password");
 	    String confirmedPassword = testData.get("confirmpassword");
-	    System.out.println("DEBUG - Username from test data: " + username);
+	    ScenarioContext.set("registeredUsername", username);
 	    registerpage.enterUsername(username);
 	    registerpage.enterPassword(password);
 	    registerpage.enterConfirmPassword(confirmedPassword);
 	    registerpage.submitForm();
+	}
+	
+
+	@Then("The user lands on the DSAlgo Home portal with Success Message {string}")
+	public void the_user_lands_on_the_ds_algo_home_portal_with_success_message(String expectedMessage) {
+		RegisterPage registerpage = new RegisterPage(driver);
+	   // String expectedMessage = "New Account Created. You are logged in as qatitans16";
+		String actualMessage = registerpage.getSuccessMessage(); 
+	    String registeredUsername = ScenarioContext.get("registeredUsername").toString();
+	    expectedMessage = expectedMessage.replace("<username>", registeredUsername);
+	    Assert.assertEquals(actualMessage, expectedMessage, "Success message mismatch!");
 	}
 
 	//@When("The user clicks {string}")
@@ -289,8 +299,7 @@ public class RegistrationSteps extends DriverScripts {
 
 	@When("The user clicks {string} button without entering username and entering valid password")
 	public void the_user_clicks_button_without_entering_username_and_entering_valid_password(String string) {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	   
 	}
 
 	@Then("The error message {string} should be displayed")
