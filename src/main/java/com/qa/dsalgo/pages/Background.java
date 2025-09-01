@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
+//import com.qa.dsalgo.base.DriverScripts;
 
 public class Background {
 	@FindBy(linkText = "Get Started")
@@ -30,9 +30,11 @@ public class Background {
     }
 		
 	public void ClickGetStarted() {
+		System.out.println(">> ClickGetStarted()");
 	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	    wait.until(ExpectedConditions.elementToBeClickable(getStartedBtn));
 		getStartedBtn.click();
+		System.out.println(">> getStartedBtn.getText() : " + getStartedBtn.getText().toString());
 	}
 	
 	public void userLoggedin() {

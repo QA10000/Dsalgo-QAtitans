@@ -16,9 +16,13 @@ public class Dsalgohooks extends DriverScripts {
 	@After
 	
 	public void tearDown(){
+
+	//	closeCurrentWindow();		
+
 		System.out.println("This is good");
 
 		closeCurrentWindow();		
+
 	}
 
 }

@@ -4,3 +4,10 @@ src/main/java/com/qa/dsalgo/base/package-info.java
 # Ignore test-output folder
 test-output/
 # src/main/java/utilities/package-info.java
+/com.qa.dsalgo/allure-results
+/allure-results/
+
+/bin/
+/allure-results/
+/bin/
+/allure-results/
