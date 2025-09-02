@@ -6,7 +6,7 @@ Feature: User Registration
 
   Background: 
     Given The user is on the DSAlgo portal
-    When The user clicks "GetStarted" button on welcome page
+    When The user clicks "GetStarted button on welcome page"
     Then The user lands on the home page of DSAlgo portal
 
    Scenario: Verify that user is able to navigate to Register page
@@ -90,8 +90,7 @@ Feature: User Registration
   # When The user enters admin in username text box and password in password textbox
   # Then The user should see a message suggesting to enter a strong username and password
   Scenario Outline: Verify the user is landing on the DsAlgo home portal after entering valid username and password
-   u Given The user is on the register page of the portal
-    #When The user enters "<username>", "<password>", "<confirmedpassword>" and clicks the Register button
+    Given The user is on the register page of the portal
     When The user clicks Register button after entering valid values from "<Sheet>"
     Then The user lands on the DSAlgo Home portal with Success Message "New Account Created. You are logged in as <username>"
 

@@ -17,7 +17,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class ArrayPage {
 	@FindBy(xpath = "//a[@href='array']")
 	private WebElement arrayStartBtn;
-	@FindBy(xpath = "//div[@role='alert' and contains(text(), 'You are not logged in')]")
+	@FindBy(xpath = "//div[@role='alert' and contains(text(), 'You are not logged in')]") // on home page
 	private WebElement ntloggedinMsg;
 	// locators from array module page
 	@FindBy(xpath = "//h4[@class='bg-secondary text-white']")
@@ -25,28 +25,32 @@ public class ArrayPage {
 	@FindBy(xpath = "//a[normalize-space()='Arrays in Python']")
 	private WebElement arrPythonLink;
 	@FindBy(xpath = "//a[@class='nav-link dropdown-toggle']")
-	private WebElement dropdown;	
+	private WebElement dropdown;
 	@FindBy(xpath = "//a[@class='dropdown-item' and text()='Arrays']")
-	private WebElement arraysLinkItem;// from dropdown 	
+	private WebElement arraysLinkItem;// from dropdown
 	@FindBy(xpath = "//a[@class='list-group-item']")
 	private List<WebElement> topicLinks; // locators for links on array module
-	@FindBy(xpath = "//h4")  
+	@FindBy(xpath = "//h4")
 	private WebElement pageHeader;
 	@FindBy(xpath = "//a[@class='btn btn-info']")
 	private WebElement tryMeButton;
-
-	
 	@FindBy(css = "div.CodeMirror-scroll")
 	private WebElement codeEditorTxtBx;
 	@FindBy(xpath = "//button[@type='button']")
 	private WebElement runBtn;
-	
+	@FindBy(id = "output")
+	private WebElement outputMessage;
 
-@FindBy(css = "textarea")
-private WebElement codeMirrorTextArea;
-			
-	
- //for now i am creating a login code here , we need to have login here because we can't use background step logged in because we have a scenario for nonlogged in user
+	@FindBy(css = "textarea")
+	private WebElement codeMirrorTextArea;
+	@FindBy(xpath = "//a[text()='Practice Questions']")
+	private WebElement praticeQ;
+	@FindBy(xpath="//a[normalize-space()='Search the array']")
+	private WebElement searchArrayQLink;
+
+	// for now i am creating a login code here, we need to have login here because
+	// we can't use background step logged in because we have a scenario for
+	// nonlogged in user
 	@FindBy(xpath = "//div[@id='navbarCollapse']//a[@href='/login']")
 	private WebElement signinLink;
 	@FindBy(name = "username")
@@ -55,7 +59,6 @@ private WebElement codeMirrorTextArea;
 	private WebElement passwordtextbox;
 	@FindBy(xpath = "//form//input[@type='submit' and @value='Login']")
 	private WebElement loginButton;
-	
 
 	private WebDriver driver;
 
@@ -89,69 +92,122 @@ private WebElement codeMirrorTextArea;
 		loginButton.click();
 	}
 
-	
-public void selectArrayfrmDrpdown(String visibleText) {
-	userLoggedin();
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-    Actions actions = new Actions(driver);
-
-    // Click or hover the dropdown to open it
-    wait.until(ExpectedConditions.elementToBeClickable(dropdown));
-    actions.moveToElement(dropdown).click().perform();
-
-    // Wait for the dropdown item to be visible and click it
-    wait.until(ExpectedConditions.visibilityOf(arraysLinkItem));
-    wait.until(ExpectedConditions.elementToBeClickable(arraysLinkItem));
-    actions.moveToElement(arraysLinkItem).click().perform();
-}
-
-	
-	public boolean arrayLabelDisplayed() {
-		   WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		    wait.until(ExpectedConditions.visibilityOf(arrayLabel));
-		    return arrayLabel.isDisplayed();
-		
-	}
-	
-	public void clickLinksAndVerifyheader() {
-		for(WebElement link : topicLinks) {
-			String linkText = link.getText().trim();
-			link.click();
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	        wait.until(ExpectedConditions.visibilityOf(pageHeader));
-	        String headerText = pageHeader.getText().trim();  // like "Arrays in Python"
-	        System.out.println("Landed on page with header: " + headerText);
+	public void selectArrayFrmDropdown() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		Actions actions = new Actions(driver);
+		wait.until(ExpectedConditions.elementToBeClickable(dropdown));
+		dropdown.click();
+		wait.until(ExpectedConditions.elementToBeClickable(arraysLinkItem));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", arraysLinkItem);
+		wait.until(
+		ExpectedConditions.or(ExpectedConditions.titleContains("Array"), ExpectedConditions.urlContains("array")																												// both
+						)); // here
+																															// javascript
+																															// code
+																															// is
+																															// checking
+																															// the
+																															// title
+																															// and
+																															// url
 			
-		}
 	}
-	
+
+	public boolean arrayLabelDisplayed() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.visibilityOf(arrayLabel));
+		return arrayLabel.isDisplayed();
+
+	}
+
 	public String getTitleArraypage() { // please check to remove duplicate methods
 		return driver.getTitle();
 	}
 
 	public void clickTryMeButton() {
 		tryMeButton.click();
-		}
-	
-	
+	}
+
 	public void codeEditorSendKeys(String code) {
 	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+	    // Wait for CodeMirror editor container to be visible
 	    wait.until(ExpectedConditions.visibilityOf(codeEditorTxtBx));
-	    ((JavascriptExecutor) driver).executeScript(
-	        "document.querySelector('.CodeMirror').CodeMirror.setValue(arguments[0]);", code);
+
+	    JavascriptExecutor js = (JavascriptExecutor) driver;
+
+	    // Clear existing content
+	    js.executeScript("document.querySelector('.CodeMirror').CodeMirror.setValue('');");
+
+	    // Enter new code
+	    js.executeScript("document.querySelector('.CodeMirror').CodeMirror.setValue(arguments[0]);", code);
+
+	    // Optional: Wait a bit for code to settle into the editor
+	    try {
+	        Thread.sleep(500); // Small pause (not mandatory but helpful sometimes)
+	    } catch (InterruptedException e) {
+	        Thread.currentThread().interrupt();
+	    }
 	}
-	
+
 	public void clickRunBtn() {
 		runBtn.click();
+
+	}
+
+	public String getAlertMessageAndAccept() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.alertIsPresent());
+		Alert alert = driver.switchTo().alert();
+		String message = alert.getText();
+		alert.accept();
+		return message;
+	}
+
+	public void clickArraySection(String sectionName) {
+		boolean found = false;// this is used for making sure we have found the link before we click
+		for (WebElement link : topicLinks) {
+			if (link.getText().trim().equalsIgnoreCase(sectionName.trim())) {
+				link.click();
+				found = true;
+				break;
+			}
+		}
+		if (!found) {
+			throw new IllegalArgumentException("Unknown section: " + sectionName);
+		}
+	}
+
+	public void outputDisplayed() {
+		outputMessage.isDisplayed();
+	}
+
+	public String getTextoutput() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.visibilityOf(outputMessage));
+		return outputMessage.getText().trim();
+	}
+
+	
+	
+	public void clickSearchArrayLink() {
+		searchArrayQLink.click();
+	}
+	
+	public void clickPracticeQLink() {
+		praticeQ.click();		
+	}
+	
+	public void practicQuestionValidScn() {
+		userLoggedin();
+		clickStartBtn();
+	    clickArrayPythonLink();
+		clickPracticeQLink();
+ 	}
+
+	private void clickArraySecion() {
+		// TODO Auto-generated method stub
 		
 	}
 	
-	public String getAlertMessageAndAccept() {
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	    wait.until(ExpectedConditions.alertIsPresent());
-	    Alert alert = driver.switchTo().alert();
-	    String message = alert.getText();
-	    alert.accept();
-	    return message;
-	}
 }
