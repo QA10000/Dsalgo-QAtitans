@@ -57,36 +57,7 @@ public class DriverScripts {
 		    } else {
 		        throw new RuntimeException("URL is missing from properties file.");
 		    }
-		}
-
-			/*public void initializeApplication() {
-			    String browsers = prop.getProperty("browser").trim();
-
-			    if (browsers.equalsIgnoreCase("chrome")) {
-			        WebDriverManager.chromedriver().setup();
-			        driver = new ChromeDriver();
-			    } else if (browsers.equalsIgnoreCase("firefox")) {
-			        WebDriverManager.firefoxdriver().setup();
-			        driver = new FirefoxDriver();
-			    } else if (browsers.equalsIgnoreCase("edge")) {
-			        WebDriverManager.edgedriver().setup();
-			        driver = new EdgeDriver();
-			    } else {
-			        throw new RuntimeException("Unsupported browser: " + browsers);
-			    }
-
-			    String dsalgourl = prop.getProperty("url");
-			    if (dsalgourl != null && !dsalgourl.isEmpty()) {
-			        driver.manage().window().maximize();
-			        driver.get(dsalgourl);
-			        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-			    } else {
-			        throw new RuntimeException("URL is missing from properties file.");
-			    }
-			}*/
-
-		    
-		    
+		}		    
 		
 		 public void closeCurrentWindow() {
 		        if (driver != null) {
