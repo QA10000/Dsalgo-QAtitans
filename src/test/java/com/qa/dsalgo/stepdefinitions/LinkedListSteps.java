@@ -35,14 +35,14 @@ public class LinkedListSteps extends DriverScripts {
 		linkedlistpage.clicklinkedListGetStarted();
 	}
 
-	@Then("The user lands on the {string} page")
+/*	@Then("The user lands on the {string} page")
 	public void theUserLandsOnThePage(String string) {
 		System.out.println("The user lands on the " + string + " page");
 		//linkedlistpage = new LinkedListPage(driver);
 		String expectedTitle = string; //"Linked List";
 		String actualTitle = linkedlistpage.getTitle();
 		Assert.assertEquals(actualTitle, expectedTitle, "Title mismatch!");
-	}
+	}*/
 
 	@When("The user select Linked List  item from the drop down menu")
 	public void theUserSelectLinkedListItemFromTheDropDownMenu() {

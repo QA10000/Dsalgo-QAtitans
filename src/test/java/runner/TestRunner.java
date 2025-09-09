@@ -19,7 +19,7 @@ import io.cucumber.java.After;
 
 @CucumberOptions(
     features = "src/test/resources/features",
-    glue = {"com.qa.dsalgo.myhooks","com.qa.dsalgo.stepdefinitions" },
+    glue = {"com.qa.dsalgo.stepdefinitions.Hooks","com.qa.dsalgo.stepdefinitions" },
     dryRun = false,
     plugin = {"pretty"}
 )

@@ -27,8 +27,27 @@ public class TreePage {
 	private WebElement treeStartButton;
 	@FindBy(xpath = "//a[@class='nav-link dropdown-toggle']")
 	private WebElement dropdown;
-	@FindBy(xpath = "//a[@class='dropdown-item' and text()='Tree']")
-	private WebElement arraysLinkItem;// from dropdown
+    @FindBy(xpath = "//div[contains(.,'Topics Covered')]//a")
+	private List<WebElement> treeLinkItem;
+
+			@FindBy(xpath = "//h4[@class='bg-secondary text-white']")
+	private WebElement treeLabel;
+	@FindBy(xpath = "//a[normalize-space()='Overview of Trees']")
+	private WebElement overviewLink;
+	@FindBy(xpath = "//a[@class='btn btn-info']")
+	private WebElement tryMeTreeButton;
+	@FindBy(xpath = "//a[@class='btn btn-info']")
+	private WebElement linksTreePg;
+	@FindBy(xpath = "//a[@class='btn btn-info']")
+	private WebElement tryMeButton;
+	@FindBy(xpath = "//button[@type='button']")
+	private WebElement runBtn;
+	@FindBy(css = "textarea")
+	private WebElement codeMirrorTextArea;
+	@FindBy(css = "div.CodeMirror-scroll")
+	private WebElement codeEditorTxtBx;
+	@FindBy(id = "output")
+	private WebElement outputMessage;
 	
 	private WebDriver driver;
 
@@ -37,19 +56,95 @@ public class TreePage {
 		PageFactory.initElements(driver, this);
 	}
 	public void clickTreeStrtBtn() {
-		treeStartButton.click();	
+		 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		    wait.until(ExpectedConditions.elementToBeClickable(treeStartButton));
+		    
+		    // Scroll into view before clicking
+		    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({ behavior: 'smooth', block: 'center' });", treeStartButton);
+
+		    treeStartButton.click();	
+		}	
+	
+	
+	
+	public String getTreePageTitle() {
+		return driver.getTitle();
 	}
-	public void selectTreeFrmDropdown() { // how we can avoid this method to be repeated in different modules, can we put it in home module?
+	
+	
+	public void treeLabelDisplayed() {
+		treeLabel.isDisplayed();
+	}
+	
+	public void clickOverviewLink() {
+		overviewLink.click();
+	}
+	
+
+	public void cickTryMeButtonTree() {
+		// TODO Auto-generated method stub
+		tryMeTreeButton.click();
+
+	}
+	
+	public void clickTreeOptiions(String sectionName) {
+		boolean found = false;// this is used for making sure we have found the link before we click
+		for (WebElement link :treeLinkItem ) {
+			if(link.getText().trim().equalsIgnoreCase(sectionName.trim())) {
+				link.click();
+				found = true;
+				break;
+			}
+		}
+		if (!found) {
+			throw new IllegalArgumentException("Unknown section: " + sectionName);
+		}
+	}
+	
+	public void clickTryMeButton() {
+		tryMeButton.click();
+	}
+
+	public void codeEditorSendKeys(String code) {
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+	    // Wait for CodeMirror editor container to be visible
+	    wait.until(ExpectedConditions.visibilityOf(codeEditorTxtBx));
+
+	    JavascriptExecutor js = (JavascriptExecutor) driver;
+
+	    // Clear existing content
+	    js.executeScript("document.querySelector('.CodeMirror').CodeMirror.setValue('');");
+
+	    // Enter new code
+	    js.executeScript("document.querySelector('.CodeMirror').CodeMirror.setValue(arguments[0]);", code);
+
+	    try {
+	        Thread.sleep(500); // Small pause (not mandatory but helpful sometimes)
+	    } catch (InterruptedException e) {
+	        Thread.currentThread().interrupt();
+	    }
+	}
+	
+	public String getAlertMessageAndAccept() {// alert on editor page on 
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		Actions actions = new Actions(driver);
-		wait.until(ExpectedConditions.elementToBeClickable(dropdown));
-		dropdown.click();
-		wait.until(ExpectedConditions.elementToBeClickable(arraysLinkItem));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", arraysLinkItem);
-		wait.until(
-		ExpectedConditions.or(ExpectedConditions.titleContains("Tree"), ExpectedConditions.urlContains("tree")																												// both
-						));
+		wait.until(ExpectedConditions.alertIsPresent());
+		Alert alert = driver.switchTo().alert();
+		String message = alert.getText();
+		alert.accept();
+		return message;
 	}
+
+	public void clickRunBtn() {
+		runBtn.click();
+
+	}
+	
+	public void outputDisplayed() {
+		outputMessage.isDisplayed();
+	}
+
+	
 	}
 
 

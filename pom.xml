@@ -102,8 +102,19 @@
 			<artifactId>webdrivermanager</artifactId>
 			<version>6.1.1</version>
 		</dependency>
-		
+		<dependency>
+    <groupId>io.cucumber</groupId>
+    <artifactId>cucumber-picocontainer</artifactId>
+    <version>7.14.0</version> <!-- Use version that matches your other Cucumber dependencies -->
+    <scope>test</scope>
+</dependency>
 
+
+		<dependency>
+			<groupId>sample1</groupId>
+			<artifactId>101_sample</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
