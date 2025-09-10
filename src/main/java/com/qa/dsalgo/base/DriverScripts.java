@@ -17,10 +17,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class DriverScripts {
-	public static WebDriver driver;
-		//public static Wait wait;
+	protected static WebDriver driver;
 		public static Alert alert;
-		public Properties prop;
+		public static Properties prop;
 		public DriverScripts(){
 			
 			try {
@@ -35,7 +34,7 @@ public class DriverScripts {
 				e.printStackTrace();
 			}
 		}
-		public void  initializeApplication() {
+		public static WebDriver initializeApplication(Properties prop) {
 		    String browsers = prop.getProperty("browser").trim();
 
 		    if (browsers.equalsIgnoreCase("chrome")) {
@@ -57,6 +56,7 @@ public class DriverScripts {
 		    } else {
 		        throw new RuntimeException("URL is missing from properties file.");
 		    }
+			return driver;
 		}		    
 		
 		 public void closeCurrentWindow() {

@@ -8,10 +8,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
-import com.qa.dsalgo.base.DriverScripts;
 
 public class Background {
+	private WebDriver driver;
+
 
 	@FindBy(linkText = "Get Started")
 	WebElement getStartedBtn; // Adjust if your structure differs
@@ -24,25 +26,41 @@ public class Background {
 	@FindBy(xpath = "//form//input[@type='submit' and @value='Login']")
 	private WebElement loginButton;
 	
-	private WebDriver driver;
 
 	public Background(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-		
+	public void launchUrl() {
+		driver.get("https://dsportalapp.herokuapp.com/");
+	}
+	
+	
+public String getTitle() {
+	return driver.getTitle();
+}
+
 	public void ClickGetStarted() {
-		System.out.println(">> ClickGetStarted()");
 	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	    wait.until(ExpectedConditions.elementToBeClickable(getStartedBtn));
 		getStartedBtn.click();
-		System.out.println(">> getStartedBtn.getText() : " + getStartedBtn.getText().toString());
 	}
-	
-	public void userLoggedin() {
+	public void userLoggedin(String username, String password) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.visibilityOf(signinLink));
 		signinLink.click();
-		usernametextbox.sendKeys("qatitans1");
-		passwordtextbox.sendKeys("1@Chicago");
+		usernametextbox.sendKeys(username);
+		passwordtextbox.sendKeys(password);
 		loginButton.click();
 	}
+	
+	public void verifyHomePageIsDisplayed() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+      wait.until(ExpectedConditions.titleIs("NumpyNinja"));
+      String expectedTitle = "NumpyNinja";
+		String actualTitle = getTitle();
+		Assert.assertEquals(actualTitle, expectedTitle, "Title mismatch!");	
+
+    }
+	
 }

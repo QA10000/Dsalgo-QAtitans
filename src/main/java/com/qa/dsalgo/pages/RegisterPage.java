@@ -10,7 +10,10 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+
 public class RegisterPage {
+	WebDriver driver;
+
 
 	@FindBy(xpath = "//div[@id='navbarCollapse']//a[@href='/register']")
 	private WebElement registerLink;
@@ -28,14 +31,11 @@ public class RegisterPage {
 	@FindBy(css = ".alert.alert-primary")
 	private WebElement successMessage;
 
-
-	private WebDriver driver;// declared a private instance variable
-
 	public RegisterPage(WebDriver driver) {
 		this.driver = driver;
-		PageFactory.initElements(driver, this);
-	}
-
+		PageFactory.initElements(driver, this);	
+		}
+	
 	public String getTitle() {
 		return driver.getTitle();
 	}
@@ -46,19 +46,6 @@ public class RegisterPage {
 		registerLink.click();
 	}
 
-	/*public void enterUsername(String username) {
-		if (username != null) {
-	        usernametextbox.sendKeys(username);
-	    } else {
-	        throw new IllegalArgumentException("Username value is null. Check your test data.");
-	    }
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		//usernametextbox.sendKeys(username);
-		wait.until(ExpectedConditions.visibilityOf(confirmedPswdtextbox));
-		confirmedPswdtextbox.clear();
-		
-		
-	}*/
 	
 	public void enterUsername(String username) {
 	    if (username == null || username.isEmpty()) {
@@ -92,11 +79,22 @@ public class RegisterPage {
 		registerButton.click();
 	}
 
-	 public String getMismatchMessage() {
+	/* public String getMismatchMessage() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.visibilityOf(mismatchpassword));
 		return mismatchpassword.getText();
-	 }
+	 }*/
+	
+	public String getMismatchMessage() {
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	    
+	    // Refresh the reference to avoid stale element
+	    WebElement freshElement = wait.until(ExpectedConditions.refreshed(
+	        ExpectedConditions.visibilityOf(mismatchpassword)
+	    ));
+
+	    return freshElement.getText().trim();
+	}
 	 
 	   public String getSuccessMessage() {// this will go to home page as it shows on home page
 	        return successMessage.getText().trim();

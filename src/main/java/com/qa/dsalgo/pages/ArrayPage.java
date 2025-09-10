@@ -101,7 +101,7 @@ public class ArrayPage {
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", arraysLinkItem);
 		wait.until(
 		ExpectedConditions.or(ExpectedConditions.titleContains("Array"), ExpectedConditions.urlContains("array")																												// both
-						)); // here
+						)); 
 																															// javascript
 																															// code
 																															// is
@@ -142,7 +142,6 @@ public class ArrayPage {
 	    // Enter new code
 	    js.executeScript("document.querySelector('.CodeMirror').CodeMirror.setValue(arguments[0]);", code);
 
-	    // Optional: Wait a bit for code to settle into the editor
 	    try {
 	        Thread.sleep(500); // Small pause (not mandatory but helpful sometimes)
 	    } catch (InterruptedException e) {
@@ -199,7 +198,6 @@ public class ArrayPage {
 	}
 	
 	public void practicQuestionValidScn() {
-		userLoggedin();
 		clickStartBtn();
 	    clickArrayPythonLink();
 		clickPracticeQLink();
