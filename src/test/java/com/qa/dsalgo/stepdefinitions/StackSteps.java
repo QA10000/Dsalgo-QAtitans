@@ -1,6 +1,9 @@
 package com.qa.dsalgo.stepdefinitions;
 
-import com.qa.dsalgo.base.DriverScripts;
+import org.openqa.selenium.WebDriver;
+
+import com.qa.dsalgo.pages.ArrayPage;
+import com.qa.dsalgo.pages.Background;
 import com.qa.dsalgo.pages.LinkedListPage;
 import com.qa.dsalgo.pages.LoginPage;
 import com.qa.dsalgo.pages.StackPage;
@@ -9,13 +12,16 @@ import com.qa.dsalgo.pages.TryEditorPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 
-public class StackSteps extends DriverScripts {
+public class StackSteps {
+	  private WebDriver driver;
 		StackPage stackpage;
-		LoginPage loginpage;
+		Background background;
 		TryEditorPage tryEditorPage ;
 		
 		public StackSteps() {
-			System.out.println(">> In StackSteps constructor.");
+			//System.out.println(">> In StackSteps constructor.");
+			driver = Hooks.getDriver();
+			background = new Background(driver);
 			stackpage = new StackPage(driver);
 		}
 		
@@ -34,9 +40,9 @@ public class StackSteps extends DriverScripts {
 		@Given("The user is on Stack page after login")
 		public void theUserIsOnStackPageAfterLogin() {
 			System.out.println("The user is on Linked List page after login");
-			loginpage = new LoginPage(driver);
-			loginpage.clickLoginLink();
-			loginpage.login("qatitans1","1@Chicago");
+			//loginpage = new LoginPage(driver);
+			//loginpage.clickLoginLink();
+			//loginpage.login("qatitans1","1@Chicago");
 			stackpage = new StackPage(driver);
 			stackpage.clicklinkedListGetStarted();
 		}

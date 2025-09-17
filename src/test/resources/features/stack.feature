@@ -3,6 +3,7 @@ Feature: Stack Functionality
 Background: 
     Given The user is on the DSAlgo portal
     When The user clicks "GetStarted" button on welcome page
+    And The user logs in with valid username "qatitans1" and password "1@Chicago"
     Then The user lands on the home page of DSAlgo portal
     
     #Scenario: Verify that user is not able to navigate to "Stack" Module

@@ -29,6 +29,15 @@ public class LoginPage {
 	@FindBy(xpath = "//input[@name='username']/following-sibling::div[contains(@class, 'invalid-feedback')")
 	WebElement popupErrorMessage;
 	
+	@FindBy(xpath = "//a[@class='navbar-brand']")
+	private WebElement numpyNinjaLink;
+	
+	@FindBy(xpath = "//a[text()='Data Structures']")
+	private WebElement dataStructuresDropdown;
+	
+	@FindBy(xpath = "//div[@id='navbarCollapse']//a[@href='/register']")
+	private WebElement registerLink;
+	
 	public LoginPage(WebDriver driver) {
 		System.out.println(">> LoginPage constructor.");		
 		this.driver = driver;
@@ -43,6 +52,29 @@ public class LoginPage {
 		return ErrMsg;
 	}
 	
+	public String getNumpyNinjaLinkText() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(numpyNinjaLink));
+		return numpyNinjaLink.getText();
+	}
+	
+	public String getDataStructureDropdownText() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(dataStructuresDropdown));
+		return dataStructuresDropdown.getText();
+	}
+	
+	public String getRegisterLinkText() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(registerLink));
+		return registerLink.getText();
+	}
+		
+	public String getSigninLinkText() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(signinLink));
+		return signinLink.getText();
+	}
 	public void clickLoginLink() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.elementToBeClickable(signinLink));

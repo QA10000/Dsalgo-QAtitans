@@ -2,8 +2,6 @@ package com.qa.dsalgo.stepdefinitions;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-
-import com.qa.dsalgo.base.DriverScripts;
 import com.qa.dsalgo.pages.ArrayPage;
 import com.qa.dsalgo.pages.Background;
 

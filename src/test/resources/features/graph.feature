@@ -2,25 +2,25 @@ Feature: Validate Graph Module
 
 Background: The user sign in to dsAlgo Portal
 
-@Graph1
+#Graph1
 Scenario: Verify that user is able to navigate to "Graph" data structure page
 Given The user is on the Home page after Sign in
 When The user clicks the "Getting Started" button in Graph Panel 
 Then The user be directed to "Graph" Data Structure Page
 
-@Graph2
+#Graph2
 Scenario: Verify that user is able to navigate to "Graph" data structure page
 Given The user is on the Home page after Sign in
 When The user select Graph item from the drop down
 Then The user be directed to "Graph" Data Structure Page
 
-@Graph3
+#Graph3
 Scenario: Verify that user is able to navigate to "Graphs" page
 Given The user is in the Assessments Page
 When The user clicks the Case Details button
 Then The user should be redirected to "Graphs" page
 
-@Graph4
+#Graph4
 Scenario: Verify that user is able to navigate to "try here>>>" page for "Graph" page
 Given The user is on the "Graphs" page
 When The user clicks "Try Here>>>" button in Graphs in Python page
