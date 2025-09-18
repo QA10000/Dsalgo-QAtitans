@@ -9094,3 +9094,483 @@
 2025-09-17 12:13:36 INFO  RegistrationSteps:46 - user lands on algo portal home page
 2025-09-17 12:13:37 INFO  Hooks:64 - Browser session closed.
 2025-09-17 12:13:37 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:19:20 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:19:20 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:19:20 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:19:21 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:19:21 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:19:22 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:19:23 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:19:23 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:19:23 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:19:24 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:19:24 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:19:24 ERROR Hooks:47 - Scenario failed
+2025-09-17 17:19:24 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:19:25 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:19:25 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:19:26 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:19:27 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:19:27 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:19:27 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:19:28 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:19:28 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:19:29 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:19:29 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:19:30 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:19:30 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:19:31 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:19:31 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:19:31 ERROR Hooks:47 - Scenario failed
+2025-09-17 17:19:31 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:19:32 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:19:32 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:19:33 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:19:33 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:19:34 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:19:34 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:19:35 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:19:35 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:19:36 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:19:36 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:19:36 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:19:37 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:21:19 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:21:19 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:21:22 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 17:21:22 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:21:23 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:21:23 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:21:25 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 17:21:30 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:21:31 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:21:31 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:21:33 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 17:21:36 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:21:37 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:21:37 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:21:38 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 17:21:42 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:21:43 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:21:43 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:21:44 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 17:21:49 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:21:50 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:21:50 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:21:52 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 17:21:56 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:21:56 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:21:56 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:21:58 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 17:22:02 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:22:03 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:22:03 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:22:05 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 17:22:08 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:22:09 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:22:09 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:22:10 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 17:22:15 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:22:16 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:22:16 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:22:17 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 17:22:21 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:26:21 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:26:21 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:26:22 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 17:26:24 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:26:24 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:26:24 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:26:24 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:26:26 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 17:26:27 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:26:27 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:26:27 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:26:27 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:26:29 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 17:26:30 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:26:30 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:26:30 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:26:30 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:26:32 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 17:26:33 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:26:33 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:26:33 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:26:33 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:26:36 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 17:26:36 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:26:36 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:26:36 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:26:36 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:26:38 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 17:26:39 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:26:39 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:45:32 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:45:32 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:45:34 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 17:45:35 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:45:36 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:45:36 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:45:37 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 17:45:39 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:45:39 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:45:39 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:45:41 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 17:45:42 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:45:43 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:45:43 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:45:45 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 17:45:46 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:45:46 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:45:46 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:45:48 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 17:45:49 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:45:50 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:45:50 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:45:52 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 17:45:52 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:54:16 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:54:16 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:54:18 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 17:54:19 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:54:19 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:54:20 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:54:20 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:54:22 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 17:54:23 ERROR Hooks:47 - Scenario failed
+2025-09-17 17:54:24 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:54:24 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:54:25 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:54:25 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:54:26 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 17:54:28 ERROR Hooks:47 - Scenario failed
+2025-09-17 17:54:28 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:54:28 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:54:29 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:54:29 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:54:30 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 17:54:31 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:54:31 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:54:32 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:54:32 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:54:34 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 17:54:35 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:54:35 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:54:36 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:54:36 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:54:38 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 17:54:38 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:54:38 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:58:12 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:58:12 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:58:14 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 17:58:14 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:58:14 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:58:15 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:58:15 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:58:17 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 17:58:18 ERROR Hooks:47 - Scenario failed
+2025-09-17 17:58:18 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:58:18 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:58:19 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:58:19 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:58:20 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 17:58:21 ERROR Hooks:47 - Scenario failed
+2025-09-17 17:58:22 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:58:22 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:58:22 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:58:23 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:58:24 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 17:58:25 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:58:25 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:58:26 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 17:58:26 INFO  Hooks:34 - Browser is launched
+2025-09-17 17:58:28 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 17:58:29 INFO  Hooks:64 - Browser session closed.
+2025-09-17 17:58:29 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:04:00 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:04:00 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:04:02 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:04:03 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:04:03 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:04:04 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:04:04 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:04:06 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:04:10 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:04:10 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:04:10 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:04:10 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:04:13 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:04:16 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:04:16 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:04:17 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:04:17 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:04:19 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:04:20 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:04:20 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:04:20 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:04:20 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:04:22 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:04:23 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:04:23 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:09:20 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:09:20 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:09:23 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:09:24 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:09:24 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:09:24 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:09:25 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:09:27 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:09:31 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:09:31 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:09:32 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:09:32 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:09:34 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:09:37 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:09:37 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:09:38 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:09:38 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:09:40 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:09:41 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:09:41 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:09:42 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:09:42 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:09:43 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:09:45 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:09:45 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:12:42 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:12:42 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:12:44 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:12:46 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:12:46 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:12:47 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:12:47 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:12:49 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:12:52 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:12:52 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:12:53 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:12:53 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:12:55 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:12:58 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:12:58 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:12:59 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:12:59 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:13:02 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:13:02 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:13:02 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:13:03 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:13:03 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:13:05 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:13:06 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:13:06 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:16:25 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:16:25 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:16:27 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:16:28 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:16:28 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:16:29 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:16:29 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:16:31 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:16:35 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:16:35 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:16:36 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:16:36 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:16:38 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:16:42 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:16:42 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:16:43 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:16:43 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:16:45 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:16:46 ERROR Hooks:47 - Scenario failed
+2025-09-17 18:16:46 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:16:46 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:16:47 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:16:47 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:16:49 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:16:50 ERROR Hooks:47 - Scenario failed
+2025-09-17 18:16:51 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:16:51 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:26:01 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:26:01 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:26:01 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:26:01 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:26:02 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:26:02 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:26:02 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:26:02 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:26:03 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:26:03 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:26:04 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:26:04 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:26:05 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:26:05 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:26:05 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:26:05 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:27:23 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:27:23 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:27:25 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:27:27 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:27:27 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:27:27 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:27:30 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:27:33 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:27:34 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:27:34 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:27:36 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:27:41 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:27:41 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:27:41 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:27:43 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:27:45 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:27:45 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:27:45 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:27:47 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:27:48 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:29:15 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:29:15 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:29:18 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:29:18 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:29:18 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:29:19 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:29:19 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:29:22 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:29:25 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:29:25 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:29:26 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:29:26 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:29:28 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:29:32 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:29:32 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:29:33 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:29:33 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:29:35 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:29:36 ERROR Hooks:47 - Scenario failed
+2025-09-17 18:29:36 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:29:36 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:29:37 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:29:37 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:29:39 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:29:41 ERROR Hooks:47 - Scenario failed
+2025-09-17 18:29:41 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:29:41 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:30:58 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:30:58 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:31:00 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:31:01 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:31:01 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:31:02 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:31:02 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:31:04 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:31:08 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:31:08 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:31:09 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:31:09 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:31:12 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:31:17 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:31:17 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:31:18 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:31:18 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:31:20 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:31:21 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:31:21 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:31:22 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:31:22 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:31:24 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:31:26 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:31:26 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:36:51 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:36:51 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:36:54 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:36:55 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:36:55 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:36:55 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:36:55 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:36:57 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:37:01 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:37:01 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:37:01 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:37:02 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:37:04 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:37:07 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:37:07 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:37:08 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:37:08 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:37:10 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:37:11 ERROR Hooks:47 - Scenario failed
+2025-09-17 18:37:11 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:37:11 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:37:12 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:37:12 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:37:14 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:37:15 ERROR Hooks:47 - Scenario failed
+2025-09-17 18:37:16 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:37:16 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:38:42 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:38:42 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:38:44 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:38:45 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:38:46 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:38:46 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:38:48 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:38:51 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:38:52 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:38:52 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:38:54 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:38:58 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:38:59 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:38:59 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:39:01 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:39:05 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:39:06 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:39:06 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:39:08 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:39:12 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:48:23 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:48:23 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:48:24 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:48:26 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:48:27 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:48:27 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:48:28 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:48:33 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:48:34 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:48:35 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:48:36 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:48:38 ERROR Hooks:47 - Scenario failed
+2025-09-17 18:48:39 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:58:54 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:58:54 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:58:55 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:58:56 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:58:57 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:58:57 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:58:59 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:59:01 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:59:02 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:59:02 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:59:03 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:59:06 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:59:07 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:59:07 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:59:09 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:59:12 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:59:14 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:59:14 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:59:15 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:59:18 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:59:19 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:59:19 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:59:21 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:59:22 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:59:23 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:59:23 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:59:24 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:59:25 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:59:26 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:59:26 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:59:28 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:59:29 INFO  Hooks:64 - Browser session closed.
+2025-09-17 18:59:30 INFO  DriverManager:26 - Launching browser:chrome
+2025-09-17 18:59:30 INFO  Hooks:34 - Browser is launched
+2025-09-17 18:59:31 INFO  RegistrationSteps:46 - user lands on algo portal home page
+2025-09-17 18:59:31 INFO  Hooks:64 - Browser session closed.
