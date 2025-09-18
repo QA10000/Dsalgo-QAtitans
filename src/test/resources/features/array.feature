@@ -1,5 +1,5 @@
 Feature: Array Functionality
-  As a logged in user I should be able to access and use array module
+  #As a logged in user I should be able to access and use array module
 
   Background: 
     Given The user is on the DSAlgo portal

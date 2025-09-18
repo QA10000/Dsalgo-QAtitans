@@ -7,7 +7,6 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import com.qa.dsalgo.base.DriverScripts;
 import com.qa.dsalgo.pages.Background;
 import com.qa.dsalgo.pages.RegisterPage;
 
@@ -18,7 +17,6 @@ import io.cucumber.java.en.When;
 import io.cucumber.messages.types.Duration;
 import utilities.CommonUtils;
 import utilities.ExcelReader;
-import utilities.ScenarioContext;
 
 public class RegistrationSteps {
 	private WebDriver driver;

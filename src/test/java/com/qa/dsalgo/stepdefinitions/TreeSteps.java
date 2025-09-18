@@ -12,7 +12,6 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-import com.qa.dsalgo.base.DriverScripts;
 
 public class TreeSteps {
 	private WebDriver driver;

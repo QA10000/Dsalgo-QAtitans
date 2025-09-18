@@ -16,7 +16,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class DriverScripts {
+/*public class DriverScripts {
 	protected static WebDriver driver;
 		public static Alert alert;
 		public static Properties prop;
@@ -65,4 +65,4 @@ public class DriverScripts {
 		        }
 		 }
 		   
-	   }
+	   }*/
