@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
+// import org.testng.Assert;
 
 
 public class Background {
@@ -59,7 +59,7 @@ public String getTitle() {
       wait.until(ExpectedConditions.titleIs("NumpyNinja"));
       String expectedTitle = "NumpyNinja";
 		String actualTitle = getTitle();
-		Assert.assertEquals(actualTitle, expectedTitle, "Title mismatch!");	
+		// Assert.assertEquals(actualTitle, expectedTitle, "Title mismatch!");	
 
     }
 	

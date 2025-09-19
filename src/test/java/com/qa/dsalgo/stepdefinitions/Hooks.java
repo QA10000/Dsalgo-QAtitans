@@ -18,57 +18,51 @@ import io.cucumber.java.Scenario;
 public class Hooks {
 	public static WebDriver driver;
 	private static final Logger LOG=LogManager.getLogger(Hooks.class);
+
+	public static void main (String[] args) {
+		System.out.println("In Hooks.main() ");
+	}
 	
     @Before
     public void beforeScenario() {
     	
     	try {
     		CommonUtils.loadProperties();
-    	
-    	if(driver== null) {
-    		driver = DriverManager.launchBrowser();
-
-    		driver.manage().window().maximize();
-    	
-    	}
-    	LOG.info("Browser is launched");
-    }
-    catch (Exception e) {
-    	e.printStackTrace();
-    }
+	    	if(driver== null) {
+	    		driver = DriverManager.launchBrowser();
+	    		driver.manage().window().maximize();
+	    	}
+	    	LOG.info("Browser is launched");
+	    }catch (Exception e) {
+	    	e.printStackTrace();
+	    }
     }
     
     @AfterStep
-    public void addScreenShot(Scenario scenario)
-    {
-    	
-    	if(scenario.isFailed())
-    	{
+    public void addScreenShot(Scenario scenario){
+    	if(scenario.isFailed()){
     		LOG.error("Scenario failed");
     		String ScreenShotName = scenario.getName().replaceAll(" ", "_");
     		byte[] sourcePath = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     		scenario.attach(sourcePath, "image/png", ScreenShotName);
-    		
     	}
     }
+    
     @After
     public void tearDown() {
         closeBrowser();
         driver = null;  // reset driver after test
     }
     
-    @After
+    // @After
     public static void closeBrowser() {
-   if (driver != null) {
-         driver.quit();
-       LOG.info("Browser session closed.");
-   }
+	   if (driver != null) {
+	         driver.quit();
+	       LOG.info("Browser session closed.");
+	   	}
     }
 
 	public static WebDriver getDriver() {
         return driver;
     }
-
-
-
 }

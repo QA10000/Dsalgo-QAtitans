@@ -14,7 +14,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 //import org.openqa.selenium.support.ui.Wait;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+// import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class DriverScripts {
 	protected static WebDriver driver;
@@ -27,15 +27,15 @@ public class DriverScripts {
 				FileInputStream files = new FileInputStream(file);
 				prop = new Properties();
 				prop.load(files);
-				System.out.println(">> In DriverScripts constructor.");
-			}
-			catch (Exception e) {
+				//System.out.println(">> In DriverScripts() PROPs | "+prop);
+			}catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		public static WebDriver initializeApplication(Properties prop) {
-		    String browsers = prop.getProperty("browser").trim();
+		//public static WebDriver initializeApplication(Properties prop) {
+		public static WebDriver initializeApplication() {
+		    String browsers = prop.getProperty("BROWSER").trim();
 
 		    if (browsers.equalsIgnoreCase("chrome")) {
 		        driver = new ChromeDriver();
@@ -48,7 +48,7 @@ public class DriverScripts {
 		    }
 
 		    // ✅ Always navigate to the URL, regardless of browser
-		    String dsalgourl = prop.getProperty("url");
+		    String dsalgourl = prop.getProperty("applicationURL");
 		    if (dsalgourl != null && !dsalgourl.isEmpty()) {
 		        driver.manage().window().maximize();
 		        driver.get(dsalgourl);
