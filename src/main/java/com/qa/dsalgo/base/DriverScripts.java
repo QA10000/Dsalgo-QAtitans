@@ -1,5 +1,6 @@
 package com.qa.dsalgo.base;
 
+/*
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -12,11 +13,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
+
 //import org.openqa.selenium.support.ui.Wait;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-/*public class DriverScripts {
+public class DriverScripts {
 	protected static WebDriver driver;
 		public static Alert alert;
 		public static Properties prop;
