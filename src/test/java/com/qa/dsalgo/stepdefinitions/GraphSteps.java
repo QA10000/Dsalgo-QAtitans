@@ -1,194 +1,250 @@
 package com.qa.dsalgo.stepdefinitions;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import com.qa.dsalgo.pages.Background;
 import com.qa.dsalgo.pages.GraphPage;
+import com.qa.dsalgo.pages.TryEditorPage;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.messages.types.Duration;
 
 public class GraphSteps {
 	private WebDriver driver;
 	GraphPage graphpage;
 	Background background;
-	
+	TryEditorPage tryEditorPage;
+
 	public GraphSteps() {
+		System.out.println(">> In GraphSteps constructor.");
 		driver = Hooks.getDriver();
 		background = new Background(driver);
 		graphpage = new GraphPage(driver);
 	}
 
+	// BACKGROUND PASSED - LOGGING IN AND LANDS ON DSALGO PORTAL HOME PAGE
+	@Given("The user is on the home page after login success")
+	public void theUserIsOnTheHomePageAfterLoginSuccess() {
+		System.out.println("The user is on the home page after login");
+	}
+//---------------//
 
-
-	@When("user clicks {string} button in Graph Panel")
-	public void user_clicks_button_in_graph_panel(String string) {
+	// STEP1 PASSED- Main Graph Page Headers
+	// Click GetStarted in the Graph panel and verify both headers
+	@When("The user clicks the {string} button for the Graph module on Home page")
+	public void the_user_clicks_the_button_for_the_graph_module_on_home_page(String string) {
+		System.out.println("The user clicks the " + string + " button  for Graph module on Home page");
 		graphpage.clickGraphStrtBtn();
-
-	   
 	}
-	@Then("The user be directed to {string} Data Structure Page")
-	public void the_user_be_directed_to_data_structure_page(String expectedTitle) {
-		String actualTitle = driver.getTitle();
-		Assert.assertEquals(actualTitle, expectedTitle, "User did not land on the expected page");
 
+	@Then("The user should see the following {string} on the Graph Page")
+	public void the_user_should_see_the_following_on_the_graph_page(String string) {
+		System.out.println("The user lands on the " + string + " page");
+		String expectedTitle = string; // "Graph" and "Topics Covered";
+		String actualTitle = graphpage.getGraphOptionHeaderText(expectedTitle); // .getTitle();
+		System.out.println("actualTitle: '" + actualTitle + "'");
+		Assert.assertEquals(actualTitle, expectedTitle, "Title mismatch!");
 	}
+
+	// STEP6-PASSED - REMOVED FOR NOW, DROP DOWN
+	/*
+	 * @When("The user select Graph item from the drop down menu") public void
+	 * theUserSelectGraphItemFromTheDropDownMenu() {
+	 * System.out.println("The user select Graph item from the drop down menu");
+	 * driver.get("https://dsportalapp.herokuapp.com/home");
+	 * graphpage.SelectLGraphFromDropDown();
+	 * 
+	 * }
+	 */
 	
-	@Given("The user is on Graph Data Structure")
-	public void the_user_is_on_graph_data_structure() {
+	
+	//#STEP 6 - From Home Page, go to Graph page by selecting Graph from dropdown menu
+	
+	@When ("The user select Graph item from the drop down menu")
+	public void the_user_select_graph_item_from_the_drop_down_menu() {
+		graphpage.SelectLGraphFromDropDown();
+	}
+		 
+	//#STEP2 - Main Graph Page headers with links
+	//when The user clicks the "Getting Started" button for Graph module on Home page
+	//Added now for Step 2
+	@When("The user clicks the {string} button for Graph module on Home page")
+	public void the_user_clicks_the_getting_started_button_for_graph_module_on_home_page(String string) {
+		graphpage.graphItemGetStarted();
+	}
+
+	
+	//#STEP3 -  Main Graph Page >> 1. Graph Page headers with links
+		//When The user clicks now on the "Graph" link on the Graph page
+		//Added now for Step 3
+	@When("The user clicks now on the {string} link on the Graph page")
+	public void the_user_clicks_now_on_the_graph_link_on_the_graph_page(String string) {
+		graphpage.graphItemOneClick();
+	}
+
+	
+	
+
+	//
+	@Given("The user is on Graph page after login")
+	public void theUserIsOnGraphPageAfterLogin() {
+		System.out.println("The user is on Graph page after login");
 		graphpage.clickGraphStrtBtn();
-		Assert.assertEquals(graphpage.getGraphPageTitle(), "Graph", "Not on Graph page!");
 	}
-
-
-	@When("The user select Graph item from the drop down")
-	public void the_user_select_graph_item_from_the_drop_down(String OptionOnGraph) {
-		graphpage.clickGraphOptions(OptionOnGraph);
-
-	}
-
-	@Given("The user is in the Assessments Page")
-	public void the_user_is_in_the_assessments_page() {
-	}
-
-	@When("The user clicks the Case Details button")
-	public void the_user_clicks_the_case_details_button(String OptionOnGraph) {
-		graphpage.clickGraphOptions(OptionOnGraph);
-
-	}
-	
-	@When("The user clicks {string} link on the Graph page")
-	public void the_user_clicks_link_on_the_graph_page(String OptionOnGraph) {
-		graphpage.clickGraphOptions(OptionOnGraph);
-
-		}
 
 	
-	@When("run invalid code by clicking run button after entering {string} in try editor for graph module")
-	public void run_invalid_code_by_clicking_run_button_after_entering_in_try_editor_for_graph_module(String code) {
-	    graphpage.codeEditorSendKeys(code);
-		graphpage.clickRunBtn();
+	//CHECK THIS ---------------------------
+	@When("The user clicks now on the {string} link")
+	public void theUserClicksNowOnTheLink(String OptionOnGraph) {
+		System.out.println("The user clicks now on the '" + OptionOnGraph + "' link on the Graph page");
+		graphpage.clickGraphOption(OptionOnGraph);
 	}
+
+	//STEP PASSED New 8 - From Graph Page, going to 2.Graph Representations
+	//When  The user clicks now on the "Graph Representations" link on the Graph page
+	@When("The user clicked now on the {string} link on the Graph page")
+	public void the_user_clicked_now_on_the_graph_representations_link_on_the_graph_page(String string) {
+		graphpage.graphItemTwoClick();
+	}
+	
+	//Then The user lands on "Graph Representations" page - not required
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	// FOR INVALID CODE
+	
+	@When("The user clicks on the {string} link on the Graph page")//FOR INVALID and VALID CODE
+	public void the_user_clicks_link_on_the_link_on_the_graph_page(String string) {
+		System.out.println("The user clicks on the " + string + " link on the Graph page");
+		graphpage.clickGraphOption(string);
+	}
+
+	@Then("The user should see an alert with error message {string} on the try editor") // changed-d (added An)
+	public void the_user_should_see_an_alert_with_error_message_on_the_try_editor(String expectedMessage) {
+		System.out.println("The user should see alert with error message" + expectedMessage + " on the TryEditor");
+		TryEditorPage tryEditorPage = new TryEditorPage(driver);
+		String actualMessage = tryEditorPage.getAlertMessageAndAccept();
+		Assert.assertEquals(actualMessage.trim(), expectedMessage.trim(), "Alert message mismatch");
+	}
+	
+	@When("The user clicks Run button here after entering an invalid {string} in try editor")
+	public void the_user_clicks_run_button_here_after_entering_an_invalid_in_try_editor(String string) {
+		System.out.println("The user clicks Run button here after entering invalid code in try editor");
+		TryEditorPage tryEditorPage = new TryEditorPage(driver);
+		tryEditorPage.codeEditorSendKeys(string);
+		tryEditorPage.clickRunBtn();	
+	}
+	
+	
+	//VALID CODE
+	@When("The user clicks Run button here after entering an valid {string} in try editor")
+	public void the_user_clicks_run_button_here_after_entering_an_valid_in_try_editor(String code) {
+		System.out.println("The user clicks Run button after entering valid code in try editor");
+		TryEditorPage tryEditorPage = new TryEditorPage(driver);
+		tryEditorPage.codeEditorSendKeys(code);
+		tryEditorPage.clickRunBtn();
+	}
+
+	@Then("The user should able to see {string} output in the console on the try editor")
+	public void the_user_should_able_to_see_output_in_the_console_on_the_try_editor(String expectedMessage) {
+		System.out.println("The user should see the output message " + expectedMessage + " on TryEditor");
+		TryEditorPage tryEditorPage = new TryEditorPage(driver);
+		String actualMessage = tryEditorPage.getTryHereOutput();
+		Assert.assertEquals(actualMessage.trim(), expectedMessage.trim(), "Alert message mismatch");
+	}
+	
+	
+	
+	
+	
+	
+	
+	/*
+	 * @When("run invalid code by clicking run button after entering {string} in try editor for graph module"
+	 * ) public void
+	 * runInvalidCodeByClickingRunButtonAfterEnteringCodeInTryEditorForGraphModule(
+	 * String string, String string2) { System.out.println("The user clicks " +
+	 * string + "  button after entering invalid code " + string2 +
+	 * " in try editor"); TryEditorPage tryEditorPage = new TryEditorPage(driver);
+	 * tryEditorPage.codeEditorSendKeys(string2); tryEditorPage.clickRunBtn(); }
+	 */
 	
 	@Then("The user should see alert with  error message {string} on Graph Module in the code page")
-	public void the_user_should_see_alert_with_error_message_on_graph_module_in_the_code_page(String expectedMessage) {
-		String actualMessage = graphpage.getAlertMessageAndAccept();
-		Assert.assertEquals(actualMessage.trim(), expectedMessage.trim(), "Alert message mismatch!");
-
+	public void the_user_should_see_alert_with_error_message_on_graph_module_in_the_code_page(String string) {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new io.cucumber.java.PendingException();
 	}
 	
 	
-	@When("run valid code by clicking run button after entering {string} in try editor for graph module")
-	public void run_valid_code_by_clicking_run_button_after_entering_in_try_editor_for_graph_module(String code) {
-		graphpage.codeEditorSendKeys(code);
-		graphpage.clickRunBtn();
-	}
+	
 
+
+	//
+	
+	
+	//Old- In 2.Graph Representations Page, try valid code   
+	// When The user clicks "<OptionOnGraph>" link on Graph page
+	@When("The user clicks {string} link on Graph page")
+	public void the_user_clicks_link_on_graph_page(String string) {
+		graphpage.graphItemOneClick();
+	}
+	
+	//#Old- In 2.Graph Representations Page, try invalid code
+	// Then The user should see alert with  error message "<errorMessage>" on Graph Module in the code page
 	@Then("The user should able to see {string} output in the console on Graph Module in the code page")
 	public void the_user_should_able_to_see_output_in_the_console_on_graph_module_in_the_code_page(String string) {
-		 graphpage.outputDisplayed();
-	}
-
-	@When("The user write the valid code in Editor and click the {string} Button")
-	public void the_user_write_the_valid_code_in_editor_and_click_the_button(String string) {
-	}
-
-	@Then("The user should be redirected to {string} page")
-	public void the_user_should_be_redirected_to_page(String string) {
+		graphpage.graphItemTwoClick();
+		
+		
 	}
 	
 
-	@When("The user clicks {string} button on Graph page")
-	public void the_user_clicks_button_on_graph_page(String OptionOnGraph) {
-		graphpage.clickGraphOptions(OptionOnGraph);
-
-	}
-	
-		@When("The user clicks {string} button on the Graph page")
-	    public void the_user_clicks_button_on_the_graph_page(String OptionOnGraph) {
-		graphpage.clickGraphOptions(OptionOnGraph);
-
-	}
-
+// --------------//
 
 	
-	@When("The user clicks {string} button in Graphs in Python page")
-	public void the_user_clicks_button_in_graphs_in_python_page(String string) {
-	}
+//NEW 	#STEP9- In 2.Graph Representations Page, try valid code     
+	   // And The user clicks "Try Here" button
 
-	@Then("The user should be redirected to a page having an Editor with a {string} button")
-	public void the_user_should_be_redirected_to_a_page_having_an_editor_with_a_button(String string) {
-	}
-
-	/*@Given("The user is in the tryEditor page")
-	public void the_user_is_in_the_try_editor_page() {
-	}*/
-	
-	
-
-
-
-	@When("The user write the invalid code in Editor and click the {string} Button")
-	public void the_user_writes_the_invalid_code_in_editor_and_click_the_button(String string) {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
-	}
-	
-	@When("The user clicks {string} link on Graph page")
-	public void the_user_clicks_link_on_graph_page(String OptionOnGraph) {
-		graphpage.clickGraphOptions(OptionOnGraph);
-	}
-	
-
-
-	@Given("The user is on the DSAlgo Graph page")
-	public void the_user_is_on_the_ds_algo_graph_page() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
-	}
-
-	@Then("The user sees {string} label on the {string} page")
-	public void the_user_sees_label_on_the_page(String string, String string2) {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
-	}
-	
-
-	@Then("The user should able to see output in the console with no error message")
-	public void the_user_should_able_to_see_output_in_the_console_with_no_error_message() {
-	}
-
-	@Given("The user is in the {string} page after Sign in")
-	public void the_user_is_in_the_page_after_sign_in(String string) {
-	}
-
-	@When("The user clicks {string} link in the left navigation bar")
-	public void the_user_clicks_link_in_the_left_navigation_bar(String string) {
-	}
-
-	@When("The user clicks the {string} link in the left navigation bar")
-	public void the_user_clicks_the_link_in_the_left_navigation_bar(String string) {
-	}
-
-	@Then("The user should be redirected to {string} page, and try Editor with {string} button")
-	public void the_user_should_be_redirected_to_page_and_try_editor_with_button(String string, String string2) {
-	}
-
-	@When("The user write the invalid code in Editor and Click the {string} Button")
-	public void the_user_write_the_invalid_code_in_editor_and_click_the_button(String string) {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
-	}
-
-	@When("The user write the invalid code in Editor and Clicks {string} Button")
-	public void the_user_write_the_invalid_code_in_editor_and_clicks_button(String string) {
-	}
-
-	@Then("The user see output with no error message")
-	public void the_user_see_output_with_no_error_message() {
-	}
-
+	//CHECKED FINE-1
+@When("The user selects {string} link on Graph page")
+public void the_user_selects_link_on_graph_page(String OptionOnGraph) {
+	    	System.out.println("The user clicks now on the '" + OptionOnGraph + "' link on the Graph page");
+			graphpage.clickGraphOption(OptionOnGraph);
+  
 }
+
+@When("Now the user clicks {string} button on the {string} page")
+public void now_the_user_clicks_button_on_the_page(String button, String pageName) {
+	graphpage.clickTryHere();
+}
+// FOR VALID CODE
+		@When("run valid code by clicking run button after entering {string} in try editor for graph module")
+			public void runValidCodeByClickingRunButtonAfterEnteringCodeInTryEditorForGraphModule(String code) {
+			System.out.println("The user clicks Run button after entering valid code in try editor");
+			TryEditorPage tryEditorPage = new TryEditorPage(driver);
+			tryEditorPage.codeEditorSendKeys(code);
+			tryEditorPage.clickRunBtn();
+		}
+		
+		@Then("The user should able to see {string} output in the console on Graph Module in teh code page")
+		public void theUserShouldAbleToSeeMessageOutputInTheConsoleOnGraphModuleInTheCodePage(String expectedMessage) {
+			System.out.println("The user should see the output message " + expectedMessage + " on TryEditor");
+			TryEditorPage tryEditorPage = new TryEditorPage(driver);
+			String actualMessage = tryEditorPage.getTryHereOutput();
+		    Assert.assertEquals(actualMessage.trim(), expectedMessage.trim(), "Alert message mismatch");
+			
+		}
+}
+

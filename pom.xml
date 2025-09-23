@@ -110,11 +110,11 @@
 </dependency>
 
 
-		<dependency>
+		<!--<dependency>
 			<groupId>sample1</groupId>
 			<artifactId>101_sample</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+		</dependency>-->
 	</dependencies>
 	<build>
 		<plugins>
