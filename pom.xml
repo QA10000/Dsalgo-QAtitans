@@ -31,7 +31,6 @@
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
 			<version>7.10.2</version>
-			<scope>test</scope>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
 		<dependency>
@@ -108,14 +107,7 @@
     <version>7.14.0</version> <!-- Use version that matches your other Cucumber dependencies -->
     <scope>test</scope>
 </dependency>
-
-
-	<!--<dependency>
-		<groupId>sample1</groupId>
-		<artifactId>101_sample</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-	</dependency>-->
-	</dependencies>
+</dependencies>
 	<build>
 		<plugins>
 			<plugin>

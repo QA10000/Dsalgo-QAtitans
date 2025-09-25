@@ -12,13 +12,12 @@ public class CommonUtils {
 	public static String UserName;
 	public static String Password;
 	public static String CHROME_DRIVER;
-	public static String ARRAYSOPTIONS;
-	public static String LINKEDLISTOPTIONS;
-	public static String STACKOPTIONS;
-	public static String QUEUEOPTIONS;
-	public static String TREEOPTIONS;
-	public static String GRAPHOPTIONS;
-	public static String DATASTRUCTURESOPTIONS;
+	public static String APP_TITLE;
+	public static String USERNAME;
+	public static String PASSWORD;
+	public static String EXCELREADER;
+	public static String  REGISTER_LINK;
+	
 	static Properties properties = new Properties();
 		
 	public static void loadProperties() {
@@ -43,16 +42,10 @@ public class CommonUtils {
 	CHROME_DRIVER = properties.getProperty("CHROME_DRIVER");
 	UserName = properties.getProperty("UserName");
 	Password = properties.getProperty("Password");
-	DATASTRUCTURESOPTIONS=properties.getProperty("DataStructuresValue");
-	ARRAYSOPTIONS = properties.getProperty("ArrayOptionValue");
-	LINKEDLISTOPTIONS = properties.getProperty("LinkedListOptionValue");
-	STACKOPTIONS = properties.getProperty("StackOptionValue");
-	QUEUEOPTIONS = properties.getProperty("QueueOptionValue");
-	TREEOPTIONS = properties.getProperty("TreeOptionValue");
-	GRAPHOPTIONS = properties.getProperty("GraphOptionValue");	
-		
-	}
-	
+	APP_TITLE = properties.getProperty("APP_TITLE");
+	EXCELREADER = properties.getProperty("excelfilepath");
+    REGISTER_LINK = properties.getProperty("registerurl");
 
+	}
 	
 }

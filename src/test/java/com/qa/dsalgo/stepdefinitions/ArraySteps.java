@@ -1,10 +1,11 @@
 package com.qa.dsalgo.stepdefinitions;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import com.qa.dsalgo.pages.ArrayPage;
 import com.qa.dsalgo.pages.Background;
-
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -14,6 +15,8 @@ public class ArraySteps {
 	private WebDriver driver;
 	ArrayPage arraypage;
 	Background background;
+	private static final Logger logger = LogManager.getLogger(RegistrationSteps.class);
+
 
 	public ArraySteps() {
 		driver = Hooks.getDriver();
@@ -21,11 +24,12 @@ public class ArraySteps {
 		arraypage = new ArrayPage(driver);
 	}
 
-	@When("The user logs in with valid username {string} and password {string}")// i have this here because registeration steps dont have login step will create a background feature file and step file 
-	public void the_user_logs_in_with_valid_username_and_password(String username, String password) {
-	   background.userLoggedin(username, password);
+	@And("The user logs in with valid username and password")
+	public void the_user_logs_in_with_valid_username_and_password() {
+		   background.userLoggedin();	    
 	}
 
+	
 	@When("user clicks {string} button in Array Panel")
 	public void user_clicks_button_in_array_panel(String string) {
 		arraypage.clickStartBtn();
@@ -38,17 +42,18 @@ public class ArraySteps {
 
 	@Then("The User land on Array Page")
 	public void the_user_land_on_array_page() {
+		logger.info("user lands on Array page");
 		Assert.assertTrue(arraypage.arrayLabelDisplayed(), "Array page header not visible!");
 	}
 	
 	@Then("the user should be directed to {string} Module page")
 	public void the_user_should_be_directed_to_array_page_module_page(String moduleName) {
 	    String actualTitle = driver.getTitle();
+		logger.info("user navigated to Array page");
 	    Assert.assertTrue(actualTitle.contains(moduleName), 
 	        "Page title does not contain: " + moduleName + " | Actual title: " + actualTitle);
 	}
 
-	
 	@Given("The user is on Array Data Structure")// scenario 2
 	public void the_user_is_on_array_data_structure() {
 	    arraypage.clickStartBtn(); // Navigates to Array main page
@@ -75,9 +80,9 @@ public class ArraySteps {
 	@Then("The user should see alert with  error message {string} on Array in Python page")// till here
 	public void the_user_should_see_alert_with_error_message(String expectedMessage) {
 	    String actualMessage = arraypage.getAlertMessageAndAccept();
+	    logger.info("Verifying that the user sees error message");
 	    Assert.assertEquals(actualMessage.trim(), expectedMessage.trim(), "Alert message mismatch!");
 	}
-
 
 @Given("The user is on the {string} page")// user is on practice question page
 public void the_user_is_on_the_page(String string) {
@@ -95,12 +100,11 @@ public void run_valid_code_by_clicking_run_button_after_entering_in_try_editor(S
     arraypage.clickRunBtn();
 }
 
-
-
 @Then("The user should able to see {string} output in the console")
 public void the_user_should_able_to_see_output_in_the_console(String message) {
     arraypage.outputDisplayed();
     String actualMessage = arraypage.getTextoutput();
+    logger.info("Verifying that the user sees output message");
     Assert.assertEquals(actualMessage.trim(), message.trim(), "Alert message mismatch!");
  }
 
@@ -110,36 +114,35 @@ public void the_user_write_the_valid_in_editor_on_practice_question_page_and_cli
 	    arraypage.clickRunBtn();
 	}
 
-
-@Then("The user see an error message {string}")
-public void the_user_see_an_error_message(String string) {
-
+@Then("The user sees {string} label on the top left corner of the {string} page module")
+public void the_user_sees_label_on_the_top_left_corner_of_the_page_module(String expectedLabel, String page) {
+	String actualLabel = arraypage.getNumpyNinjaLinkText();
+    logger.info("Verifying that the user sees NumpaiNinja logo");
+    Assert.assertEquals(actualLabel, expectedLabel, "Label mismatch!");
+}
+    
+@Then("The user sees the {string} dropdown box on the top left corner of the {string} page module")
+public void the_user_sees_the_dropdown_box_on_the_top_left_corner_of_the_page_module(String expectedLabel, String lblTxt) {
+    String actualLabel = arraypage.getDataStructureLblText();
+    logger.info("Verifying that the user sees label for  Data Structure dropdown"); 
+    Assert.assertEquals(actualLabel, expectedLabel, "Label mismatch!");
 }
 
-@When("The user write the valid code in Editor and Click the Run Button")
-public void the_user_write_the_valid_code_in_editor_and_click_the_run_button() {
-
+@Then("The user sees {string} link on  the top right most corner of the {string} page module")
+public void the_user_sees_link_on_the_top_right_most_corner_of_the_array_page_module(String expectedLabel, String page) {
+		String actualLabel = arraypage.getSignoutLblText();
+	    logger.info("Verifying that the user sees label for signout"); 
+     Assert.assertEquals(actualLabel, expectedLabel, "Label mismatch!");
 }
 
-@Then("The user see s\"NumpyNinja\" label on the top left corner of the {string} page")
-public void the_user_see_s_numpy_ninja_label_on_the_top_left_corner_of_the_page(String string) {
-
+@Then("The user sees {string} label on the top right corner of the {string} page module")
+public void the_user_sees_label_on_the_top_right_corner_of_the_page_module(String expectedLabel, String page) {
+	 String actualLabel = arraypage.getUsernameLblText();
+    logger.info("Verifying that the user sees label for username"); 
+    Assert.assertEquals(actualLabel, expectedLabel, "Label mismatch!");
 }
 
-@Then("The user sees the data structures select box on the top left corner of the {string} page")
-public void the_user_sees_the_data_structures_select_box_on_the_top_left_corner_of_the_page(String string) {
-
-}
-
-@Then("The user sees {string} label on  the top right corner of the  Array page")
-public void the_user_sees_label_on_the_top_right_corner_of_the_array_page(String string) {
-
-}
-
-@Then("The user sees {string} link on  the top right corner of the Array page")
-public void the_user_sees_link_on_the_top_right_corner_of_the_array_page(String string) {
 
 
 
-}
 }

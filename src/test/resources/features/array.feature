@@ -1,10 +1,9 @@
 Feature: Array Functionality
-  #As a logged in user I should be able to access and use array module
 
   Background: 
     Given The user is on the DSAlgo portal
     When The user clicks "GetStarted" button on welcome page
-    And The user logs in with valid username "qatitans1" and password "1@Chicago"
+    And The user logs in with valid username and password 
     Then The user lands on the home page of DSAlgo portal
 
   Scenario: Verify that user is able to navigate to "Array" Module page from array panel
@@ -48,3 +47,39 @@ Feature: Array Functionality
     Examples: 
       | code                     | result          |
       | print('Hello QATitans!') | Hello QATitans! |
+
+  Scenario: Verify that "NumpyNinja" label is displayed on the top left corner of the Array page module
+    Given The user is on Array Data Structure
+    Then The user sees "NumpyNinja" label on the top left corner of the "Array" page module
+
+  Scenario: Verify the data structures dropdown is present on the top left corner of the Array page module
+    Given The user is on Array Data Structure
+    Then The user sees the "Data Structures" dropdown box on the top left corner of the "Array" page module
+    
+    Scenario: Verify that link with "Sign out" label is displayed on the Array page module
+    Given The user is on Array Data Structure
+   Then The user sees "Sign out" link on the top right most corner of the "Array" page module
+   
+   Scenario: Verify that link with username label is displayed on the Array page module
+    Given The user is on Array Data Structure
+   Then The user sees "Qatitans1" label on the top right corner of the "Array" page module
+   
+   Scenario Outline: Verify that user sees header labels on various links from Array page
+    Given The user is on Array Data Structure
+    When The user clicks "<OptionOnArray>" link
+    Then The user sees "NumpyNinja" label on the top left corner of the "Array" page module
+    And The user sees the "Data Structures" dropdown box on the top left corner of the "Array" page module
+    And The user sees "Qatitans1" label on the top right corner of the "Array" page module
+    And The user sees "Sign out" link on the top right most corner of the "Array" page module
+   
+    Examples: 
+      | OptionOnArray             |
+      | Arrays in Python          | 
+      | Arrays using List         | 
+      | Basic Operations in Lists |
+      | Applications of Array     |  
+         
+       
+
+    
+    

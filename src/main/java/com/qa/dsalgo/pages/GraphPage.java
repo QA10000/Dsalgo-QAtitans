@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,169 +19,216 @@ public class GraphPage {
 	// Locators:
 
 	@FindBy(xpath = "//a[@href='graph']")
-	private WebElement graphGetstarted;
-	@FindBy(xpath = "//a[@class='nav-link dropdown-toggle']")
-	private WebElement dropdownList;
-	@FindBy(xpath = "//a[@class='dropdown-item' and text()='Graph']")
+	private WebElement graphGetstarted;// ---------- YES
+	
+	@FindBy(xpath = "//a[text()='Data Structures']")
+	WebElement dataStructuresDropdown;
+	
+	//@FindBy(xpath = "//a[@class='dropdown-item'][normalize-space()='Graph']")
+	//@FindBy(xpath = "//a[@class='dropdown-item' and text()='Graph']")
+	@FindBy(xpath = "//a[@class='dropdown-item' and @href='/graph']")
 	private WebElement graphDropDown;
-	@FindBy(xpath = "//div[@role='alert' and contains(text(), 'You are not logged in')]")
-	private WebElement ntloggedinMsg;
-
-	// links in the Graph module page
-	@FindBy(xpath = "//a[@class='list-group-item' and starts-with(normalize-space(text()), 'Graph')]")
-	private List<WebElement> graphTopicLinks; // locators for 2 links on Graph module
-	@FindBy(xpath = "//h4")
-	private WebElement graphPageHeader; // all links same as above, locators for 2 links on Graph module
-	@FindBy(xpath = "//a[@class='btn btn-info']")
-	private WebElement tryMeGraphRepresentationButton;
-	@FindBy(xpath = "//a[@class='btn btn-info']")
-	private WebElement tryMeButton;
-
-	///// CHECK THIS ONE////
-	@FindBy(xpath = "//div[contains(.,'Topics Covered')]//a")
-	private List<WebElement> graphLinkItem;// all Topics inside Graph Page i.e. Graph and Graph Representations
-
-	// locators from Graph module page
-	@FindBy(xpath = "//h4[normalize-space(text())='Graph']")
-	private WebElement GraphLabel; // to check header
-	@FindBy(xpath = "/html/body/div[2]/ul[2]/a")
-	private WebElement graphPythonLink; // Graph link in the Graph page
-
+	
+	
+	 @FindBy(xpath = "//a[@href='graph']")
+	 WebElement GraphLinkOptionOne;
+	 //@FindBy(xpath = "//div[@id='content']//a[text()='Creating Linked LIst']")
+	   // WebElement CreatingLinkedListTitleLink;
+	 
+	 
+	 @FindBy(xpath = "(//a[normalize-space()='Graph Representations'])[1]")
+//	 @FindBy(xpath = "//a[normalize-space()=\"Graph Representations\"]")
+	 //@FindBy(xpath = "//a[@href='graph-representations']")
+	 WebElement GraphRepresentationsLinkOptionTwo;
+	 
+	 //NEW ADDED NOW
+			
+	@FindBy(xpath = "//a[@href='/graph/graph/']")
+	WebElement GraphItem; // inside the graph page, locating Graph link
+	@FindBy(xpath = "//div[@id='content']//a[text()='Graph']")
+	WebElement GraphTitleLink;
+	
+	@FindBy(xpath = "//a[@href=\"/graph/graph-representations/\"]")
+	WebElement GraphRepresentationsLink; // inside the graph page, locating Graph Representations link
+	@FindBy(xpath = "//div[@id='content']//a[text()='Graph Representations']")
+	WebElement GraphRepresentationsItemTitleLink;
+	
 	@FindBy(xpath = "//a[@href='/tryEditor']")
-	WebElement tryhere_Graph;// same from Graph page, duplicate, but can be used in Graph representation page
-
-	@FindBy(css = "div.CodeMirror-scroll")
-	private WebElement codeEditorTxtBx; // common for all
-	@FindBy(xpath = "//*[@id='answer_form']/button")
-	// (xpath = "//button[@type='button']")
-	private WebElement graphRunButton;
-	@FindBy(xpath = "//button[@type='button']")
-	private WebElement runBtn;
-	@FindBy(id = "output")
-	private WebElement outputMessage;
-
-	// --
-
-	@FindBy(xpath = "//div[contains(@class,'CodeMirror') and contains(@class,'cm-s-default')]//textarea")
-	private WebElement Grapheditor_Input;
-
-	@FindBy(xpath = "//*[@id='content']/a")
-	private WebElement Graph_Practiceqn;
-
-	@FindBy(xpath = "//a[normalize-space()=\"Graph Representations\"]")
-	private WebElement graphRepresentationLink;
-
-	@FindBy(xpath = "//*[@id=\"output\"]")
-	private WebElement Output; // check this, not correct
-
-	@FindBy(id = "answer_form")
-	WebElement answerForm;// check this, why needed
-
-	@FindBy(css = "textarea") // check this, why needed
-	private WebElement codeMirrorTextArea;
-
-	// Login
-	@FindBy(xpath = "//div[@id='navbarCollapse']//a[@href='/login']")
-	private WebElement signinLink;
-	@FindBy(name = "username")
-	private WebElement usernametextbox;
-	@FindBy(name = "password")
-	private WebElement passwordtextbox;
-	@FindBy(xpath = "//form//input[@type='submit' and @value='Login']")
-	private WebElement loginButton;
-
-	// -------------------------------------//
-	// -------------------------------------//
-
-	// Methods:
-
+	private WebElement tryHereButton;
+	
+	
+	
 	// initialize driver
+	//---------------------NIS-CHECK IF THIS NEEDED
 	private WebDriver driver;
-
+		
+	//---------------------YES
 	public GraphPage(WebDriver driver) {
+		System.out.println(">> GraphPage constructor.");
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 
+	//---------------------YES
+	//STEP1 PASSED- Main Graph Page Headers
+	//Click GetStarted in the Graph panel and verify both headers
+	//OPTION2 MAD
 	public void clickGraphStrtBtn() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.elementToBeClickable(graphGetstarted));
-		((JavascriptExecutor) driver).executeScript(
-				"arguments[0].scrollIntoView({ behavior: 'smooth', block: 'center' });", graphGetstarted);
 		graphGetstarted.click();
 	}
-
+		
+		//WORKING OLD OPTION1 //NIS
+		/*
+		 * public void clickGraphStrtBtn() { WebDriverWait wait = new
+		 * WebDriverWait(driver, Duration.ofSeconds(10));
+		 * wait.until(ExpectedConditions.elementToBeClickable(graphGetstarted));
+		 * ((JavascriptExecutor) driver).executeScript(
+		 * "arguments[0].scrollIntoView({ behavior: 'smooth', block: 'center' });",
+		 * graphGetstarted); graphGetstarted.click(); }
+		 */
+		
 	public String getGraphPageTitle() {
 		return driver.getTitle();
 	}
-
-	public void graphLabelDisplayed() {
-		GraphLabel.isDisplayed();
+		
+	public String GetTitleFromPage(WebElement Link) { 
+		return Link.getText(); 
 	}
+			
+	//-----------------//
+	
 
-	public void clickGraphRepresentationLink() {
-		graphRepresentationLink.click();
+	
+	//REMOVED FOR NOW--------CHECKING DROPDOWN
+	/*
+	 * //PASSED public void clickDataStructuredropdown() { WebDriverWait wait = new
+	 * WebDriverWait(driver, Duration.ofSeconds(10));
+	 * wait.until(ExpectedConditions.elementToBeClickable(dataStructuresDropdown));
+	 * dataStructuresDropdown.click(); } public void SelectLGraphFromDropDown() {
+	 * //WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(10));
+	 * //WebElement graphdropdown =
+	 * wait1.until(ExpectedConditions.elementToBeClickable(By.xpath(
+	 * "//a[@class='dropdown-item'][normalize-space()='Graph']")));
+	 * graphDropDown.click();
+	 */
+	 //}			
+//				driver.findElement(By.xpath("//a[@class='dropdown-item'][normalize-space()='Graph']"));
+	//	wait.until(ExpectedConditions.visibilityOfElementLocated(graphdrop);
+		
+   
+	//STEP6 NEW TAKEN FROM ARRAY
+	public void SelectLGraphFromDropDown() {
+	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	Actions actions = new Actions(driver);
+	
+	wait.until(ExpectedConditions.elementToBeClickable(dataStructuresDropdown));
+	dataStructuresDropdown.click();
+	
+	wait.until(ExpectedConditions.elementToBeClickable(graphDropDown));
+	((JavascriptExecutor) driver).executeScript("arguments[0].click();", graphDropDown);
+	
+	wait.until(ExpectedConditions.or(ExpectedConditions.titleContains("Graph"), ExpectedConditions.urlContains("graph"))); 
 	}
-
-	public void cickTryMeButtonGraphRepresentation() {
-		tryMeGraphRepresentationButton.click();
+	
+	
+	
+	
+	
+	//-----------------//
+	
+	
+	//3 - corrected, but not used in steps
+	/*
+	 * public void goToGraphLinkOptionOnePage() { GraphLinkOptionOne.click(); }
+	 */
+	//4
+	public void clickGraphOption(String optionName) {
+	  WebElement option= driver.findElement(By.linkText(optionName));
+	  option.click();
 	}
-
-	public void clickGraphOptions(String sectionName) {
-		boolean found = false;// this is used for making sure we have found the link before we click
-		for (WebElement link : graphLinkItem) {
-			if (link.getText().trim().equalsIgnoreCase(sectionName.trim())) {
-				link.click();
-				found = true;
+	
+	//5
+	public String getGraphLinkOptionText(String optionName) {
+	      WebElement option= driver.findElement(By.linkText(optionName));
+	      String text=option.getText();
+	      return text;
+	    }
+	
+	
+	//6
+	public String getGraphOptionText(String optionName) {
+	      WebElement option= driver.findElement(By.xpath("//h4[normalize-space()=\"Graph\"]"));
+	      String text=option.getText();
+	      return text;
+	    }
+	//7
+	//STEP1 THEN
+	public String getGraphOptionHeaderText(String headerName) {
+		WebElement option=  driver.findElement(By.xpath("//*[self::h4 or self::p][text()='" + headerName + "']"));
+		String text=option.getText();
+	    return text;
+	 }
+	
+	public void goToGraphPage() {
+		GraphItem.click();
+    }
+		
+public void ClickGraphOptionsLink(String graphOption) {
+		
+		switch(graphOption) 
+		{
+			case "Graph":
+				GraphItem.click();
 				break;
-			}
-		}
-		if (!found) {
-			throw new IllegalArgumentException("Unknown section: " + sectionName);
-		}
-	}
+			case "Graph Representations":
+				GraphRepresentationsLink.click();
+				break;
+			}       
+    }
 
-	public void clickTryMeButton() {
-		tryMeButton.click();
-	}
+public void clickTryHere() {
+    tryHereButton.click();
+}
 
-	public void codeEditorSendKeys(String code) {
+public void getButtonText(String expectedButtonText ) {
+    WebElement button = driver.findElement(By.xpath("//a[@href='/tryEditor']" + expectedButtonText + "']"));
+    String actualButtonText = button.getText();
+}
+	//---------------------------------------------//
+	
+	
+	
+	//#STEP2 - Main Graph Page headers with links
+//when The user clicks the "Getting Started" button for Graph module on Home page
+//Added now for Step 2
+	public void graphItemGetStarted() {
+	graphGetstarted.click();
+	}
+	
+	
+	//#STEP3 -  Main Graph Page >> 1. Graph Page headers with links
+			//When The user clicks now on the "Graph" link on the Graph page
+			//Added now for Step 3
+	public void graphItemOneClick() {
+		GraphLinkOptionOne.click();
+}
+	
+	
+	public void graphItemTwoClick() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
-		// Wait for CodeMirror editor container to be visible
-		wait.until(ExpectedConditions.visibilityOf(codeEditorTxtBx));
-
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-
-		// Clear existing content
-		js.executeScript("document.querySelector('.CodeMirror').CodeMirror.setValue('');");
-
-		// Enter new code
-		js.executeScript("document.querySelector('.CodeMirror').CodeMirror.setValue(arguments[0]);", code);
-
-		try {
-			Thread.sleep(500); // Small pause (not mandatory but helpful sometimes)
-		} catch (InterruptedException e) {
-			Thread.currentThread().interrupt();
-		}
-	}
-
-	public String getAlertMessageAndAccept() {// alert on editor page on
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.alertIsPresent());
-		Alert alert = driver.switchTo().alert();
-		String message = alert.getText();
-		alert.accept();
-		return message;
-	}
-
-	public void clickRunBtn() {
-		runBtn.click();
-
-	}
-
-	public void outputDisplayed() {
-		outputMessage.isDisplayed();
-	}
+		//wait.until(ExpectedConditions.elementToBeClickable(GraphRepresentationsLinkOptionTwo));
+		//((JavascriptExecutor) driver).executeScript("arguments[0].click();", GraphRepresentationsLinkOptionTwo);
+		GraphRepresentationsLinkOptionTwo.click();
+}
 
 }

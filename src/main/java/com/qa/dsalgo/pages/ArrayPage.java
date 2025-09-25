@@ -2,7 +2,6 @@ package com.qa.dsalgo.pages;
 
 import java.time.Duration;
 import java.util.List;
-
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -11,7 +10,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ArrayPage {
@@ -47,10 +45,6 @@ public class ArrayPage {
 	private WebElement praticeQ;
 	@FindBy(xpath="//a[normalize-space()='Search the array']")
 	private WebElement searchArrayQLink;
-
-	// for now i am creating a login code here, we need to have login here because
-	// we can't use background step logged in because we have a scenario for
-	// nonlogged in user
 	@FindBy(xpath = "//div[@id='navbarCollapse']//a[@href='/login']")
 	private WebElement signinLink;
 	@FindBy(name = "username")
@@ -59,6 +53,21 @@ public class ArrayPage {
 	private WebElement passwordtextbox;
 	@FindBy(xpath = "//form//input[@type='submit' and @value='Login']")
 	private WebElement loginButton;
+	
+	@FindBy(xpath = "//a[@class='navbar-brand']")
+	private WebElement numpyNinjaLink;
+	
+	@FindBy(xpath = "//a[text()='Data Structures']")
+	private WebElement dataStructuresDropdown;
+	
+	@FindBy(xpath = "//div[@id='navbarCollapse']//a[@href='/register']")
+	private WebElement registerLink;
+	
+	@FindBy(xpath = "//a[normalize-space()='Sign out']")
+	private WebElement signoutLink;
+	
+	@FindBy(xpath = "//a[normalize-space()='Qatitans1']")
+	private WebElement usernameLabel;
 
 	private WebDriver driver;
 
@@ -102,16 +111,8 @@ public class ArrayPage {
 		wait.until(
 		ExpectedConditions.or(ExpectedConditions.titleContains("Array"), ExpectedConditions.urlContains("array")																												// both
 						)); 
-																															// javascript
-																															// code
-																															// is
-																															// checking
-																															// the
-																															// title
-																															// and
-																															// url
-			
-	}
+																					
+}
 
 	public boolean arrayLabelDisplayed() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -203,9 +204,28 @@ public class ArrayPage {
 		clickPracticeQLink();
  	}
 
-	private void clickArraySecion() {
-		// TODO Auto-generated method stub
-		
+	public String getNumpyNinjaLinkText() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(numpyNinjaLink));
+		return numpyNinjaLink.getText();
+	}
+	
+	public String getSignoutLblText() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(signoutLink));
+		return signoutLink.getText();
+	}
+	
+	public String getUsernameLblText() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(usernameLabel));
+		return  usernameLabel.getText();
+	}
+	
+	public String getDataStructureLblText() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(dataStructuresDropdown));
+		return dataStructuresDropdown.getText();
 	}
 	
 }
