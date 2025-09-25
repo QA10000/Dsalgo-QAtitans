@@ -6,7 +6,6 @@ test-output/
 # src/main/java/utilities/package-info.java
 /com.qa.dsalgo/allure-results
 /allure-results/
-/Dsalgo-QAtitans/logs/*.log
 
 /bin/
 /allure-results/
