@@ -116,39 +116,13 @@ private WebDriver driver;
 	    }
 	
 	public String getLinkedListOptionHeaderText(String headerName) {
-//      WebElement option= driver.findElement(By.xpath("//p[@class='bg-secondary text-white']"));
-		WebElement option=  driver.findElement(By.xpath("//*[self::h4 or self::p][text()='" + headerName + "']"));
+      WebElement option= driver.findElement(By.xpath("//div[@class=‘col-sm’]//p[@class=‘bg-secondary text-white’]"));
+		//WebElement option=  driver.findElement(By.xpath("//*[self::h4 or self::p][text()='" + headerName + "']"));
 	 	//WebElement option= driver.findElement(By.linkText(optionName));
 	      String text=option.getText();
 	      //option.click();
 	      return text;
 	    }
-
-	
-	public void ClickLinkedListOptionsLink(String linkedListOption) {
-		
-		switch(linkedListOption) 
-		{
-			case "Creating Linked LIst":
-				CreatingLinkedListItem.click();
-				break;
-			case "Types of Linked List":
-				TypesOfLinkedListLink.click();
-				break;
-			case "Implement Linked List in Python":
-				ImplementLinkedListInPythonLink.click();
-				break;
-			case "Traversal":
-				TraversalLink.click();
-				break;
-			case "Insertion":
-				InsertionLink.click();
-				break;
-			case "Deletion":
-				DeletionLink.click();
-				break;		
-		}       
-    }
 	
 	public void clickTryHere() {
         tryHereButton.click();
