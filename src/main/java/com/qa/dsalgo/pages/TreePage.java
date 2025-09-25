@@ -49,6 +49,19 @@ public class TreePage {
 	@FindBy(id = "output")
 	private WebElement outputMessage;
 	
+	@FindBy(xpath = "//a[@class='navbar-brand']")
+	private WebElement numpyNinjaLink;
+	
+	@FindBy(xpath = "//a[text()='Data Structures']")
+	private WebElement dataStructuresDropdown;	
+	
+	@FindBy(xpath = "//a[normalize-space()='Sign out']")
+	private WebElement signoutLink;
+	
+	@FindBy(xpath = "//a[normalize-space()='Qatitans1']")
+	private WebElement usernameLabel;
+
+	
 	private WebDriver driver;
 
 	public TreePage(WebDriver driver) {
@@ -142,6 +155,30 @@ public class TreePage {
 	
 	public void outputDisplayed() {
 		outputMessage.isDisplayed();
+	}
+	
+	public String getNumpyNinjaLinkTextTreePg() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(numpyNinjaLink));
+		return numpyNinjaLink.getText();
+	}
+	
+	public String getSignoutLblText() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(signoutLink));
+		return signoutLink.getText();
+	}
+	
+	public String getUsernameLblText() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(usernameLabel));
+		return  usernameLabel.getText();
+	}
+	
+	public String getDataStructureLblText() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(dataStructuresDropdown));
+		return  dataStructuresDropdown.getText();
 	}
 
 	

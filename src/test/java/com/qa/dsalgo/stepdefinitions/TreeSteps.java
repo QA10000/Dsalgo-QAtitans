@@ -9,14 +9,16 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-
 
 public class TreeSteps {
 	private WebDriver driver;
 	TreePage treepage;
 	Background background;
+	private static final Logger logger = LogManager.getLogger(TreeSteps.class);
 
 	public TreeSteps() {
 		driver = Hooks.getDriver();
@@ -33,15 +35,15 @@ public class TreeSteps {
 	@Then("The user lands on the {string} page") // scenario 1/step 2
 	public void the_user_lands_on_the_tree_page(String expectedTitle) {
 		String actualTitle = driver.getTitle();
+		logger.info("Verifying that the user lands on the page");
 		Assert.assertEquals(actualTitle, expectedTitle, "User did not land on the expected page");
 	}
-	
+
 	@Given("The user is on Tree Data Structure")
 	public void the_user_is_on_tree_data_structure() {
 		treepage.clickTreeStrtBtn();
 		Assert.assertEquals(treepage.getTreePageTitle(), "Tree", "Not on Tree page!");
 	}
-	
 
 	@When("The user clicks {string} link on the tree page")
 	public void the_user_clicks_link_on_the_tree_page(String optionOnTree) {
@@ -60,107 +62,64 @@ public class TreeSteps {
 		treepage.clickRunBtn();
 	}
 
-	@Then("The user should see alert with  error message {string} on tree page") // till here
-	public void the_user_should_see_alert_with_error_message(String expectedMessage) {
+	@Then("The user should see alert with  error message {string} on Tree module page")
+	public void the_user_should_see_alert_with_error_message_on_tree_module_page(String expectedMessage) {
 		String actualMessage = treepage.getAlertMessageAndAccept();
+		logger.info("Verifying that the user sees error message");
 		Assert.assertEquals(actualMessage.trim(), expectedMessage.trim(), "Alert message mismatch!");
 	}
 
+	@When("The user clicks {string} link on tree page")
+	public void the_user_clicks_link_on_tree_page(String optionOnTree) {
+		treepage.clickTreeOptiions(optionOnTree);
+		;
+	}
 
-@When("The user clicks {string} link on tree page")
-public void the_user_clicks_link_on_tree_page(String optionOnTree) {
-	treepage.clickTreeOptiions(optionOnTree);
-;
-}
+	@When("The user clicks {string} button on tree page")
+	public void the_user_clicks_button_on_tree_page(String string) {
+		treepage.clickTryMeButton();
+	}
 
-@When("The user clicks {string} button on tree page")
-public void the_user_clicks_button_on_tree_page(String string) {
-	treepage.clickTryMeButton();
-}
+	@Then("The user should see the correct output")
+	public void the_user_should_see_the_correct_output() {
+		treepage.outputDisplayed();
 
- @Then("The user should see the correct output") public void
- the_user_should_see_the_correct_output() {
-	 treepage.outputDisplayed();
-	 
-}
-	
-	
-	/*
-	 * @Given("The user is on the {string} Data Structure page")//scn2/step given1
-	 * step 1 public void the_user_is_on_the_data_structure_page(String string) {
-	 * treepage.clickTreeStrtBtn(); Assert.assertEquals(treepage.getTreePageTitle(),
-	 * "Tree", "Not on Tree page!");
-	 * 
-	 * }
-	 * 
-	 * @When("The user clicks on {string} link on the Tree page")// scn3 step2
-	 * public void the_user_clicks_on_link_on_the_tree_page(String string) {
-	 * treepage.clickOverviewLink(); }
-	 * 
-	 * @When("The user clicks on {string} button on {string}") public void
-	 * the_user_clicks_on_button_on(String string, String string2) {
-	 * treepage.cickTryMeButtonTree(); }
-	 * 
-	 * @Then("The user has navigated to {string} page")// user clicks option on tree
-	 * page public void the_user_has_navigated_to_the_page(String pageName) {
-	 * 
-	 * // Write code here that turns the phrase above into concrete actions throw
-	 * new io.cucumber.java.PendingException(); }
-	 * 
-	 * @Then("The user clicks on {string} button")// user clicks try me link public
-	 * void the_user_clicks_on_button(String string) { // Write code here that turns
-	 * the phrase above into concrete actions throw new
-	 * io.cucumber.java.PendingException(); }
-	 * 
-	 * @When("The user clicks on {string} button without entering any python code")/
-	 * / run button without entry public void
-	 * the_user_clicks_on_button_without_entering_any_python_code(String string) {
-	 * // Write code here that turns the phrase above into concrete actions throw
-	 * new io.cucumber.java.PendingException(); }
-	 * 
-	 * @Then("The user should see an error message stating that the user should enter valid python code"
-	 * ) public void
-	 * the_user_should_see_an_error_message_stating_that_the_user_should_enter_valid_python_code
-	 * () { // Write code here that turns the phrase above into concrete actions
-	 * throw new io.cucumber.java.PendingException(); }
-	 * 
-	 * @When("The user clicks on {string} button after entering wrong python code")
-	 * public void the_user_clicks_on_button_after_entering_wrong_python_code(String
-	 * string) { // Write code here that turns the phrase above into concrete
-	 * actions throw new io.cucumber.java.PendingException(); }
-	 * 
-	 * @When("The user clicks on {string} button after entering correct python code"
-	 * ) public void
-	 * the_user_clicks_on_button_after_entering_correct_python_code(String string) {
-	 * // Write code here that turns the phrase above into concrete actions throw
-	 * new io.cucumber.java.PendingException(); }
-	 * 
-	 
-	 * 
-	 * @Given("The user is on the DSAlgo Tree page") public void
-	 * the_user_is_on_the_ds_algo_tree_page() { // Write code here that turns the
-	 * phrase above into concrete actions throw new
-	 * io.cucumber.java.PendingException(); }
-	 * 
-	 * @Then("The user sees {string} label on the {string} page") public void
-	 * the_user_sees_label_on_the_page(String string, String string2) { // Write
-	 * code here that turns the phrase above into concrete actions throw new
-	 * io.cucumber.java.PendingException(); }
-	 * 
-	 * @Then("The user sees a button with {string} label on the {string} page")
-	 * public void the_user_sees_a_button_with_label_on_the_page(String string,
-	 * String string2) { // Write code here that turns the phrase above into
-	 * concrete actions throw new io.cucumber.java.PendingException(); }
-	 * 
-	 * @Given("The user is on the DSAlgo Tree page of the portal") public void
-	 * the_user_is_on_the_ds_algo_tree_page_of_the_portal() { // Write code here
-	 * that turns the phrase above into concrete actions throw new
-	 * io.cucumber.java.PendingException(); }
-	 * 
-	 * @Then("The user sees {string} dropdown") public void
-	 * the_user_sees_dropdown(String string) { // Write code here that turns the
-	 * phrase above into concrete actions throw new
-	 * io.cucumber.java.PendingException(); }
-	 */
+	}
+
+	@Then("The user sees {string} link on the top right most corner of the {string} page module")
+	public void the_user_sees_link_on_the_top_right_most_corner_of_the_page_module(String labelnumpai,
+			String treepage) {
+	}
+
+	@Then("The user sees {string} link on the top left most corner of the {string} page module")
+	public void the_user_sees_link_on_the_top_left_most_corner_of_the_page_module(String expectedLabel, String module) {
+		String actualLabel = treepage.getNumpyNinjaLinkTextTreePg();
+	    logger.info("Verifying that the user sees NumpaiNinja logo");
+		Assert.assertEquals(actualLabel, expectedLabel, "Label mismatch!");
+
+	}
+
+	@Then("The user sees {string} label on the top left corner of the {string} page for tree module")
+	public void the_user_sees_label_on_the_top_left_corner_of_the_page_tree_module(String expectedLabel,
+			String module) {
+		String actualLabel = treepage.getDataStructureLblText();
+		Assert.assertEquals(actualLabel, expectedLabel, "Label mismatch!");
+	}
+
+	@Then("The user sees {string} link on the top right most corner of the {string} page for tree module")
+	public void the_user_sees_link_on_the_top_right_most_corner_of_the_page_for_tree_module(String expectedLabel,
+			String module) {
+		String actualLabel = treepage.getSignoutLblText();
+	    logger.info("Verifying that the user sees Signout Link on Tree page");
+		Assert.assertEquals(actualLabel, expectedLabel, "Label mismatch!");
+	}
+
+	@Then("The user sees {string} label on the top right corner of the {string} page for tree module")
+	public void the_user_sees_label_on_the_top_right_corner_of_the_page_for_tree_module(String expectedLabel,
+			String module) {
+		String actualLabel = treepage.getUsernameLblText();
+	    logger.info("Verifying that the user sees username Lable on Tree page");
+		Assert.assertEquals(actualLabel, expectedLabel, "Label mismatch!");
+	}
 
 }
