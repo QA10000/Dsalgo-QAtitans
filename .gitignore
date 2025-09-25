@@ -14,3 +14,4 @@ test-output/
 /allure-results/
 /com.qa.dsalgo/logs
 /Dsalgo-QAtitans/logs/*.log
+logs/test.log
