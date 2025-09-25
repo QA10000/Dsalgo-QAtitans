@@ -39,7 +39,7 @@ public class Background {
 	public String getTitle() {
 		return driver.getTitle();
 	}
-
+	
 	public void ClickGetStarted() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.elementToBeClickable(getStartedBtn));
@@ -58,12 +58,10 @@ public class Background {
 	public void verifyHomePageIsDisplayed() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.titleIs("NumpyNinja"));
-		//String expectedTitle = "NumpyNinja";
 		String expectedTitle = CommonUtils.APP_TITLE;
-
 		String actualTitle = getTitle();
 		Assert.assertEquals(actualTitle, expectedTitle, "Title mismatch!");
 
 	}
-
 }
+

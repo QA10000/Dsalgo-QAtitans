@@ -6,7 +6,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -20,34 +19,37 @@ public class QueuePage {
 
 	@FindBy(xpath = "//a[text()='Data Structures']")
 	WebElement dataStructuresDropdown;
+	
 	@FindBy(xpath = "//a[normalize-space()=\"Queue\"]")
 	WebElement QueueItem;
 	
 	
 	@FindBy(xpath = "//a[@href='implementation-lists']")
 	WebElement ImplementationOfQueueInPythonItem;
+	
 	@FindBy(xpath = "//div[@id='content']//a[text()='Implementation of Queue in Python']")
 	WebElement ImplementationOfQueueInPythonTitleLink;
 	
 	@FindBy(xpath = "//a[@href='implementation-collections']")
 	WebElement ImplementationUsingCollectionsDequeLink;
+	
 	@FindBy(xpath = "//div[@id='content']//a[text()='Implementation using collections.deque']")
 	WebElement ImplementationUsingCollectionsDequeItemTitleLink;
 
 	@FindBy(xpath = "//a[@href='Implementation-array']")
 	WebElement ImplementationUsingArrayLink;
+	
 	@FindBy(xpath = "//div[@id='content']//a[text()='Implementation using array']")
 	WebElement ImplementationUsingArrayItemTitleLink;
 	
 	@FindBy(xpath = "//a[@href='QueueOp']")
 	WebElement QueueOperationsLink;
+	
 	@FindBy(xpath = "//div[@id='content']//a[text()='Queue Operations']")
 	WebElement QueueOperationsTitleLink;
 	
-	
 	@FindBy(xpath = "//a[@href='/tryEditor']")
     private WebElement tryHereButton;
-	
 	
 	public QueuePage(WebDriver driver) {
 		System.out.println(">> QueuePage constructor.");
@@ -55,9 +57,6 @@ public class QueuePage {
 		PageFactory.initElements(driver, this);
 	}
 
-	
-	
-	//STEP1 WHEN
 	public void clickQueueGetStarted() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.elementToBeClickable(QueueGetStarted));
@@ -72,22 +71,14 @@ public class QueuePage {
 		return Link.getText();
 	}
 
-	
-	
-	// Step1- Header
 	public void SelectQueueFromDropDown() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		Actions actions = new Actions(driver);
-		
 		wait.until(ExpectedConditions.elementToBeClickable(dataStructuresDropdown));
 		dataStructuresDropdown.click();
-			
 		wait.until(ExpectedConditions.elementToBeClickable(QueueItem));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", QueueItem);
-		
 		wait.until(ExpectedConditions.or(ExpectedConditions.titleContains("Queue"), ExpectedConditions.urlContains("queue"))); 
 	}
-	
 	
 	public void goToImplementationOfQueueInPythonPage() {
 		ImplementationOfQueueInPythonItem.click();
@@ -105,36 +96,16 @@ public class QueuePage {
 	}
 
 	public String getQueueOptionText(String optionName) {
-		//WebElement option = driver.findElement(By.xpath("//div[@class='col-sm']//p[contains(@class,'bg-secondary')]"));
-		
-		
-		//this is teh original one from linkedlist, is still working, changed to kala xpath in the above line
-		//WebElement option = driver.findElement(By.xpath("//strong/p[@class='bg-secondary text-white']"));
 		WebElement option = driver.findElement(By.xpath("//h4[normalize-space()=\"Queue\"]"));
-		
-		
 		String text = option.getText();
 		return text;
 	}
 
-	//XPATH NOT WORKING- so step2 is failing
 	public String getQueueOptionHeaderText(String headerName) {
 		WebElement option=  driver.findElement(By.xpath("//*[self::h4 or self::p][text()='" + headerName + "']"));
 		String text=option.getText();
 	    return text;
 	    }
-	
-	
-	
-	
-	//xpath given by Kala
-	//div[@class=‘col-sm’]//p[@class=‘bg-secondary text-white’]
-	//div[@id=‘content’]//p[@class=‘bg-secondary text-white’]
-	
-	//Correct
-	//div[@class='col-sm']//p[contains(@class,'bg-secondary')]
-	//div[@id='content']//p[contains(@class,'bg-secondary')]
-	
 	
 	public void ClickQueueOptionsLink(String QueueOption) {
 		
