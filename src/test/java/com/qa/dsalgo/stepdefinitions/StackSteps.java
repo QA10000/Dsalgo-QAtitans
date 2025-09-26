@@ -1,25 +1,29 @@
 package com.qa.dsalgo.stepdefinitions;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
-import com.qa.dsalgo.pages.ArrayPage;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import com.qa.dsalgo.pages.Background;
-import com.qa.dsalgo.pages.LinkedListPage;
-import com.qa.dsalgo.pages.LoginPage;
 import com.qa.dsalgo.pages.StackPage;
 import com.qa.dsalgo.pages.TryEditorPage;
 
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import utilities.CommonUtils;
 
 public class StackSteps {
 	  private WebDriver driver;
 		StackPage stackpage;
 		Background background;
 		TryEditorPage tryEditorPage ;
-		
+		private static final Logger logger = LogManager.getLogger(StackSteps.class);
 		public StackSteps() {
-			//System.out.println(">> In StackSteps constructor.");
 			driver = Hooks.getDriver();
 			background = new Background(driver);
 			stackpage = new StackPage(driver);
@@ -27,37 +31,62 @@ public class StackSteps {
 		
 		@When("The user clicks the {string} button for Stack module on Home page")
 		public void theUserClicksTheButtonForLinkedListModuleOnHomePage(String string) {
-			System.out.println("The user clicks the " + string + " button  for Stack module on Home page");
-			stackpage = new StackPage(driver);
+			logger.info("The user clicks the " + string + " button  for Stack module on Home page");
 			stackpage.clicklinkedListGetStarted();
-		}
-
-		@Given("The user clicks {string} button in Operations in Stack")
-		public void theUserClicksButtonInOperationsInStack(String string) {
-			
 		}
 
 		@Given("The user is on Stack page after login")
 		public void theUserIsOnStackPageAfterLogin() {
-			System.out.println("The user is on Linked List page after login");
-			//loginpage = new LoginPage(driver);
-			//loginpage.clickLoginLink();
-			//loginpage.login("qatitans1","1@Chicago");
-			stackpage = new StackPage(driver);
+			logger.info("The user is on Stack page after login");
 			stackpage.clicklinkedListGetStarted();
 		}
-
+		
 		@When("The user clicks on the {string} link on Stack page")
 		public void theUserClicksOnTheLinkOnStackPage(String OptionOnStack) {
-			System.out.println("The user clicks on the " + OptionOnStack + " link on  the Linked List page");
-			stackpage = new StackPage(driver);
+			logger.info("The user clicks on the " + OptionOnStack + " link on  the Stack page");
 			stackpage.clickLinkedListOption(OptionOnStack);
 		}
 
-		//@Then("The user should not be directed to {string} Module page but a message {string} should be displayed at the top of the homepage.")
-		//public void theUserShouldNotBeDirectedToModulePageButAMessageShouldBeDisplayedAtTheTopOfTheHomepage(
-			//	String string, String string2) {
+		
+		@Given("The user clicks {string} button in Operations in Stack")
+		public void theUserClicksButtonInOperationsInStack(String string) {
 			
-		//}
+		}
+		
+		@When("The user clicks on the Operations in Stack link on the Stack page")
+		public void theUserClicksOnTheOperationsInStackLinkOnTheStackPage() {
+			stackpage.clickOperationsinStackLink();
+		}
+		
+		@When("The user clicks on the Implementation link on the Stack page")
+		public void theUserClicksOnTheImplementationLinkOnTheStackPage() {
+			stackpage.clickImplementationLink();
+		}
+		
+		@When("The user clicks on the Applications link on the Stack page")
+		public void theUserClicksOnTheApplicationsLinkOnTheStackPage() {
+			stackpage.clickApplicationsLink();;
+		}
+		
+		@Then("All expected navigation links should be displayed")
+		public void allexpectedheadersandnavigationlinksshouldbedisplayed() {
+			//logger.info("The user lands on the " + string + " page");
+			List<String> expectedLinks = CommonUtils.STACKPAGE_LINKS;
+			 List<String> actualLinks = stackpage.getAllLinkTexts();
+			 
+			 List<String> missing = new ArrayList<>();
+			 for (String expected : expectedLinks) {
+			     if (!actualLinks.contains(expected)) {
+			         missing.add(expected);
+			     }
+			 }
+
+			 Assert.assertTrue(
+			     missing.isEmpty(),
+			     "These expected links were missing: " + missing + 
+			     "\nActual list: " + actualLinks
+			 );
+		}
+
 }
 		
