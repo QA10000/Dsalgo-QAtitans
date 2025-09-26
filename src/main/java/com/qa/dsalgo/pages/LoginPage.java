@@ -8,8 +8,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
+
+
 
 public class LoginPage {
 	private WebDriver driver;
@@ -45,7 +45,6 @@ public class LoginPage {
 	}
 	
 	public String getErrorMessage() {
-		System.out.println("getErrorMessage()");
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 		wait.until(ExpectedConditions.visibilityOf(errorMessage));
 		String ErrMsg = errorMessage.getText();
@@ -94,17 +93,6 @@ public class LoginPage {
 		Textbox.sendKeys(InputValue);		
 	}
 	
-	/*public void enterUsername(String username) {
-		if (username != null) {
-	        usernametextbox.sendKeys(username);
-	    } else {
-	        throw new IllegalArgumentException("Username value is null. Check your test data.");
-	    }
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.visibilityOf(usernametextbox));
-		usernametextbox.clear();
-		usernametextbox.sendKeys(username);	
-	}*/
 	public void enterUsername(String username) {
 	    if (username == null) {
 	        throw new IllegalArgumentException("Username value is null. Check your test data.");
@@ -129,14 +117,14 @@ public class LoginPage {
 	public void login(String username, String password) {
 		fillTextBox(usernametextbox, "Username", username);
 		fillTextBox(passwordtextbox, "Password", password);
-		System.out.println("submitForm()");
 		submitForm();
     }
+	
 	public void submitForm() {
 		loginButton.click();
 	}
 	
-	public String getSuccessMessage() {// this will go to home page as it shows on home page
+	public String getSuccessMessage() {
         return successMessage.getText().trim();
     }
 	
@@ -144,14 +132,12 @@ public class LoginPage {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.visibilityOf(passwordtextbox));
 		String validationMessage = passwordtextbox.getAttribute("validationMessage");
-		System.out.println( "Passwordvalidationmessage:" + validationMessage);
 		return validationMessage;
 	}
 	public String getUsernameValidationMessage() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.visibilityOf(usernametextbox));
 		String Uservalidationmessage = usernametextbox.getAttribute("validationMessage");
-		System.out.println( "Uservalidationmessage:" + Uservalidationmessage);
 		return Uservalidationmessage;
 	}
 	

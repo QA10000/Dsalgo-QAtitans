@@ -1,7 +1,9 @@
 package com.qa.dsalgo.pages;
 
-import org.testng.Assert;
 import java.time.Duration;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,8 +11,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import static org.testng.Assert.*;  
-
 
 public class LinkedListPage {
 private WebDriver driver;
@@ -21,8 +21,7 @@ private WebDriver driver;
 	    WebElement dataStructuresDropdown;
 	 @FindBy(xpath = "//a[@class='dropdown-item' and @href='/linked-list']")
 	    WebElement linkedListItem;
-    //private WebElement dropdown;
-	 @FindBy(xpath ="//a[normalize-space(.)='Introduction']")
+   	 @FindBy(xpath ="//a[normalize-space(.)='Introduction']")
 			 WebElement IntroductionLink;
 	 @FindBy(xpath ="//p[contains(@class,'bg-secondary') and contains(@class,'text-white')]")
              WebElement IntroductionHeader; 
@@ -59,7 +58,11 @@ private WebDriver driver;
 	 @FindBy(xpath = "//a[@href='/tryEditor']")
 	    private WebElement tryHereButton;
 	 
-	
+	 @FindBy(xpath = "//a[@href and normalize-space(text()) != '']")
+	    private List<WebElement> navigationLinks;
+	 
+	 @FindBy(xpath = "//*[self::h4 or self::p][@class='bg-secondary text-white']")
+	    private List<WebElement> pageHeaders;
 	 
 	public LinkedListPage(WebDriver driver) {
 		System.out.println(">> LinkedListPage constructor.");		
@@ -87,7 +90,9 @@ private WebDriver driver;
 		dataStructuresDropdown.click();
 	}
 	public void SelectLinkedListFromDropDown() {
-        //dataStructuresDropdown.click();
+		clickDataStructuredropdown();
+		//WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		//wait.until(ExpectedConditions.elementToBeClickable(linkedListItem));
         linkedListItem.click();
     }
 	
@@ -97,9 +102,8 @@ private WebDriver driver;
 	
 	public void clickLinkedListOption(String optionName) {
       WebElement option= driver.findElement(By.linkText(optionName));
-      //String text=option.getText();
-      option.click();
-      //return text;
+          option.click();
+    
     }
 	
 	public String getLinkedListLinkOptionText(String optionName) {
@@ -108,20 +112,40 @@ private WebDriver driver;
 	      return text;
 	    }
 	
+	public String getLinkedListLinkOptionText() {
+	      WebElement option= driver.findElement(By.xpath("//a[@href and normalize-space(text()) != '']"));
+	      String text=option.getText();
+	      return text;
+	    }
+	
+	public List<String> getAllLinkTexts() {
+        return navigationLinks.stream()
+                .map(link -> link.getText().trim()) // trim removes extra spaces
+                .collect(Collectors.toList());
+    }
+	
+	public List<String> getAllPageHeaderTexts() {
+        return pageHeaders.stream()
+                .map(link -> link.getText().trim()) // trim removes extra spaces
+                .collect(Collectors.toList());
+    }
+	
 	public String getLinkedListOptionText(String optionName) {
 	      WebElement option= driver.findElement(By.xpath("//strong/p[@class='bg-secondary text-white']"));
 	      String text=option.getText();
-	      //option.click();
 	      return text;
 	    }
 	
 	public String getLinkedListOptionHeaderText(String headerName) {
-      WebElement option= driver.findElement(By.xpath("//div[@class=‘col-sm’]//p[@class=‘bg-secondary text-white’]"));
-		//WebElement option=  driver.findElement(By.xpath("//*[self::h4 or self::p][text()='" + headerName + "']"));
-	 	//WebElement option= driver.findElement(By.linkText(optionName));
-	      String text=option.getText();
-	      //option.click();
-	      return text;
+     	WebElement option=  driver.findElement(By.xpath("//*[self::h4 or self::p][text()='" + headerName + "']"));
+		     String text=option.getText();
+		      return text;
+	    }
+	
+	public String getLinkedListOptionHeaderText() {
+		WebElement option=  driver.findElement(By.xpath("//*[self::h4 or self::p][@class='bg-secondary text-white']"));
+	 	 String text=option.getText();
+	     return text;
 	    }
 	
 	public void clickTryHere() {
