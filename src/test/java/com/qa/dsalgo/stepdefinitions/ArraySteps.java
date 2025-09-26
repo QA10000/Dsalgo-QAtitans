@@ -28,7 +28,6 @@ public class ArraySteps {
 	public void the_user_logs_in_with_valid_username_and_password() {
 		   background.userLoggedin();	    
 	}
-
 	
 	@When("user clicks {string} button in Array Panel")
 	public void user_clicks_button_in_array_panel(String string) {

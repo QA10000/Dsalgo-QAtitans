@@ -1,16 +1,12 @@
 Feature: Queue Page Functionality
   As a logged in user I should be able to access and use the Queue module
 
-#PASSED
 Background: 
     Given The user is on the DSAlgo portal
     When The user clicks "GetStarted" button on welcome page
-    And The user logs in with valid username "qatitans1" and password "1@Chicago"
+    And The user logs in with valid username and password
     Then The user lands on the home page of DSAlgo portal
     
-
-#PASSED
-#STEP1 - Main Queue Page Headers
 Scenario Outline: Verify the user is able to see all the headers/labels on the Queue Page
 When The user clicks the "Getting Started" button for Queue module on Home page
 Then The user should see the following "<Headers>" on the Queue Page 
@@ -19,29 +15,13 @@ Then The user should see the following "<Headers>" on the Queue Page
          | Headers   		    |
          | Queue				|
          | Topics Covered		|
-
-#STEP2 - XPATH NOT WORKING, HENCE GETTING FAILED
-Scenario Outline: Verify the user is able to see all the headers/labels on the Queue Page
-When The user clicks the "Getting Started" button for Queue module on Home page
-Then The user should see the below following "<Navigating Links>" links on the "Queue" Page 
-
-         Examples:
-         |Navigating Links 							|
-         |NumpyNinja    							|
-         |Data Structures  							|
-         |Qatitans1   								|
-         |Sign out     								|
-         |Implementation of Queue in Python	  		|
-         |Implementation using collections.deque	|
-         |Implementation using array				|
-         |Queue Operations							|
          
- #PASSED 
- #STEP3.1
- Scenario Outline: Verify the user is able to see all the headers/labels on the "Queue - Implementation of Queue in Python" Page
- Given The user is on Queue page after login
- When The user clicks on the "Implementation of Queue in Python" link on the Queue page
- Then The user should see the following "<Navigating Links>" links on the "Queue - Implementation of Queue in Python" Page
+
+Scenario Outline: Verify the user is able to see all the headers/labels on the "Queue - Implementation of Queue in Python" Page
+Given The user is on Queue page after login
+When The user clicks on the "Implementation of Queue in Python" link on the Queue page
+Then The user should see the following "<Navigating Links>" links on the "Queue - Implementation of Queue in Python" Page
+
          Examples:
  		 |Navigating Links 							|
          |NumpyNinja    							|
@@ -53,12 +33,12 @@ Then The user should see the below following "<Navigating Links>" links on the "
          |Implementation using array				|
          |Queue Operations							|
          
- #PASSED 
- #STEP3.2       
- Scenario Outline: Verify the user is able to see all the headers/labels on the "Queue - Implementation using collections.deque" Page
- Given The user is on Queue page after login
- When The user clicks on the "Implementation using collections.deque" link on the Queue page
- Then The user should see the following "<Navigating Links>" links on the "Queue - Implementation using collections.deque" Page
+     
+Scenario Outline: Verify the user is able to see all the headers/labels on the "Queue - Implementation using collections.deque" Page
+Given The user is on Queue page after login
+When The user clicks on the "Implementation using collections.deque" link on the Queue page
+Then The user should see the following "<Navigating Links>" links on the "Queue - Implementation using collections.deque" Page
+
          Examples:
  		 |Navigating Links 							|
          |NumpyNinja    							|
@@ -70,12 +50,11 @@ Then The user should see the below following "<Navigating Links>" links on the "
          |Implementation using array				|
          |Queue Operations							|     
  
- #PASSED 
- #STEP3.3        
- Scenario Outline: Verify the user is able to see all the headers/labels on the "Queue - Implementation using array" Page
- Given The user is on Queue page after login
- When The user clicks on the "Implementation using array" link on the Queue page
- Then The user should see the following "<Navigating Links>" links on the "Queue - Implementation using array" Page
+Scenario Outline: Verify the user is able to see all the headers/labels on the "Queue - Implementation using array" Page
+Given The user is on Queue page after login
+When The user clicks on the "Implementation using array" link on the Queue page
+Then The user should see the following "<Navigating Links>" links on the "Queue - Implementation using array" Page
+
          Examples:
  		 |Navigating Links 							|
          |NumpyNinja    							|
@@ -87,12 +66,11 @@ Then The user should see the below following "<Navigating Links>" links on the "
          |Implementation using array				|
          |Queue Operations							|     
  
- #PASSED 
- #STEP3.4        
- Scenario Outline: Verify the user is able to see all the headers/labels on the "Queue - Queue Operations" Page
- Given The user is on Queue page after login
- When The user clicks on the "Queue Operations" link on the Queue page
- Then The user should see the following "<Navigating Links>" links on the "Queue - Queue Operations" Page
+Scenario Outline: Verify the user is able to see all the headers/labels on the "Queue - Queue Operations" Page
+Given The user is on Queue page after login
+When The user clicks on the "Queue Operations" link on the Queue page
+Then The user should see the following "<Navigating Links>" links on the "Queue - Queue Operations" Page
+
          Examples:
  		 |Navigating Links 							|
          |NumpyNinja    							|
@@ -104,49 +82,35 @@ Then The user should see the below following "<Navigating Links>" links on the "
          |Implementation using array				|
          |Queue Operations							|        
 
-#PASSED         
-#STEP4 (should be actually 2)
 Scenario: Verify that user is able to navigate to "Queue - Implementation of Queue in Python" page	
 When The user clicks the "Getting Started" button for Queue module on Home page
 Then The user lands on "Queue" page
 
-#PASSED
-#STEP5
 Scenario: Verify the user is able to navigate to "Queue" Data Structure page using dropdown on home page
 Given The user is on the home page after login
 When The user select Queue item from the drop down menu
 Then The user lands on "Queue" page
 
-#PASSED  
-#STEP6.1    
 Scenario: Verify the user is able to navigate to "Implementation of Queue in Python" page from "Queue" page
 Given The user is on Queue page after login
 When  The user clicks on the "Implementation of Queue in Python" link on the Queue page
 Then The user lands on "Implementation of Queue in Python" page
 
-#PASSED  
-#STEP6.2
 Scenario: Verify the user is able to navigate to "Implementation using collections.deque" page from "Queue" page
 Given The user is on Queue page after login
 When  The user clicks on the "Implementation using collections.deque" link on the Queue page
 Then The user lands on "Implementation using collections.deque" page
 
-#PASSED  
-#STEP6.3
 Scenario: Verify the user is able to navigate to "Implementation using array" page from "Queue" page
 Given The user is on Queue page after login
 When  The user clicks on the "Implementation using array" link on the Queue page
 Then The user lands on "Implementation using array" page
 
-#PASSED  
-#STEP6.4
 Scenario: Verify the user is able to navigate to "Queue Operations" page from "Queue" page
 Given The user is on Queue page after login
 When  The user clicks on the "Queue Operations" link on the Queue page
 Then The user lands on "Queue Operations" page
 
-#PASSED 
-#STEP7
 Scenario Outline: Verify the user sees the output on clicking "Run" button after entering valid code for "Implementation of Queue in Python" page
 Given The user is on Queue page after login
 When The user clicks on the "<OptionOnQueue>" link  
@@ -161,8 +125,6 @@ Then The user should see an output "<message>" on TryEditor
 	| Implementation using array       			| print('Hello World! QATitans3') | Hello World! QATitans3		| 
  	| Queue Operations 							| print('Hello World! QATitans4') | Hello World! QATitans4		|
 
-#PASSED 
-#STEP8
 Scenario Outline: Verify the user see an error message on clicking "Run" button after entering invalid code for "<OptionOnQueue>" page.  
 Given The user is on Queue page after login
 When The user clicks on the "<OptionOnQueue>" link on the Queue page
@@ -177,4 +139,4 @@ Then The user should see an alert with error message "<message>" on TryEditor
 	| Implementation using array       			| abc123  | NameError: name 'abc123' is not defined on line 1   | 
  	| Queue Operations 							| abc123  | NameError: name 'abc123' is not defined on line 1   |
  	
- 	
+

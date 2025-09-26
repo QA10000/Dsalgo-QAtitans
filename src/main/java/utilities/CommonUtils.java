@@ -22,7 +22,6 @@ public class CommonUtils {
 		
 	public static void loadProperties() {
 		
-		//FileReader reader= null;
 		FileInputStream inputstr = null;
 		
 		try {
