@@ -43,16 +43,20 @@ public class RegisterPage {
 	String title;
 	
 	ScenarioContext scenariocontext;
+	
 	public RegisterPage(WebDriver driver) {
 		this.driver = driver;
-        this.scenariocontext = scenariocontext; // Use the shared one
 // Use the shared instance
 		PageFactory.initElements(driver, this);
+	}
+	public void setScenarioContext(ScenarioContext scenariocontext) {
+		this.scenariocontext = scenariocontext;
+		
 	}
 
 	public String getTitle() {
 	return title;
-		}
+	}
 
 	public void clickRegisterLink() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));

@@ -5,12 +5,9 @@ src/main/java/com/qa/dsalgo/base/package-info.java
 test-output/
 # src/main/java/utilities/package-info.java
 /com.qa.dsalgo/allure-results
-/allure-results/
-
-/bin/
-/allure-results/
 /bin/
 /allure-results/
 /com.qa.dsalgo/logs
 /Dsalgo-QAtitans/logs/*.log
 logs/test.log
+logs/*.log

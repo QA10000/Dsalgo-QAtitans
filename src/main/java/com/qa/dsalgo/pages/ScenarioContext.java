@@ -1,15 +1,17 @@
 package com.qa.dsalgo.pages;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ScenarioContext {
+	private Map<String, Object> context = new HashMap<>();
 
-	public static Object get(String string) {
-		// TODO Auto-generated method stub
-		return null;
+	public void set(String key, Object value) {
+        context.put(key, value);
 	}
 
-	public static void set(String string, String username) {
-		// TODO Auto-generated method stub
-		
+	public Object get(String key) {
+        return context.get(key);
 	}
-
+	
 }
