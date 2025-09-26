@@ -94,7 +94,7 @@ public class LoginPage {
 		Textbox.sendKeys(InputValue);		
 	}
 	
-	public void enterUsername(String username) {
+	/*public void enterUsername(String username) {
 		if (username != null) {
 	        usernametextbox.sendKeys(username);
 	    } else {
@@ -104,8 +104,18 @@ public class LoginPage {
 		wait.until(ExpectedConditions.visibilityOf(usernametextbox));
 		usernametextbox.clear();
 		usernametextbox.sendKeys(username);	
-	}
+	}*/
+	public void enterUsername(String username) {
+	    if (username == null) {
+	        throw new IllegalArgumentException("Username value is null. Check your test data.");
+	    }
 
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	    wait.until(ExpectedConditions.visibilityOf(usernametextbox));
+
+	    usernametextbox.clear();
+	    usernametextbox.sendKeys(username);
+	}
 	public void enterPassword(String password) {
 		if (password == null) {
 	        throw new IllegalArgumentException("Password value is null. Check your test data.");
