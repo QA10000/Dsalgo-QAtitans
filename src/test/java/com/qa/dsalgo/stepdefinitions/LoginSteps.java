@@ -126,9 +126,7 @@ public class LoginSteps {
 	
 	@Then ("The user should see an error message")
 	public void The_user_should_see_an_error_message(){
-		//System.out.println("it should display the error message \"<errorMessage>\"");
-		// Already asserted in the loop above, this step can be left empty or used for logging
-        driver.quit();
+		driver.quit();
 	}
 	
 	@When("The user clicks on the Signin link on home page")
@@ -139,32 +137,21 @@ public class LoginSteps {
 	@Then("The user sees {string} label on the top left corner of the {string} page")
 	public void theUserSeesLabelOnTheTopLeftCornerOfThePage(String expectedLabel, String pageName) {
 		String actualLabel = loginpage.getNumpyNinjaLinkText();
-       // System.out.println("Expected label text: '" + expectedLabel + "', Observed Msg: '" + actualLabel + "'");
         Assert.assertEquals(actualLabel, expectedLabel, "Label mismatch!");
     }
 	
 	@Then("The user sees the {string} dropdown box on the top left corner of the {string} page")
 	public void theUserSeesTheDropdownBoxOnTheTopLeftCornerOfThePage(String expectedLabel, String pageName) {
 		String actualLabel = loginpage.getDataStructureDropdownText();
-        //System.out.println("Expected label text: '" + expectedLabel + "', Observed Msg: '" + actualLabel + "'");
         Assert.assertEquals(actualLabel, expectedLabel, "Label mismatch!");
 	}
 	
 	@Then("The user sees the {string} link on the top right corner of the {string} page")
 	public void theUserSeesTheLinkOnTheTopRightCornerOfThePage(String expectedLabel, String pageName) {
 		String actualLabel = loginpage.getRegisterLinkText();
-        //System.out.println("Expected label text: '" + expectedLabel + "', Observed Msg: '" + actualLabel + "'");
         Assert.assertEquals(actualLabel, expectedLabel, "Label mismatch!");
 	}
 	
-	/*@Given("The user opens a web browser")
-    public void the_user_opens_a_web_browser() {
-        driver = new FirefoxDriver();
-        driver.manage().window().maximize();
-		//System.out.println("The user opens a web browser");
-    }*/
-
- 
 	@Then("The user sees {string} link on  the top right most corner of the Login page")
 	public void The_user_sees_link_on_the_top_right_most_corner_of_the_Login_page (String expectedLabel) {
     String actualLabel = loginpage. getSigninLinkText();

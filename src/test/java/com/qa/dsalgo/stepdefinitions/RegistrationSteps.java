@@ -1,3 +1,4 @@
+
 package com.qa.dsalgo.stepdefinitions;
 
 import org.openqa.selenium.WebDriver;
@@ -62,7 +63,6 @@ public class RegistrationSteps {
 	@Given("The user is on the register page of the portal")
 	public void the_user_is_on_the_register_page_of_the_portal() {
 		driver.get(CommonUtils.REGISTER_LINK);
-		driver.get(CommonUtils.APP_URL);
 	}
 
 	@When("The user enters {string} in username text box on register page")

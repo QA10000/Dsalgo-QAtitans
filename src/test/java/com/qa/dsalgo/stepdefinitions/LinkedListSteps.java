@@ -77,7 +77,6 @@ public class LinkedListSteps {
 	
 	@Then("All expected headers and navigation links should be displayed")
 	public void allexpectedheadersandnavigationlinksshouldbedisplayed() {
-		//logger.info("The user lands on the " + string + " page");
 		List<String> expectedLinks = CommonUtils.LINKLISTPAGE_LINKS;
 		 List<String> actualLinks = linkedlistpage.getAllLinkTexts();
 
