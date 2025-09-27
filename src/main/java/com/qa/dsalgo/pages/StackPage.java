@@ -1,6 +1,8 @@
 package com.qa.dsalgo.pages;
 
 import java.time.Duration;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -16,6 +18,9 @@ public class StackPage {
 		
 	@FindBy(xpath = "//div[@class='card-body d-flex flex-column'][h5[text()='Stack']]//a[contains(@href, 'stack')]")
 	private WebElement stackGetStarted;
+	
+	@FindBy(xpath = "//a[@href and normalize-space(text()) != '']")
+    private List<WebElement> navigationLinks;
 
 	public StackPage(WebDriver driver) {
 		System.out.println(">> StackPage constructor.");		
@@ -32,4 +37,23 @@ public class StackPage {
 	public void clickLinkedListOption(String optionName) {
         driver.findElement(By.linkText(optionName)).click();
     }
+	
+	public void clickOperationsinStackLink() {
+        driver.findElement(By.linkText("Operations in Stack")).click();
+    }
+
+	public void clickImplementationLink() {
+        driver.findElement(By.linkText("Implementation")).click();
+    }
+
+	public void clickApplicationsLink() {
+        driver.findElement(By.linkText("Applications")).click();
+    }
+
+	public List<String> getAllLinkTexts() {
+        return navigationLinks.stream()
+                .map(link -> link.getText().trim()) // trim removes extra spaces
+                .collect(Collectors.toList());
+    }
 }
+

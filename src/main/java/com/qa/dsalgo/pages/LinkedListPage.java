@@ -1,7 +1,10 @@
 package com.qa.dsalgo.pages;
 
 import java.time.Duration;
+import java.util.List;
+import java.util.stream.Collectors;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,12 +21,49 @@ private WebDriver driver;
 	    WebElement dataStructuresDropdown;
 	 @FindBy(xpath = "//a[@class='dropdown-item' and @href='/linked-list']")
 	    WebElement linkedListItem;
-    //private WebElement dropdown;
+   	 @FindBy(xpath ="//a[normalize-space(.)='Introduction']")
+			 WebElement IntroductionLink;
+	 @FindBy(xpath ="//p[contains(@class,'bg-secondary') and contains(@class,'text-white')]")
+             WebElement IntroductionHeader; 
 	 @FindBy(xpath = "//a[@href='creating-linked-list']")
 	    WebElement CreatingLinkedListItem;
 	 @FindBy(xpath = "//div[@id='content']//a[text()='Creating Linked LIst']")
 	    WebElement CreatingLinkedListTitleLink;
+	 
+	 @FindBy(xpath = "//a[@href='types-of-linked-list']")
+	    WebElement TypesOfLinkedListLink;
+	 @FindBy(xpath = "//div[@id='content']//a[text()='Types of Linked List']")
+	    WebElement TypesOfLinkedListTitleLink;
+	 
+	 @FindBy(xpath = "//a[@href='implement-linked-list-in-python']")
+	    WebElement ImplementLinkedListInPythonLink;
+	 @FindBy(xpath = "//div[@id='content']//a[text()='Implement Linked List in Python']")
+	    WebElement ImplementLinkedListInPythonTitleLink;
+	 
+	 @FindBy(xpath = "//a[@href='traversal']")
+	    WebElement TraversalLink;
+	 @FindBy(xpath = "//div[@id='content']//a[text()='Traversal']")
+	    WebElement TraversalTitleLink;
+	 
+	 @FindBy(xpath = "//a[@href='insertion-in-linked-list']")
+	    WebElement InsertionLink;
+	 @FindBy(xpath = "//div[@id='content']//a[text()='Insertion']")
+	    WebElement InsertionTitleLink;
+	 
+	 @FindBy(xpath = "//a[@href='deletion-in-linked-list']")
+	    WebElement DeletionLink;
+	 @FindBy(xpath = "//div[@id='content']//a[text()='Deletion']")
+	    WebElement DeletionTitleLink;
 	
+	 @FindBy(xpath = "//a[@href='/tryEditor']")
+	    private WebElement tryHereButton;
+	 
+	 @FindBy(xpath = "//a[@href and normalize-space(text()) != '']")
+	    private List<WebElement> navigationLinks;
+	 
+	 @FindBy(xpath = "//*[self::h4 or self::p][@class='bg-secondary text-white']")
+	    private List<WebElement> pageHeaders;
+	 
 	public LinkedListPage(WebDriver driver) {
 		System.out.println(">> LinkedListPage constructor.");		
 		this.driver = driver;
@@ -50,12 +90,74 @@ private WebDriver driver;
 		dataStructuresDropdown.click();
 	}
 	public void SelectLinkedListFromDropDown() {
-        //dataStructuresDropdown.click();
+		clickDataStructuredropdown();
+		//WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		//wait.until(ExpectedConditions.elementToBeClickable(linkedListItem));
         linkedListItem.click();
     }
 	
 	public void goToCreatingLinkedListPage() {
         CreatingLinkedListItem.click();
     }
+	
+	public void clickLinkedListOption(String optionName) {
+      WebElement option= driver.findElement(By.linkText(optionName));
+          option.click();
+    
+    }
+	
+	public String getLinkedListLinkOptionText(String optionName) {
+	      WebElement option= driver.findElement(By.linkText(optionName));
+	      String text=option.getText();
+	      return text;
+	    }
+	
+	public String getLinkedListLinkOptionText() {
+	      WebElement option= driver.findElement(By.xpath("//a[@href and normalize-space(text()) != '']"));
+	      String text=option.getText();
+	      return text;
+	    }
+	
+	public List<String> getAllLinkTexts() {
+        return navigationLinks.stream()
+                .map(link -> link.getText().trim()) // trim removes extra spaces
+                .collect(Collectors.toList());
+    }
+	
+	public List<String> getAllPageHeaderTexts() {
+        return pageHeaders.stream()
+                .map(link -> link.getText().trim()) // trim removes extra spaces
+                .collect(Collectors.toList());
+    }
+	
+	public String getLinkedListOptionText(String optionName) {
+	      WebElement option= driver.findElement(By.xpath("//strong/p[@class='bg-secondary text-white']"));
+	      String text=option.getText();
+	      return text;
+	    }
+	
+	public String getLinkedListOptionHeaderText(String headerName) {
+     	WebElement option=  driver.findElement(By.xpath("//*[self::h4 or self::p][text()='" + headerName + "']"));
+		     String text=option.getText();
+		      return text;
+	    }
+	
+	public String getLinkedListOptionHeaderText() {
+		WebElement option=  driver.findElement(By.xpath("//*[self::h4 or self::p][@class='bg-secondary text-white']"));
+	 	 String text=option.getText();
+	     return text;
+	    }
+	
+	public void clickTryHere() {
+        tryHereButton.click();
+    }
+	
+	public void getButtonText(String expectedButtonText ) {
+    WebElement button = driver.findElement(By.xpath("//a[@href='/tryEditor']" + expectedButtonText + "']"));
+    String actualButtonText = button.getText();
+  //  Assert.assertEquals("Button text mismatch", expectedButtonText, actualButtonText);
+ //   Assert.assertEquals(actualButtonText, expectedButtonText, "Button text mismatch");
+	}
+	
 }
 

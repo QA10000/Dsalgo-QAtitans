@@ -3,11 +3,28 @@ package utilities;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 
 public class CommonUtils {
 	public static String APP_URL;
+	public static String BROWSER;
+	public static String UserName;
+	public static String Password;
+	public static String APP_TITLE;
+	public static String USERNAME;
+	public static String PASSWORD;
+	public static String EXCELREADER;
+	public static String  REGISTER_LINK;
+	public static String CHROME_DRIVER;
+	public static String HOME_URL ;
+	public static String LOGIN_URL ;
+	public static List<String> LINKLISTPAGE_LINKS;
+	public static List<String> LINKLISTSUBPAGE_LINKS;
+    public static List<String> LINKLISTPAGE_HEADERS;
+    public static List<String> STACKPAGE_LINKS;
+	/*public static String APP_URL;
 	public static String BROWSER;
 	public static String UserName;
 	public static String Password;
@@ -18,12 +35,12 @@ public class CommonUtils {
 	public static String QUEUEOPTIONS;
 	public static String TREEOPTIONS;
 	public static String GRAPHOPTIONS;
-	public static String DATASTRUCTURESOPTIONS;
+	public static String DATASTRUCTURESOPTIONS;*/
+	
 	static Properties properties = new Properties();
 		
 	public static void loadProperties() {
 		
-		//FileReader reader= null;
 		FileInputStream inputstr = null;
 		
 		try {
@@ -43,13 +60,23 @@ public class CommonUtils {
 	CHROME_DRIVER = properties.getProperty("CHROME_DRIVER");
 	UserName = properties.getProperty("UserName");
 	Password = properties.getProperty("Password");
-	DATASTRUCTURESOPTIONS=properties.getProperty("DataStructuresValue");
+	APP_TITLE = properties.getProperty("APP_TITLE");
+	EXCELREADER = properties.getProperty("excelfilepath");
+    REGISTER_LINK = properties.getProperty("registerurl"); 
+    HOME_URL = properties.getProperty("homepageURL");
+    LOGIN_URL=properties.getProperty("homepageURL");
+    
+    LINKLISTPAGE_LINKS = Arrays.stream((properties.getProperty("LinkedListPageLinks")).split(",")).map(String::trim).toList();
+    LINKLISTSUBPAGE_LINKS = Arrays.stream((properties.getProperty("LinkedListPageLinks")).split(",")).map(String::trim).toList();
+    LINKLISTPAGE_HEADERS =Arrays.stream((properties.getProperty("LinkedListPageHeaders")).split(",")).map(String::trim).toList();
+    STACKPAGE_LINKS = Arrays.stream((properties.getProperty("StackPageLinks")).split(",")).map(String::trim).toList();
+    /*DATASTRUCTURESOPTIONS=properties.getProperty("DataStructuresValue");
 	ARRAYSOPTIONS = properties.getProperty("ArrayOptionValue");
 	LINKEDLISTOPTIONS = properties.getProperty("LinkedListOptionValue");
 	STACKOPTIONS = properties.getProperty("StackOptionValue");
 	QUEUEOPTIONS = properties.getProperty("QueueOptionValue");
 	TREEOPTIONS = properties.getProperty("TreeOptionValue");
-	GRAPHOPTIONS = properties.getProperty("GraphOptionValue");	
+	GRAPHOPTIONS = properties.getProperty("GraphOptionValue");*/	
 		
 	}
 	

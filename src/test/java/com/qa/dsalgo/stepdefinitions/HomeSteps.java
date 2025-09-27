@@ -97,7 +97,7 @@ public class HomeSteps extends DriverScripts {
 	    Assert.assertEquals(actualMessage.trim(), expectedMessage.trim(), "Message mismatch!");
 	}
 	
-	@Given("The user is on the DSAlgo portal")
+	@Given("The user is on the DS-Algo portal")
 	public void the_user_is_on_the_ds_algo_portal() {
 	    // Write code here that turns the phrase above into concrete actions
 		homePage.homePageLogin();
@@ -105,7 +105,7 @@ public class HomeSteps extends DriverScripts {
 		// throw new io.cucumber.java.PendingException();
 	}
 
-	@When("The user clicks {string} button on welcome page")
+	@When("The user clicks {string} button on welcome-page")
 	public void the_user_clicks_button_on_welcome_page(String string) {
 	    // Write code here that turns the phrase above into concrete actions
 		homePage.clickGetStartedButton();
@@ -113,7 +113,7 @@ public class HomeSteps extends DriverScripts {
 		// throw new io.cucumber.java.PendingException();
 	}
 	
-	@Then("The user lands on the home page of DSAlgo portal")
+	@Then("The user lands on the home page of DS-Algo portal")
 	public void the_user_lands_on_the_home_page_of_ds_algo_portal() {
 	    // Write code here that turns the phrase above into concrete actions
 		System.out.println("THEN :: The user lands on the home page of DSAlgo portal");	    

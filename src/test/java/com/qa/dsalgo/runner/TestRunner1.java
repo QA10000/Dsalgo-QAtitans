@@ -18,7 +18,7 @@ import io.cucumber.testng.CucumberOptions;
 	    plugin = {"pretty"}
 	)
 
-public class TestRunner extends AbstractTestNGCucumberTests {
+public class TestRunner1 extends AbstractTestNGCucumberTests {
 	@Override
 	@DataProvider(parallel = false)
 	public Object[][] scenarios() {

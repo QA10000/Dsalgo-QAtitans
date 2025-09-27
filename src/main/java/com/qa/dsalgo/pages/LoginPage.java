@@ -8,8 +8,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
+
+
 
 public class LoginPage {
 	private WebDriver driver;
@@ -29,6 +29,15 @@ public class LoginPage {
 	@FindBy(xpath = "//input[@name='username']/following-sibling::div[contains(@class, 'invalid-feedback')")
 	WebElement popupErrorMessage;
 	
+	@FindBy(xpath = "//a[@class='navbar-brand']")
+	private WebElement numpyNinjaLink;
+	
+	@FindBy(xpath = "//a[text()='Data Structures']")
+	private WebElement dataStructuresDropdown;
+	
+	@FindBy(xpath = "//div[@id='navbarCollapse']//a[@href='/register']")
+	private WebElement registerLink;
+	
 	public LoginPage(WebDriver driver) {
 		System.out.println(">> LoginPage constructor.");		
 		this.driver = driver;
@@ -36,13 +45,35 @@ public class LoginPage {
 	}
 	
 	public String getErrorMessage() {
-		System.out.println("getErrorMessage()");
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 		wait.until(ExpectedConditions.visibilityOf(errorMessage));
 		String ErrMsg = errorMessage.getText();
 		return ErrMsg;
 	}
 	
+	public String getNumpyNinjaLinkText() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(numpyNinjaLink));
+		return numpyNinjaLink.getText();
+	}
+	
+	public String getDataStructureDropdownText() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(dataStructuresDropdown));
+		return dataStructuresDropdown.getText();
+	}
+	
+	public String getRegisterLinkText() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(registerLink));
+		return registerLink.getText();
+	}
+		
+	public String getSigninLinkText() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(signinLink));
+		return signinLink.getText();
+	}
 	public void clickLoginLink() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.elementToBeClickable(signinLink));
@@ -63,17 +94,16 @@ public class LoginPage {
 	}
 	
 	public void enterUsername(String username) {
-		if (username != null) {
-	        usernametextbox.sendKeys(username);
-	    } else {
+	    if (username == null) {
 	        throw new IllegalArgumentException("Username value is null. Check your test data.");
 	    }
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.visibilityOf(usernametextbox));
-		usernametextbox.clear();
-		usernametextbox.sendKeys(username);	
-	}
 
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	    wait.until(ExpectedConditions.visibilityOf(usernametextbox));
+
+	    usernametextbox.clear();
+	    usernametextbox.sendKeys(username);
+	}
 	public void enterPassword(String password) {
 		if (password == null) {
 	        throw new IllegalArgumentException("Password value is null. Check your test data.");
@@ -87,14 +117,14 @@ public class LoginPage {
 	public void login(String username, String password) {
 		fillTextBox(usernametextbox, "Username", username);
 		fillTextBox(passwordtextbox, "Password", password);
-		System.out.println("submitForm()");
 		submitForm();
     }
+	
 	public void submitForm() {
 		loginButton.click();
 	}
 	
-	public String getSuccessMessage() {// this will go to home page as it shows on home page
+	public String getSuccessMessage() {
         return successMessage.getText().trim();
     }
 	
@@ -102,14 +132,12 @@ public class LoginPage {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.visibilityOf(passwordtextbox));
 		String validationMessage = passwordtextbox.getAttribute("validationMessage");
-		System.out.println( "Passwordvalidationmessage:" + validationMessage);
 		return validationMessage;
 	}
 	public String getUsernameValidationMessage() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.visibilityOf(usernametextbox));
 		String Uservalidationmessage = usernametextbox.getAttribute("validationMessage");
-		System.out.println( "Uservalidationmessage:" + Uservalidationmessage);
 		return Uservalidationmessage;
 	}
 	

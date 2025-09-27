@@ -1,9 +1,9 @@
 Feature: Home Functionality
 
   Background: 
-    Given The user is on the DSAlgo portal
-    When The user clicks "GetStarted" button on welcome page
-    Then The user lands on the home page of DSAlgo portal
+    Given The user is on the DS-Algo portal
+    When The user clicks "GetStarted" button on welcome-page
+    Then The user lands on the home page of DS-Algo portal
 
 	Scenario: Verify that user able to see error message on clicking "Get Started" button
 	# Given The user is in the DS Algo Home Page
