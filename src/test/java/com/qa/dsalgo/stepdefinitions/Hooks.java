@@ -58,12 +58,13 @@ public class Hooks {
     }
     
     @After
-    public static void closeBrowser() {
+   public static void closeBrowser() {
    if (driver != null) {
          driver.quit();
        LOG.info("Browser session closed.");
    }
     }
+    
 
 	public static WebDriver getDriver() {
         return driver;

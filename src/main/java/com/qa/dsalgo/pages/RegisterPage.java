@@ -38,8 +38,12 @@ public class RegisterPage {
 
 	@FindBy(xpath = "//a[text()='Data Structures']")
 	private WebElement dataStructuresDropdown;
-	@FindBy(xpath = "//div[@id='navbarCollapse']//a[@href='/login']")
+	/*@FindBy(xpath = "//div[@id='navbarCollapse']//a[@href='/login']")
+	private WebElement signinLink;*/
+	
+	@FindBy(xpath = "//div[@id='navbarCollapse']//ul//a[contains(text(), 'Sign in')]")
 	private WebElement signinLink;
+	
 	String title;
 	
 	ScenarioContext scenariocontext;
