@@ -76,6 +76,9 @@ public class CommonUtils {
 	public static String CHROME_DRIVER;
 	public static String HOME_URL ;
 	public static String LOGIN_URL ;
+	public static String DS_URL;
+	public static String DS_TS_URL;
+	public static String TRY_EDTR_URL;	
 	public static List<String> LINKLISTPAGE_LINKS;
 	public static List<String> LINKLISTSUBPAGE_LINKS;
     public static List<String> LINKLISTPAGE_HEADERS;
@@ -113,6 +116,9 @@ public class CommonUtils {
     LINKLISTSUBPAGE_LINKS = Arrays.stream((properties.getProperty("LinkedListPageLinks")).split(",")).map(String::trim).toList();
     LINKLISTPAGE_HEADERS =Arrays.stream((properties.getProperty("LinkedListPageHeaders")).split(",")).map(String::trim).toList();
     STACKPAGE_LINKS = Arrays.stream((properties.getProperty("StackPageLinks")).split(",")).map(String::trim).toList();
+    DS_URL = properties.getProperty("dataStructurePage");
+    DS_TS_URL = properties.getProperty("dataStructuresTimeComp");
+    TRY_EDTR_URL = properties.getProperty("tryEditorPage");
    	
 	}
 	
