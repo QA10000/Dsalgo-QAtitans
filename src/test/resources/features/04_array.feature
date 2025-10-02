@@ -3,7 +3,7 @@ Feature: Array Functionality
   Background: 
     Given The user is on the DSAlgo portal
     When The user clicks "GetStarted" button on welcome page
-    And The user logs in with valid username and password 
+    And The user logs in with valid username and password
     Then The user lands on the home page of DSAlgo portal
 
   Scenario: Verify that user is able to navigate to "Array" Module page from array panel

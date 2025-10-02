@@ -3,6 +3,7 @@ package com.qa.dsalgo.pages;
 import java.time.Duration;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeoutException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -29,30 +30,34 @@ public class RegisterPage {
 	private WebElement confirmedPswdtextbox;
 	@FindBy(xpath = "//form//input[@type='submit' and @value='Register']")
 	private WebElement registerButton;
-	@FindBy(xpath = "//div[contains(text(), 'password_mismatch')]")
+	@FindBy(xpath = "//div[contains(normalize-space(.), 'password_mismatch')]")
 	private WebElement mismatchpassword;
 	@FindBy(css = ".alert.alert-primary")
 	private WebElement successMessage;
 	@FindBy(xpath = "//a[@class='navbar-brand']")
 	private WebElement numpyNinjaLink;
-
 	@FindBy(xpath = "//a[text()='Data Structures']")
 	private WebElement dataStructuresDropdown;
-	@FindBy(xpath = "//div[@id='navbarCollapse']//a[@href='/login']")
+	@FindBy(xpath = "//div[@id='navbarCollapse']//ul//a[contains(text(), 'Sign in')]")
 	private WebElement signinLink;
+	
 	String title;
 	
 	ScenarioContext scenariocontext;
+	
 	public RegisterPage(WebDriver driver) {
 		this.driver = driver;
-        this.scenariocontext = scenariocontext; // Use the shared one
 // Use the shared instance
 		PageFactory.initElements(driver, this);
+	}
+	public void setScenarioContext(ScenarioContext scenariocontext) {
+		this.scenariocontext = scenariocontext;
+		
 	}
 
 	public String getTitle() {
 	return title;
-		}
+	}
 
 	public void clickRegisterLink() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -99,7 +104,7 @@ public class RegisterPage {
 		String username = testData.get("username");// getting input from datasheet
 		String password = testData.get("password");
 		String confirmedPassword = testData.get("confirmpassword");
-		enterUsername(username);// change and create one method
+		enterUsername(username);
 		enterPassword(password);
 		enterConfirmPassword(confirmedPassword);
 		submitForm();
@@ -124,6 +129,41 @@ public class RegisterPage {
 			submitForm();
 		}
 	}
+	
+	public void enterEmptyField(String username, String password, String confirmpassword) {
+		enterUsername(username);
+		enterPassword(password);
+		enterConfirmPassword(confirmpassword);
+		submitForm();
+	}
+	
+	public String displayEmptyfieldMsg() {
+		if(isUserNameEmpty()) {
+			return  getUsernameValidationMessage();
+		} else if (isPasswordEmpty()) {
+			return getPasswordValidationMessage();	
+		} else if (isConfirmPasswordEmpty()) {
+			return getConfirmPasswordValidationMessage();
+		}
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebElement freshElement = wait.until(ExpectedConditions.visibilityOf(mismatchpassword));
+		return freshElement.getText().trim();		
+		
+	}
+	
+	public boolean isUserNameEmpty() {
+		return(usernametextbox.getAttribute("value").trim().isEmpty());
+	}
+	
+	public boolean isPasswordEmpty() {
+		return(passwordtextbox.getAttribute("value").trim().isEmpty());
+	}
+	
+	public boolean isConfirmPasswordEmpty() {
+		return(confirmedPswdtextbox.getAttribute("value").trim().isEmpty());
+	}
+	
+	
 
 	public String getMismatchMessage() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -132,6 +172,8 @@ public class RegisterPage {
 				.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(mismatchpassword)));
 		return freshElement.getText().trim();
 	}
+	
+	
 
 	public String getSuccessMessage() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -139,6 +181,29 @@ public class RegisterPage {
 		return successMessage.getText().trim();
 	}
 
+	public String getUsernameValidationMessage() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.visibilityOf(usernametextbox));
+		String Uservalidationmessage = usernametextbox.getAttribute("validationMessage");
+		return Uservalidationmessage;
+	}
+
+	public String getPasswordValidationMessage() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.visibilityOf(passwordtextbox));
+		String validationMessage = passwordtextbox.getAttribute("validationMessage");
+		return validationMessage;
+	}
+	
+	public String getConfirmPasswordValidationMessage() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.visibilityOf(confirmedPswdtextbox));
+		String Uservalidationmessage = confirmedPswdtextbox.getAttribute("validationMessage");
+		return Uservalidationmessage;
+	}
+	
+	
+	
 	public String getRegisterLinkText() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.elementToBeClickable(registerLink));

@@ -78,7 +78,6 @@ public class LoginSteps {
         Assert.assertEquals(actualLabel, expectedLabel, "Label mismatch!");
 	}
 	
-	 
 	@Then("The user sees {string} link on  the top right most corner of the Login page")
 	public void The_user_sees_link_on_the_top_right_most_corner_of_the_Login_page (String expectedLabel) {
     String actualLabel = loginpage. getSigninLinkText();

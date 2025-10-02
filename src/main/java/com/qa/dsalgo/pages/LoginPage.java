@@ -21,7 +21,7 @@ import utilities.ExcelReader;
 public class LoginPage {
 	private WebDriver driver;
 	
-	@FindBy(xpath = "//div[@id='navbarCollapse']//a[@href='/login']")
+	@FindBy(xpath = "//div[@id='navbarCollapse']//ul//a[contains(text(), 'Sign in')]")
 	private WebElement signinLink;
 	@FindBy(name = "username")
 	private WebElement usernametextbox;

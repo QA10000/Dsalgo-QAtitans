@@ -16,9 +16,13 @@ public class Background {
 	private WebDriver driver;
 
 	@FindBy(linkText = "Get Started")
-	WebElement getStartedBtn; // Adjust if your structure differs
-	@FindBy(xpath = "//div[@id='navbarCollapse']//a[@href='/login']")
+	WebElement getStartedBtn; 
+	/*@FindBy(xpath = "//div[@id='navbarCollapse']//a[@href='/login']")
+	private WebElement signinLink;*/
+	
+	@FindBy(xpath = "//div[@id='navbarCollapse']//ul//a[contains(text(), 'Sign in')]")
 	private WebElement signinLink;
+	
 	@FindBy(name = "username")
 	private WebElement usernametextbox;
 	@FindBy(name = "password")
@@ -39,7 +43,7 @@ public class Background {
 	public String getTitle() {
 		return driver.getTitle();
 	}
-
+	
 	public void ClickGetStarted() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.elementToBeClickable(getStartedBtn));
@@ -50,20 +54,18 @@ public class Background {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.visibilityOf(signinLink));
 		signinLink.click();
-		usernametextbox.sendKeys(CommonUtils.UserName);
-		passwordtextbox.sendKeys(CommonUtils.Password);
+		usernametextbox.sendKeys(CommonUtils.USERNAME);
+		passwordtextbox.sendKeys(CommonUtils.PASSWORD);
 		loginButton.click();
 	}
 
 	public void verifyHomePageIsDisplayed() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.titleIs("NumpyNinja"));
-		//String expectedTitle = "NumpyNinja";
 		String expectedTitle = CommonUtils.APP_TITLE;
-
 		String actualTitle = getTitle();
 		Assert.assertEquals(actualTitle, expectedTitle, "Title mismatch!");
 
 	}
-
 }
+
