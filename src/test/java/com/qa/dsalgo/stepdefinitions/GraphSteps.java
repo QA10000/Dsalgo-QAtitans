@@ -29,12 +29,10 @@ public class GraphSteps {
 
 	@Given("The user is on the home page after login success")
 	public void theUserIsOnTheHomePageAfterLoginSuccess() {
-		logger.info("The user is on the home page after login");
 	}
 
 	@When("The user clicks the {string} button for the Graph module on Home page")
 	public void the_user_clicks_the_button_for_the_graph_module_on_home_page(String string) {
-		logger.info("The user clicks the " + string + " button  for Graph module on Home page");
 		graphpage.clickGraphStrtBtn();
 	}
 
