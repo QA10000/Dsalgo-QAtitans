@@ -106,8 +106,6 @@ public class RegistrationSteps {
 	@Then("The user lands on the DSAlgo Home portal with Success Message {string}")
 	public void the_user_lands_on_the_ds_algo_home_portal_with_success_message(String expectedMessage) {
 		String actualMessage = registerpage.getSuccessMessage();
-		System.out.println("Getting username from context: " + scenariocontext.get("registeredUsername")
-				+ " | Context: " + scenariocontext.hashCode());
 		Object usernameObj = scenariocontext.get("registeredUsername");
 		if (usernameObj == null) {
 			throw new RuntimeException("registeredUsername is null in ScenarioContext!");
@@ -119,6 +117,21 @@ public class RegistrationSteps {
 		logger.info("Verifying that the user sees success message on home page");
 		Assert.assertEquals(actualMessage, expectedMessage, "Success message mismatch!");
 	}
+
+	@When("The user submits the registration form with any empty value for username {string}, password {string}, and confirm password {string}")
+	public void the_user_submits_the_registration_form_with_any_empty_value_for_username_password_and_confirm_password(String username, String password, String confirmpassword) {
+	    // Write code here that turns the phrase above into concrete actions
+		registerpage.enterEmptyField(username, password, confirmpassword);
+	}
+	
+	@Then("The user sees {string} error message for empty field")
+	public void the_user_sees_error_message_for_empty_field(String expectedMessage) {
+		String actualMessage = registerpage.displayEmptyfieldMsg();
+		logger.info("Expected: " + expectedMessage + " | Actual: " + actualMessage);
+		Assert.assertEquals(actualMessage, expectedMessage, "Validation message mismatch!");
+
+	}
+
 
 	@Then("The user sees {string} label on the top left corner of the Register page")
 	public void the_user_sees_label_on_the_top_left_corner_of_the_register_page(String expectedLabel) {

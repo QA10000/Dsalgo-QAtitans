@@ -33,6 +33,17 @@ Feature: User Registration
       | Sheet  |
       | Sheet1 |
       
+  Scenario Outline: Verify the user receives proper error messages when username, password, or confirm password are missing
+  Given The user is on the register page of the portal
+  When The user submits the registration form with any empty value for username "<username>", password "<password>", and confirm password "<confirmpassword>"
+  Then The user sees "<errorMessage>" error message for empty field
+  Examples:
+  | username  | password  | confirmpassword | errorMessage                |
+  |           | Test@1234 | Test@1234       | Please fill out this field. |
+  | TestUser1 |           | Test@1234       | Please fill out this field. |
+  | TestUser2 | Test@1234 |                 | Please fill out this field. |
+      
+      
     Scenario: Verify that "NumpyNinja" label is displayed on the top left most corner of the Register module page
     Given The user is on the register page of the portal
     Then The user sees "NumpyNinja" label on the top left corner of the Register page
