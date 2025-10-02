@@ -1,37 +1,39 @@
 package com.qa.dsalgo.stepdefinitions;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import com.qa.dsalgo.pages.Background;
-import com.qa.dsalgo.pages.LinkedListPage;
-import com.qa.dsalgo.pages.TryEditorPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import utilities.CommonUtils;
 
+import com.qa.dsalgo.pages.Background;
+import com.qa.dsalgo.pages.LinkedListPage;
+import com.qa.dsalgo.pages.TryEditorPage;
+
+
 public class LinkedListSteps {
 	private WebDriver driver;
 	Background background;
-     LinkedListPage linkedlistpage;
+    LinkedListPage linkedlistpage;
 	TryEditorPage tryEditorPage ;
 	private static final Logger logger = LogManager.getLogger(LinkedListSteps.class);
+
 	public LinkedListSteps() {
-			driver = Hooks.getDriver();
-			background = new Background(driver);
-			linkedlistpage = new LinkedListPage(driver);
-			
-		}
-	
+		driver = Hooks.getDriver();
+		background = new Background(driver);
+		linkedlistpage = new LinkedListPage(driver);
+		
+	}
+
 	@Given("The user is on the home page after login")
 	public void theUserIsOnTheHomePageAfterLogin() {
 		logger.info("The User is on Home Page after Login");
-		}
+	}
 
 	@When("The user clicks the {string} button for Linked List module on Home page")
 	public void theUserClicksTheButtonForLinkedListModuleOnHomePage(String string) {
@@ -41,7 +43,6 @@ public class LinkedListSteps {
 	
 	@Then("The user should see the following {string} on the Linked List Page")
 	public void theUserShouldSeeTheFollowingOnTheLinkedListPage(String string) {
-
 		logger.info("The user should see the following " + string + "  on the Linked List Page");
 		String expectedTitle = string; //needs changes as string is getting passed to expected title
 		String actualTitle = linkedlistpage.getLinkedListOptionHeaderText(expectedTitle); //.getTitle();
@@ -65,9 +66,7 @@ public class LinkedListSteps {
 	
 	@When("The user clicks on the {string} link on the Linked List page")
 	public void theUserClicksOnTheLinkOnTheLinkedListPage(String string) {
-
 		linkedlistpage.clickLinkedListOption(string);
-		
 	}
 	
 	@Then ("The user lands on {string} page")
@@ -77,53 +76,24 @@ public class LinkedListSteps {
 	
 	@Then("All expected headers and navigation links should be displayed")
 	public void allexpectedheadersandnavigationlinksshouldbedisplayed() {
-		//logger.info("The user lands on the " + string + " page");
 		List<String> expectedLinks = CommonUtils.LINKLISTPAGE_LINKS;
-		 List<String> actualLinks = linkedlistpage.getAllLinkTexts();
-
-		 logger.info("actualLinks : " + actualLinks.toString());
-		 List<String> missing = new ArrayList<>();
-		 for (String expected : expectedLinks) {
-		     if (!actualLinks.contains(expected)) {
-		         missing.add(expected);
-		     }
-		 }
-
-		 Assert.assertTrue(
-		     missing.isEmpty(),
-		     "These expected links were missing: " + missing + 
-		     "\nActual list: " + actualLinks
-		 );
-
-		 
+		List<String> actualLinks = linkedlistpage.getAllLinkTexts();
+		List<String> missing = linkedlistpage.verifyAllExpectedLinksArePresent(expectedLinks, actualLinks);
+		Assert.assertTrue(missing.isEmpty(),"These expected links were missing: " + missing + "\nActual list: " + actualLinks);
 	}
 
 	@When("The user select Linked List item from the drop down menu")
 	public void theUserSelectLinkedListItemFromTheDropDownMenu() {
 		logger.info("The user selects Linked List item from Drop Down Menu");
 		linkedlistpage.SelectLinkedListFromDropDown();
-		
 	}
 
 	@Then("All expected navigation links should be displayed on Linked List Page")
 	public void allExpectedNavigationLinksShouldBeDisplayedOnLinkedListPage() {
 		List<String> expectedLinks = CommonUtils.LINKLISTSUBPAGE_LINKS;
-		 List<String> actualLinks = linkedlistpage.getAllLinkTexts();
-
-		 logger.info("actualLinks : " + actualLinks.toString());
-		 List<String> missing = new ArrayList<>();
-		 for (String expected : expectedLinks) {
-		     if (!actualLinks.contains(expected)) {
-		         missing.add(expected);
-		     }
-		 }
-
-		 Assert.assertTrue(
-		     missing.isEmpty(),
-		     "These expected links were missing: " + missing + 
-		     "\nActual list: " + actualLinks
-		 );
-
+		List<String> actualLinks = linkedlistpage.getAllLinkTexts();
+		List<String> missing = linkedlistpage.verifyAllExpectedLinksArePresent(expectedLinks, actualLinks);
+		Assert.assertTrue(missing.isEmpty(),"These expected links were missing: " + missing + "\nActual list: " + actualLinks);
 	}
 	
 	@When("The user clicks on the {string} link")
@@ -161,7 +131,6 @@ public class LinkedListSteps {
 		tryEditorPage.codeEditorSendKeys(string2);
 		tryEditorPage.clickRunBtn();
 	}
-	
 
 	@Then("The user should see alert with error message {string} on TryEditor")
 	public void theUserShouldSeeAlertWithErrorMessageOnTryEditor(String expectedMessage) {
@@ -170,13 +139,6 @@ public class LinkedListSteps {
 		String actualMessage = tryEditorPage.getAlertMessageAndAccept();
 	    Assert.assertEquals(actualMessage.trim(), expectedMessage.trim(), "Alert message mismatch");
 	}
-
-	
-
-	
-
-	
-
 }
 
 

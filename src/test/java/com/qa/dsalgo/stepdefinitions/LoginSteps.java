@@ -1,21 +1,13 @@
 package com.qa.dsalgo.stepdefinitions;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
-
 import com.qa.dsalgo.pages.Background;
 import com.qa.dsalgo.pages.LoginPage;
-
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import utilities.CommonUtils;
-import utilities.ExcelReader;
 
 
 public class LoginSteps {
@@ -24,11 +16,9 @@ public class LoginSteps {
 	LoginPage loginpage;
 	
 	public LoginSteps() {
-		//logger.info("in login page constructor");
 		driver = Hooks.getDriver();
 		background = new Background(driver);
 		loginpage = new LoginPage(driver);
-		
 	}
 	
 	@Given("The user is on the home page of the portal")
@@ -44,20 +34,9 @@ public class LoginSteps {
 	}
 	
 	@When("The user clicks login button after entering valid values from {string}")
-	public void the_user_clicks_login_button_after_entering_valid_values_from_Sheet(String string) {
+	public void the_user_clicks_login_button_after_entering_valid_values_from_Sheet(String SheetName) {
 		loginpage.clickLoginLink();
-	    String filePath = System.getProperty("user.dir") + "/src/test/resources/testdata/testdata.xlsx";
-	    List<Map<String, String>> users = ExcelReader.readMultiRowData(filePath, string);
-	       for (Map<String, String> row : users) {
-	    	System.out.println("DEBUG: Number of data rows read from Excel: " + row.size());
-		    System.out.println("password: " + row.get("password"));
-		    System.out.println("username: " + row.get("username"));        
-		    String username =row.get("username");
-		    String password =row.get("password");
-			loginpage.enterUsername(username);
-		    loginpage.enterPassword(password);
-		    loginpage.submitForm();	    	
-	    }	    
+	    loginpage.validateLogin(SheetName);
 	}
 
 	@Given("The user is on the Login page of the portal")
@@ -68,67 +47,12 @@ public class LoginSteps {
 	@When("The user enters invalid username and password in the textboxes")
 	   public void The_user_enters_invalid_username_and_password_in_the_textboxes(io.cucumber.datatable.DataTable dataTable) {
 		loginpage.clickLoginLink();
-		List<Map<String, String>> users = dataTable.asMaps(String.class, String.class); 
-		validateLogin(loginpage, users);
-	}
-	
-	private void validateLogin(LoginPage loginpage, List<Map<String, String>> users) {
-		System.out.println("DEBUG: Number of data rows read from Excel: " + users.size());
-		for (Map<String, String> user : users) 
-		{
-			String username = Optional.ofNullable(user.get("username")).orElse("");
-		    String password = Optional.ofNullable(user.get("password")).orElse("");
-		    String IsValidData = "";
-		    if(user.containsKey("isdatavalid"))
-		    	IsValidData = Optional.ofNullable(user.get("isdatavalid")).orElse("");
-			
-			//System.out.println("Test username: " + username + " and password: " + password+ " and IsValidData: " + IsValidData);
-			
-			boolean usernameEmpty = username == null || username.trim().isEmpty();
-	        boolean passwordEmpty = password == null || password.trim().isEmpty();
-	        
-			loginpage.login(username, password);
-			
-			String error = loginpage.getErrorMessage();
-			if (usernameEmpty == false && passwordEmpty== false) {
-				
-				//if(IsValidData == "Y" || IsValidData.isEmpty()) {
-				if ("Y".equalsIgnoreCase(IsValidData) || IsValidData.isEmpty())
-
-				System.out.println("Actual valid login/pwd error text: '" + error + "'");
-					Assert.assertTrue(error.contains("Invalid Username and Password"));
-				}
-			
- 			     else if ("N".equalsIgnoreCase(IsValidData)) {
-
-				//else if(IsValidData == "N") {
- 			    System.out.println("Actual valid login/pwd error text: '" + error + "'");
-				Assert.assertTrue(error.contains("Invalid Username and Password"));
-				}
-			
-	  
-	
-		        if (usernameEmpty) {
-	            String actualUsernameMessage = loginpage.getUsernameValidationMessage();
-	            String expectedUsernameMessage = "Please fill out this field.";
-	    		//System.out.println("Expected error text: '" + expectedUsernameMessage + "', Observed Msg: '" + actualUsernameMessage + "'");
-	    		Assert.assertTrue(actualUsernameMessage.contains(expectedUsernameMessage));
-	        }
-
-	        if (passwordEmpty) {
-	            String actualPasswordValidationMessage = loginpage.getPasswordValidationMessage();
-	    		String expectedPasswordValidationMessage = "Please fill out this field.";
-	    		//System.out.println("Expected error text: '" + expectedPasswordValidationMessage + "', Observed Msg: '" + actualPasswordValidationMessage + "'");
-	    		Assert.assertTrue(actualPasswordValidationMessage.contains(expectedPasswordValidationMessage));
-	        }
-		}
+		loginpage.validateLogin(dataTable);
 	}
 	
 	@Then ("The user should see an error message")
 	public void The_user_should_see_an_error_message(){
-		//System.out.println("it should display the error message \"<errorMessage>\"");
-		// Already asserted in the loop above, this step can be left empty or used for logging
-        driver.quit();
+		driver.quit();
 	}
 	
 	@When("The user clicks on the Signin link on home page")
@@ -139,37 +63,34 @@ public class LoginSteps {
 	@Then("The user sees {string} label on the top left corner of the {string} page")
 	public void theUserSeesLabelOnTheTopLeftCornerOfThePage(String expectedLabel, String pageName) {
 		String actualLabel = loginpage.getNumpyNinjaLinkText();
-       // System.out.println("Expected label text: '" + expectedLabel + "', Observed Msg: '" + actualLabel + "'");
         Assert.assertEquals(actualLabel, expectedLabel, "Label mismatch!");
     }
 	
 	@Then("The user sees the {string} dropdown box on the top left corner of the {string} page")
 	public void theUserSeesTheDropdownBoxOnTheTopLeftCornerOfThePage(String expectedLabel, String pageName) {
 		String actualLabel = loginpage.getDataStructureDropdownText();
-        //System.out.println("Expected label text: '" + expectedLabel + "', Observed Msg: '" + actualLabel + "'");
         Assert.assertEquals(actualLabel, expectedLabel, "Label mismatch!");
 	}
 	
 	@Then("The user sees the {string} link on the top right corner of the {string} page")
 	public void theUserSeesTheLinkOnTheTopRightCornerOfThePage(String expectedLabel, String pageName) {
 		String actualLabel = loginpage.getRegisterLinkText();
-        //System.out.println("Expected label text: '" + expectedLabel + "', Observed Msg: '" + actualLabel + "'");
         Assert.assertEquals(actualLabel, expectedLabel, "Label mismatch!");
 	}
 	
-	/*@Given("The user opens a web browser")
-    public void the_user_opens_a_web_browser() {
-        driver = new FirefoxDriver();
-        driver.manage().window().maximize();
-		//System.out.println("The user opens a web browser");
-    }*/
-
- 
+	 
 	@Then("The user sees {string} link on  the top right most corner of the Login page")
 	public void The_user_sees_link_on_the_top_right_most_corner_of_the_Login_page (String expectedLabel) {
     String actualLabel = loginpage. getSigninLinkText();
-    //System.out.println("Expected label text: '" + expectedLabel + "', Observed Msg: '" + actualLabel + "'");
-    Assert.assertEquals(actualLabel, expectedLabel, "Label mismatch!");
+        Assert.assertEquals(actualLabel, expectedLabel, "Label mismatch!");
+	}
+
+	@Then("The user is able to sign out with message {string}")
+	public void theUserIsAbleToSignOutWithMessage(String string) {
+		loginpage.logout();
+		String expectedMessage = "Logged out successfully";
+		String actualMessage = loginpage.getLogoutMessage(); 
+		Assert.assertEquals(actualMessage, expectedMessage, "Success message mismatch!");
 	}
 	
 }

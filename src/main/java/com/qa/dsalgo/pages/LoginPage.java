@@ -1,6 +1,9 @@
 package com.qa.dsalgo.pages;
 
 import java.time.Duration;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,6 +11,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+
+import utilities.CommonUtils;
+import utilities.ExcelReader;
 
 
 
@@ -37,6 +44,12 @@ public class LoginPage {
 	
 	@FindBy(xpath = "//div[@id='navbarCollapse']//a[@href='/register']")
 	private WebElement registerLink;
+	
+	@FindBy(xpath="//*[@id=\"navbarCollapse\"]/div[2]/ul/a[3]")
+	private WebElement Signout;
+	
+	@FindBy(xpath="/html/body/div[2]")
+	private WebElement logoutMessage;
 	
 	public LoginPage(WebDriver driver) {
 		System.out.println(">> LoginPage constructor.");		
@@ -120,12 +133,75 @@ public class LoginPage {
 		submitForm();
     }
 	
+	public void validateLogin(io.cucumber.datatable.DataTable dataTable) {
+		List<Map<String, String>> users = dataTable.asMaps(String.class, String.class); 
+		validateLogin(users);
+	}
+	
+	public void validateLogin(String SheetName) {
+		List<Map<String, String>> users = ExcelReader.readMultiRowData(CommonUtils.EXCELREADER, SheetName);
+		validateLogin(users);
+	}
+	
+	public void validateLogin(List<Map<String, String>> users) {
+		System.out.println("DEBUG: Number of data rows read from Excel: " + users.size());
+		for (Map<String, String> user : users) 
+		{
+			String username = Optional.ofNullable(user.get("username")).orElse("");
+		    String password = Optional.ofNullable(user.get("password")).orElse("");
+		    String isValidData = "";
+		    if(user.containsKey("isdatavalid"))
+		    	isValidData = Optional.ofNullable(user.get("isdatavalid")).orElse("");
+			
+				
+			boolean usernameEmpty = username == null || username.trim().isEmpty();
+	        boolean passwordEmpty = password == null || password.trim().isEmpty();
+	        System.out.println("usernameEmpty: " + usernameEmpty + ", passwordEmpty: " + passwordEmpty);
+	        System.out.println("username: " + username + ", password: " + password);
+			login(username, password);
+			
+			String error = getErrorMessage();
+			if (usernameEmpty == false && passwordEmpty== false && isValidData=="N") {
+				
+				if ("Y".equalsIgnoreCase(isValidData) || isValidData.isEmpty()) {
+
+			     	Assert.assertTrue(error.contains("Invalid Username and Password"));
+				}			
+ 			     else if ("N".equalsIgnoreCase(isValidData)) {
+
+	 		    	Assert.assertTrue(error.contains("Invalid Username and Password"));
+				}
+			}
+			
+			if (usernameEmpty) {
+	            String actualUsernameMessage = getUsernameValidationMessage();
+	            System.out.println("actualUsernameMessage: " + actualUsernameMessage);
+	            String expectedUsernameMessage = "Please fill out this field.";
+	    		Assert.assertTrue(actualUsernameMessage.contains(expectedUsernameMessage));
+	        }
+
+	        if (passwordEmpty) {
+	            String actualPasswordValidationMessage = getPasswordValidationMessage();
+	            System.out.println("actualUsernameMessage: " + actualPasswordValidationMessage);
+	    		String expectedPasswordValidationMessage = "Please fill out this field.";
+	    		Assert.assertTrue(actualPasswordValidationMessage.contains(expectedPasswordValidationMessage));
+	        }
+		}
+	}
+	
+	public void logout () {
+		Signout.click();
+	}
 	public void submitForm() {
 		loginButton.click();
 	}
 	
 	public String getSuccessMessage() {
         return successMessage.getText().trim();
+    }
+	
+	public String getLogoutMessage() {
+        return logoutMessage.getText().trim();
     }
 	
 	public String getPasswordValidationMessage() {
