@@ -52,8 +52,13 @@ public class StackPage {
 
 	public List<String> getAllLinkTexts() {
         return navigationLinks.stream()
-                .map(link -> link.getText().trim()) // trim removes extra spaces
+                .map(link -> link.getText().trim()) 
                 .collect(Collectors.toList());
     }
+	
+	public boolean areAllExpectedLinksPresent(List<String> expectedLinks) {
+	    List<String> actualLinks = getAllLinkTexts();
+	    return actualLinks.containsAll(expectedLinks);
+	}
 }
 
