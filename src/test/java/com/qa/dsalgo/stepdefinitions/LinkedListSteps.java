@@ -44,8 +44,8 @@ public class LinkedListSteps {
 	@Then("The user should see the following {string} on the Linked List Page")
 	public void theUserShouldSeeTheFollowingOnTheLinkedListPage(String string) {
 		logger.info("The user should see the following " + string + "  on the Linked List Page");
-		String expectedTitle = string; //needs changes as string is getting passed to expected title
-		String actualTitle = linkedlistpage.getLinkedListOptionHeaderText(expectedTitle); //.getTitle();
+		String expectedTitle = string; 
+		String actualTitle = linkedlistpage.getLinkedListOptionHeaderText(expectedTitle); 
 		System.out.println("actualTitle: '" + actualTitle + "'");
 		Assert.assertEquals(actualTitle, expectedTitle, "Title mismatch!");
 	}
@@ -53,8 +53,8 @@ public class LinkedListSteps {
 	@Then("The user should see the following {string} links on the {string} Page")
 	public void theUserShouldSeeTheFollowingLinksOnTheLinkedListPage(String string1, String string2) {
 		logger.info("The user should see the following " + string1 +  "links on the "  + string2 +" Page");
-		String expectedTitle = string1; //needs changes as string is getting passed to expected title
-		String actualTitle = linkedlistpage.getLinkedListLinkOptionText(expectedTitle); //.getTitle();
+		String expectedTitle = string1; 
+		String actualTitle = linkedlistpage.getLinkedListLinkOptionText(expectedTitle); 
 		System.out.println("actualTitle: '" + actualTitle + "'");
 		Assert.assertEquals(actualTitle, expectedTitle, "Title mismatch!");
 	}

@@ -17,9 +17,6 @@ public class Background {
 
 	@FindBy(linkText = "Get Started")
 	WebElement getStartedBtn; 
-	/*@FindBy(xpath = "//div[@id='navbarCollapse']//a[@href='/login']")
-	private WebElement signinLink;*/
-	
 	@FindBy(xpath = "//div[@id='navbarCollapse']//ul//a[contains(text(), 'Sign in')]")
 	private WebElement signinLink;
 	
@@ -37,7 +34,6 @@ public class Background {
 
 	public void launchUrl() {
 		driver.get(CommonUtils.APP_URL);
-		
 	}
 
 	public String getTitle() {
@@ -65,7 +61,6 @@ public class Background {
 		String expectedTitle = CommonUtils.APP_TITLE;
 		String actualTitle = getTitle();
 		Assert.assertEquals(actualTitle, expectedTitle, "Title mismatch!");
-
 	}
 }
 

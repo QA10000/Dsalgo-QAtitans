@@ -97,10 +97,10 @@ public class LinkedListPage {
 		
 	public void SelectLinkedListFromDropDown() {
 		clickDataStructuredropdown();
-		linkedListItem.click();
-	}
-
-	public void goToCreatingLinkedListPage() {
+	    linkedListItem.click();
+    }
+	
+   public void goToCreatingLinkedListPage() {
 		CreatingLinkedListItem.click();
 	}
 
