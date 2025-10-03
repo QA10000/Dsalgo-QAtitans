@@ -11,28 +11,33 @@ Feature: DataStructure
     
     Scenario: User is able to navigate to Data Structures Time-Complexity page
     When The user clicks the Get Started button under Data Structures introduction panel
-    Then The user lands on Data Structures introduction page
+   Then The user lands on Data Structures introduction page
     When The user clicks the Time-Complexity link under Data Structures introduction panel
     
-    Scenario: User is able to navigate to Data Structures Try Editor page and able to enter valid code 
+    Scenario Outline: User is able to navigate to Data Structures Try Editor page and able to enter valid code 
     When The user clicks the Get Started button under Data Structures introduction panel
     Then The user lands on Data Structures introduction page
     When The user clicks the Time-Complexity link under Data Structures introduction panel
     Then The user lands on Time Complexity page
     When The user clicks the Try here>>> button at the bottom of the Time Complexity page
-    Then The user lands on Try Editor page
-    When The user enter valid python code in tryEditor "print \"Hello World\""
-    Then The user should be presented with the run result
+   Then The user lands on Try Editor page
+   When The user enters valid python code "print \"Hello World\""
+   Then The user should be presented with the run result
+   
     
-    Scenario: User is able to navigate to Data Structures Try Editor page
-    When The user clicks the Get Started button under Data Structures introduction panel
-    Then The user should be redirected to Data Structures introduction page
-    When The user clicks the Time-Complexity link under Data Structures introduction panel
-    Then The user lands on Time Complexity page
-    When The user clicks the Try here>>> button at the bottom of the Time Complexity page
-    Then The user lands on Try Editor page
-    When The user enter invalid python code in tryEditor "Hello World"
-    Then The user should be presented with the run result
+    Scenario Outline: User is able to navigate to Data Structures Try Editor page and able to enter invalid code 
+    Given The user is on  Data Structure page
+    When The user clicks "<Option>" link on Data structure page
+    And The user clicks "Try Here" button in Time Complexity page 
+    And run invalid code by clicking run button after entering "<code>" in try  on Data Structure module
+    Then The user should see alert with  error message "<errorMessage>" on Data Structure page
+    
+     Examples: 
+      | Option                    | code        | errorMessage                                    |
+      | Time-Complexity           | Hello World | SyntaxError: bad input on line 1                |
+      | Time-Complexity           | abcd        | NameError: name 'abcd' is not defined on line 1 |
+      
+    
     
 	Scenario: Verify that "NumpyNinja" label is displayed on the top left corner of the Data Structure page
 	Then The user sees "NumpyNinja" label on top-left corner of "Data Structure" page

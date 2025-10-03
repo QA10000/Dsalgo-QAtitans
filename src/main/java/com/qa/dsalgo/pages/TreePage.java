@@ -29,8 +29,7 @@ public class TreePage {
 	private WebElement dropdown;
     @FindBy(xpath = "//div[contains(.,'Topics Covered')]//a")
 	private List<WebElement> treeLinkItem;
-
-			@FindBy(xpath = "//h4[@class='bg-secondary text-white']")
+	@FindBy(xpath = "//h4[@class='bg-secondary text-white']")
 	private WebElement treeLabel;
 	@FindBy(xpath = "//a[normalize-space()='Overview of Trees']")
 	private WebElement overviewLink;
@@ -71,14 +70,9 @@ public class TreePage {
 	public void clickTreeStrtBtn() {
 		 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		    wait.until(ExpectedConditions.elementToBeClickable(treeStartButton));
-		    
-		    // Scroll into view before clicking
 		    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({ behavior: 'smooth', block: 'center' });", treeStartButton);
-
 		    treeStartButton.click();	
 		}	
-	
-	
 	
 	public String getTreePageTitle() {
 		return driver.getTitle();
@@ -93,11 +87,9 @@ public class TreePage {
 		overviewLink.click();
 	}
 	
-
 	public void cickTryMeButtonTree() {
 		// TODO Auto-generated method stub
 		tryMeTreeButton.click();
-
 	}
 	
 	public void clickTreeOptiions(String sectionName) {
@@ -120,18 +112,10 @@ public class TreePage {
 
 	public void codeEditorSendKeys(String code) {
 	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
-	    // Wait for CodeMirror editor container to be visible
 	    wait.until(ExpectedConditions.visibilityOf(codeEditorTxtBx));
-
 	    JavascriptExecutor js = (JavascriptExecutor) driver;
-
-	    // Clear existing content
 	    js.executeScript("document.querySelector('.CodeMirror').CodeMirror.setValue('');");
-
-	    // Enter new code
 	    js.executeScript("document.querySelector('.CodeMirror').CodeMirror.setValue(arguments[0]);", code);
-
 	    try {
 	        Thread.sleep(500); // Small pause (not mandatory but helpful sometimes)
 	    } catch (InterruptedException e) {
@@ -179,9 +163,7 @@ public class TreePage {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.elementToBeClickable(dataStructuresDropdown));
 		return  dataStructuresDropdown.getText();
-	}
-
-	
+	}	
 	}
 
 

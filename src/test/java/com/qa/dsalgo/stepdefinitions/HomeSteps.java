@@ -24,7 +24,6 @@ public class HomeSteps {
 		driver = Hooks.getDriver();
 		homePage =  new HomePage(driver);
 	}	
-
 	@Given("The user is in the DS Algo Home Page")
 	public void the_user_is_in_the_ds_algo_home_page() {
 		homePage.homePageLogin();

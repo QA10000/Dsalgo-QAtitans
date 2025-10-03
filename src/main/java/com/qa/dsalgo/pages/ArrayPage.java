@@ -38,7 +38,6 @@ public class ArrayPage {
 	private WebElement runBtn;
 	@FindBy(id = "output")
 	private WebElement outputMessage;
-
 	@FindBy(css = "textarea")
 	private WebElement codeMirrorTextArea;
 	@FindBy(xpath = "//a[text()='Practice Questions']")
@@ -53,19 +52,14 @@ public class ArrayPage {
 	private WebElement passwordtextbox;
 	@FindBy(xpath = "//form//input[@type='submit' and @value='Login']")
 	private WebElement loginButton;
-	
 	@FindBy(xpath = "//a[@class='navbar-brand']")
 	private WebElement numpyNinjaLink;
-	
 	@FindBy(xpath = "//a[text()='Data Structures']")
 	private WebElement dataStructuresDropdown;
-	
 	@FindBy(xpath = "//div[@id='navbarCollapse']//a[@href='/register']")
 	private WebElement registerLink;
-	
 	@FindBy(xpath = "//a[normalize-space()='Sign out']")
 	private WebElement signoutLink;
-	
 	@FindBy(xpath = "//a[normalize-space()='Qatitans1']")
 	private WebElement usernameLabel;
 
@@ -131,18 +125,10 @@ public class ArrayPage {
 
 	public void codeEditorSendKeys(String code) {
 	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
-	    // Wait for CodeMirror editor container to be visible
 	    wait.until(ExpectedConditions.visibilityOf(codeEditorTxtBx));
-
 	    JavascriptExecutor js = (JavascriptExecutor) driver;
-
-	    // Clear existing content
 	    js.executeScript("document.querySelector('.CodeMirror').CodeMirror.setValue('');");
-
-	    // Enter new code
 	    js.executeScript("document.querySelector('.CodeMirror').CodeMirror.setValue(arguments[0]);", code);
-
 	    try {
 	        Thread.sleep(500); // Small pause (not mandatory but helpful sometimes)
 	    } catch (InterruptedException e) {
@@ -188,8 +174,6 @@ public class ArrayPage {
 		return outputMessage.getText().trim();
 	}
 
-	
-	
 	public void clickSearchArrayLink() {
 		searchArrayQLink.click();
 	}

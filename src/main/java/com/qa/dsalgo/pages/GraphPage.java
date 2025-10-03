@@ -123,11 +123,6 @@ public class GraphPage {
 		tryHereButton.click();
 	}
 
-	public void getButtonText(String expectedButtonText ) {
-		WebElement button = driver.findElement(By.xpath("//a[@href='/tryEditor']" + expectedButtonText + "']"));
-		String actualButtonText = button.getText();
-	}
-
 	public void graphItemGetStarted() {
 		graphGetstarted.click();
 	}
@@ -138,7 +133,6 @@ public class GraphPage {
 	}
 	
 	public void graphItemTwoClick() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		GraphRepresentationsLinkOptionTwo.click();
 	}
 

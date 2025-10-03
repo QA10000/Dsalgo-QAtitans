@@ -91,9 +91,7 @@ private WebDriver driver;
 	}
 	public void SelectLinkedListFromDropDown() {
 		clickDataStructuredropdown();
-		//WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-		//wait.until(ExpectedConditions.elementToBeClickable(linkedListItem));
-        linkedListItem.click();
+	    linkedListItem.click();
     }
 	
 	public void goToCreatingLinkedListPage() {
