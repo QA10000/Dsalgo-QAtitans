@@ -21,15 +21,14 @@ public class GraphSteps {
 	private static final Logger logger = LogManager.getLogger(RegistrationSteps.class);
 
 	public GraphSteps() {
-		System.out.println(">> In GraphSteps constructor.");
 		driver = Hooks.getDriver();
 		background = new Background(driver);
 		graphpage = new GraphPage(driver);
 	}
 
-	@Given("The user is on the home page after login success")
+	/*@Given("The user is on the home page after login success")
 	public void theUserIsOnTheHomePageAfterLoginSuccess() {
-	}
+	}*/
 
 	@When("The user clicks the {string} button for the Graph module on Home page")
 	public void the_user_clicks_the_button_for_the_graph_module_on_home_page(String string) {
@@ -38,7 +37,6 @@ public class GraphSteps {
 
 	@Then("The user should see the following {string} on the Graph Page")
 	public void the_user_should_see_the_following_on_the_graph_page(String string) {
-		System.out.println("The user lands on the " + string + " page");
 		String expectedTitle = string;
 		String actualTitle = graphpage.getGraphOptionHeaderText(expectedTitle);
 		logger.info("actualTitle: '" + actualTitle + "'");
